@@ -28,16 +28,16 @@ Software Engineer at Coupang. (TRP, Technical Research Personnel).
 ## Education
 #### July 2016 - August 2018
 Pohang University of Science and Technology (POSTECH)  
-* M.S. in Industrial and Management Engineering *
-* Master's Thesis on "Multi-Perspective Anomaly Detection in Process Mining" *
+*M.S. in Industrial and Management Engineering*
+*Master's Thesis on "Multi-Perspective Anomaly Detection in Process Mining"*
 
 #### March 2012 - February 2016
 Ulsan National Institute of Science and Technology (UNIST)  
-* B.S. in Computer Science Engineering and Technological Management (Magna Cum Laude) *
+*B.S. in Computer Science Engineering and Technological Management (Magna Cum Laude)*
 
 #### September 2008 - May 2011
 Hvitfeldtska Gymnasiet  
-* International Baccalaureate (IB) Program *
+*International Baccalaureate (IB) Program*
 
 #### September 2007 - May 2008
 Amador Valley High School  
@@ -76,18 +76,33 @@ Amador Valley High School
 ### 2018
 1. 스풀/철의장품 제작 공정 로그 데이터 기반 이상 공정 탐지 알고리즘 개발. Co-work: 삼성중공업. 2018. 03 ~ 2018. 06. 연구책임자: 송민석교수님
 > Used Java to build a tool to preprocess the massive log data
+>
 > Found useful business insights out of the log data
 2. DATA 기반 INTELLIGENCE 서비스 경험 산학 연구. Co-work: 삼성전자. 2017. 12. 11 ~ 2018. 04. 30. 연구책임자: 곽지영교수님
 > Focused to establish a new type of intelligent service based on IoT data
+>
 > Used the concepts of software engineering and UX such as data requirement analysis, data flow diagram, and user journey map
 
 #### 2017
 1. Multi-device / Multi-source Data 기반 IoT Intelligence 서비스 경험 연구. Co-work: 삼성전자. 2017. 5. 15 ~ 2017. 9. 15. 연구책임자: 곽지영교수님
+> Used the concepts of software engineering and UX such as data requirement analysis, data flow diagram, and user journey map
+
 2. 프로세스 마이닝 기반 시스템로그 및 UX 분석 모델 . Co-work: 삼성중공업, 2017. 8. 1 ~ 2017. 10. 31. 연구책임자: 송민석교수님
+> Log data analysis to provide business insights
+>
+> Recommended better UI with the data analysis results
+>
+> Used the log data of users' screen click events
 
 #### 2016
 1. Development of a statistical analysis program for LKAS (Lane Keeping Assist System) performance evaluation. Co-work: 현대자동차그룹. 2016. 5. 15 ~ 2017. 7. 31. 연구책임자: 한성호교수님
+> Log data analysis to provide business insights
+>
+> Statistic-based analysis
+> 
+> Java-based data analysis tool development
 2. 대용량 데이터를 활용한 산재 및 고용보험 가입누락 조사대상 사업장 구축. Co-work: 근로복지공단. 2016. 5. 1 ~ 2016. 8. 31. 연구책임자: 송민석교수님
+> Log data analysis to provide business insights
 
 <hr />
 
