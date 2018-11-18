@@ -4,5 +4,5 @@ title: HTML
 slug: html
 category: devlog
 menu: false
-order: 6
+order: 3
 ---
