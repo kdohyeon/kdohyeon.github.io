@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
-title: Algorithm
-slug: algorithm
+title: React
+slug: react
 category: devlog
 menu: false
-order: 3
+order: 7
 ---
