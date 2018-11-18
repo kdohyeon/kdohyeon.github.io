@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "[HTML] onMouseUp vs. onClick"
+title:  "[HTML] onClick vs. onMouseUp"
 subtitle:   "같은 결과. 무엇이 다른가?"
 categories: devlog
 tags: html
 ---
 
-# 배경 - onMouseUp vs. onClick
+# 배경 - onClick vs. onMouseUp
 웹에서 버튼 클릭을 했을 때, 특정 액션이 나타나게 하기 위해서는 내장되어있는 액션 실행 keyword 를 활용할 수 있다.
 예를 들면, 다음과 같이 활용할 수 있다.
 
