@@ -20,8 +20,8 @@ order: 99
 ## Work Experience
 #### August 2018 - Present
 Software Engineer at Coupang. (TRP, Technical Research Personnel).
-* August 2018 - Present: Member of Retail Systems team. *
-* Working on managing retail products at Coupang. *
+*August 2018 - Present: Member of Retail Systems team.*
+*Working on managing retail products at Coupang.*
 
 <hr />
 
