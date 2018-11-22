@@ -1,7 +1,7 @@
 ---
 layout: tag-blog
-title: Algorithm
-slug: algorithm
+title: Software Engineering
+slug: software_engineering
 category: devlog
 menu: false
 order: 2
