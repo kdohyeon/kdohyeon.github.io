@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kdohyeon</title>
+    <description>항상 궁금해하고 질문하라
+</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 23 Nov 2018 11:15:16 +0900</pubDate>
+    <lastBuildDate>Fri, 23 Nov 2018 11:15:16 +0900</lastBuildDate>
+    <generator>Jekyll v3.7.4</generator>
+    
+      <item>
+        <title>[Java] String 문자열과 String 객체 차이</title>
+        <description>&lt;p&gt;문제: &lt;code class=&quot;highlighter-rouge&quot;&gt;String str = &quot;abc&quot;&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;String str = new String(&quot;abc&quot;)&lt;/code&gt;의 차이는 무엇인가?
+
+해당 문제를 예시를 통해 살펴본다.&lt;/p&gt;
+
+&lt;p&gt;먼저 객체를 생성하는 경우이다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;String a = new String(“abcd”); 
+String b = new String(“abcd”);&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;위 문장은, heap 내의 일반적인 객체를 생성한 뒤, a가 그 객체의 참조값을 가르키게 되는 것이다.&lt;/p&gt;
+
+&lt;p&gt;b의 경우, 다른 객체이기 때문에 a 와 b 는 서로 값은 같아도 다른 참조값을 가르키게 된다.&lt;/p&gt;
+
+&lt;p&gt;따라서, 다음과 같은 경우는 &lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt; 값을 리턴하게 된다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;if(a==b) // return false&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;하지만, a 와 b 의 값 자체를 비교하는 경우는 &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt; 값을 리턴한다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;if(a.equals(b)) // return true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;다음으로 String 문자열에 대해서는:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;String c = “abcd”; 
+String d = “abcd”;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;위 문장은, heap 내의 String constant pool에 저장시키거나, 이미 존재하는 문자열이라면 그 저장된 배열의 인덱스 번호를 가리키게 하는 형태로 되어 있다.&lt;/p&gt;
+
+&lt;p&gt;즉, string constant “abcd” 를 c 와 d 모두 가르키고 있다.&lt;/p&gt;
+
+&lt;p&gt;따라서, 다음과 같은 경우는 &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt; 값을 리턴하게 된다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;if(a==b) // return true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;또한, 다음과 같은 경우도 &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt; 값을 리턴한다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;if(a.equals(b)) // return true&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Reference:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://bit.ly/2zpm9jK&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 23 Nov 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/devlog/2018/11/23/string-object/</link>
+        <guid isPermaLink="true">http://localhost:4000/devlog/2018/11/23/string-object/</guid>
+        
+        <category>java</category>
+        
+        
+        <category>devlog</category>
+        
+      </item>
+    
+      <item>
+        <title>[Software Engineering] TDD, Test Driven Development</title>
+        <description>&lt;h1 id=&quot;test-driven-development-란&quot;&gt;Test-Driven Development 란?&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;테스트 주도 개발 방법론&lt;/li&gt;
+  &lt;li&gt;매우 짧은 개발 사이클을 반복하는 소프트웨어 개발 프로세스 중 하나&lt;/li&gt;
+  &lt;li&gt;Simple Code의 추구를 목적으로 테스트 케이스를 먼저 개발하고 테스트 케이스를 통과하는 실제 코드를 나중에 개발하는 Agile 개발 방법&lt;/li&gt;
+  &lt;li&gt;테스트 작성으로 요구사항 검증, 설계의 고도화, 짧은 주기 Life Cycle을 반복하는 테스트-설계-피드백 중심의 개발사고 방식/방법론&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;일반적인-개발-프로세스는-어떻게-될까&quot;&gt;일반적인 개발 프로세스는 어떻게 될까?&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;TDD를 알아보기에 앞서, 먼저 일반적인 개발 프로세스는 어떤지 확인해볼 필요가 있다.&lt;/li&gt;
+  &lt;li&gt;순서는 디자인 &amp;gt; 코드 작성 &amp;gt; (수동) 테스트 &amp;gt; 설계 (디자인) 수정으로 이루어 진다.
+    &lt;ul&gt;
+      &lt;li&gt;개발을 어떻게 진행할 것인가에 대한 설계/디자인을 하고,&lt;/li&gt;
+      &lt;li&gt;이를 바탕으로 실제 코드를 작성한 뒤,&lt;/li&gt;
+      &lt;li&gt;최종적으로 테스트를 작동시켜 보면서&lt;/li&gt;
+      &lt;li&gt;기존의 설계/디자인을 수정한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;tdd의-특징은&quot;&gt;TDD의 특징은?&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;정확한 프로그래밍 목적을 디자인 단계에서 반드시 미리 정의해야만 하고 또 무엇을 미리 정의해야 한다.&lt;/li&gt;
+  &lt;li&gt;Red, Green, Refactor 총 3단계로 구성되어 있다.
+    &lt;ul&gt;
+      &lt;li&gt;Red: 개발자는 바라는 향상 또는 새로운 함수를 정의하는 (초기적 결함을 점검하는) 자동화된 테스트 케이스를 작성한다.&lt;/li&gt;
+      &lt;li&gt;Green: 그 케이스를 통과하기 위한 최소한의 양의 코드를 생성한다.&lt;/li&gt;
+      &lt;li&gt;Refactor: 반복되는 코드, 긴 메소드, 큰 클래스, 긴 매개변수 목록 등 작성한 코드를 표준에 맞도록, 효율적으로 Refactoring 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;개발을 진행하는 과정에서 Test Script 를 작성하고 코드를 Refactoring 했다는 점이 중요하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;tdd-의-장점은&quot;&gt;TDD 의 장점은?&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;소스코드의 의존성이 감소하고 독립적인 테스트가 가능한 설계 구조&lt;/li&gt;
+  &lt;li&gt;단위 테스트를 통한 테스트 커버리지 유지 및 디버깅 시간 감소&lt;/li&gt;
+  &lt;li&gt;기능 위주의 테스트 작성으로 해당 기능의 견고성 증가&lt;/li&gt;
+  &lt;li&gt;깔끔한 코드 작성 가능&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;tdd-의-단점은&quot;&gt;TDD 의 단점은?&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;빈번한 요구사항 변경&lt;/li&gt;
+  &lt;li&gt;빈번한 요구사항이 있을 경우, 테스트 케이스의 변경, 반복적인 소스코드 변경이 요구된다.&lt;/li&gt;
+  &lt;li&gt;테스트 케이스의 독립성 확보 어려움&lt;/li&gt;
+  &lt;li&gt;실제 코드 개발 이전에 반복적인 소스코드의 변경은 테스트 케이스의 변경을 발생시킬 수 있으며 연관된 테스트 케이스에 영향을 미친다.&lt;/li&gt;
+  &lt;li&gt;필수적인 유닛 테스트의 자동화&lt;/li&gt;
+  &lt;li&gt;테스트가 자동화되지 않으면 테스트에 드는 시간이 증가되어 개발주기에 맞춰 진행이 어렵다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;reference&quot;&gt;Reference:&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://ko.wikipedia.org/wiki/%ED%85%8C%EC%8A%A4%ED%8A%B8&lt;em&gt;%EC%A3%BC%EB%8F%84&lt;/em&gt;%EA%B0%9C%EB%B0%9C&lt;/li&gt;
+  &lt;li&gt;https://nesoy.github.io/articles/2017-01/TDD&lt;/li&gt;
+  &lt;li&gt;http://www.jidum.com/jidums/view.do?jidumId=557&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 21 Nov 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/devlog/2018/11/21/test-driven-development/</link>
+        <guid isPermaLink="true">http://localhost:4000/devlog/2018/11/21/test-driven-development/</guid>
+        
+        <category>software_engineering</category>
+        
+        
+        <category>devlog</category>
+        
+      </item>
+    
+      <item>
+        <title>[Java] Static</title>
+        <description>&lt;h1 id=&quot;objectives&quot;&gt;Objectives:&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Static 이란 무엇인가?&lt;/li&gt;
+  &lt;li&gt;Static 은 언제 활용되는가? 언제 활용하면 안되는가?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;agenda&quot;&gt;Agenda:&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;Static 이란?&lt;/li&gt;
+  &lt;li&gt;클래스 변수와 인스턴스 변수&lt;/li&gt;
+  &lt;li&gt;클래스 메소드와 인스턴스 메소드&lt;/li&gt;
+  &lt;li&gt;클래스 멤버와 인스턴스 멤버간 호출 및 참조&lt;/li&gt;
+  &lt;li&gt;요약&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;1-static-이란&quot;&gt;1. Static 이란?&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;프로그래밍 용어로써 &lt;strong&gt;Static&lt;/strong&gt; 은 정적, 고정의 뜻을 가지고 있다.&lt;/li&gt;
+  &lt;li&gt;프로그래밍 언어마다 조금씩은 다른 의미를 가지고 있으며 Java의 경우, static 이 어떻게 활용되는지 알아보고자 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2-클래스-변수와-인스턴스-변수&quot;&gt;2. 클래스 변수와 인스턴스 변수&lt;/h2&gt;
+&lt;p&gt;클래스 변수와 인스턴스 변수에 대한 용어 정리를 먼저 해보자.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;클래스 변수&lt;/strong&gt;: 변수 앞에 “static” 이 붙은 변수&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;인스턴스 변수&lt;/strong&gt;: 변수 앞에 “static”이 붙지 않은 변수&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;하나의 예시를 보면서 static 에 대해서 알아 보자.&lt;/p&gt;
+
+&lt;p&gt;예시는 총 52개의 Playing Card 를 구현하기 위해 Card 클래스를 선언한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;클래스 내 데이터(i.e., 변수, 함수)는 카드의 무늬, 숫자, 폭, 높이를 포함한다.&lt;/li&gt;
+  &lt;li&gt;카드의 무늬와 숫자는 인스턴스마다 다른 값을 유지해야 하므로 인스턴스 변수로 설정하고, 카드의 폭과 높이는 모든 인스턴스에 동일하게 적용되는 부분이므로 클래스 변수로 설정한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Java&quot;&gt;/* Card 클래스 선언 */
+class Card {
+  String kind; // 카드의 무늬 - 인스턴스 변수
+  int number; // 카드의 숫자 - 인스턴스 변수
+  
+  static int width = 100; // 카드의 폭 - 클래스 변수
+  static int height = 250; // 카드의 높이 - 클래스 변수
+}
+
+/* Test 클래스 선언 */
+class CardTest {
+  public void static main(String args[]){
+    // Static의 경우 인스턴스 선언없이 바로 사용 가능함
+    System.out.println(&quot;폭: &quot; + Card.width + &quot;, 높이: &quot; + Card.height);
+
+    // Card 인스턴스 생성
+    Card redCard = new Card();
+    redCard.kind = &quot;Heart&quot;;
+    redCard.number = 7;
+
+    // Card 인스턴스 생성
+    Card blueCard = new Card();
+    blueCard.kind = &quot;Space&quot;;
+    blueCard.number = 2;
+
+    // redCard 클래스 변수 변경 - 2배 증가
+    redCard.width = 200;
+    redCard.height = 500;
+
+    // blueCard 출력
+    System.out.println(&quot;폭: &quot; + blueCard.width + &quot;, 높이: &quot; + blueCard.height);
+  }
+}
+
+/* 실행 결과 */
+폭: 100, 높이: 250
+폭: 200, 높이: 500
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;클래스 변수의 경우 Class 인스턴스의 선언없이 사용 가능하다.&lt;/p&gt;
+
+&lt;p&gt;Card.width, redCard.width, blueCard.width 모두 같은 값을 공유한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;하나의 값이 바뀌면 다른 값도 모두 바뀜 –&amp;gt; 같은 공간을 참조(pointing)한다.&lt;/li&gt;
+  &lt;li&gt;예시처럼 redCard의 attribute를 바꿨는데도 blueCard의 attribute 값도 바뀐다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;3-클래스-메소드와-인스턴스-메소드&quot;&gt;3. 클래스 메소드와 인스턴스 메소드&lt;/h2&gt;
+&lt;p&gt;호출을 할 때에도 클래스 변수처럼 인스턴스 생성 필요없이 바로 활용할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;예를 들면, 다음과 같이 활용할 수 있다.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Class.Method
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그럼 언제 static 을 활용하여 메소드를 정의하는지 알아보자.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;클래스 (class)는 변수(variable)와 함수(method)의 집합체&lt;/li&gt;
+  &lt;li&gt;인스턴스 메소드는 해당 메소드를 수행하기 위해서 인스턴스 변수를 활용&lt;/li&gt;
+  &lt;li&gt;따라서 어떤 메소드에서 인스턴스 변수를 활용하지 않거나, 클래스 변수 또는 매개 변수로 메소드를 활용한다면 클래스 메소드로 정의&lt;/li&gt;
+  &lt;li&gt;인스턴스 변수를 활용하지 않는다고 해서 클래스 메소드로 무조건 정의하는것은 아님&lt;/li&gt;
+  &lt;li&gt;예시는 Math 클래스가 있음
+    &lt;ul&gt;
+      &lt;li&gt;모든 작업을 매개 변수로만 진행함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;4-클래스-멤버와-인스턴스-멤버간-호출-및-참조&quot;&gt;4. 클래스 멤버와 인스턴스 멤버간 호출 및 참조&lt;/h2&gt;
+&lt;p&gt;같은 클래스 내 멤버들간에는 별도의 인스턴스를 생성하지 않고도 서로 호출 및 참조 가능하다.&lt;/p&gt;
+
+&lt;p&gt;단, 클래스 멤버가 인스턴스 멤버를 호출 및 참조하고자 하는 경우에는 인스턴스를 생성해야 한다.&lt;/p&gt;
+
+&lt;p&gt;그 이유는 인스턴스 멤버가 클래스 멤버를 호출하는 시점에는 클래스 멤버의 존재가 보장되지만, 클래스 멤버가 인스턴스 멤버를 호출하는 시점에는 인스턴스 멤버의 존재가 보장되지 않는다.&lt;/p&gt;
+
+&lt;p&gt;클래스 멤버 (i.e., 변수, 메소드)는 언제나 호출 및 참조 가능하다.&lt;/p&gt;
+
+&lt;p&gt;따라서, 클래스 멤버 &amp;gt; 클래스 멤버, 인스턴스 멤버 &amp;gt; 클래스 멤버는 언제나 가능하다.&lt;/p&gt;
+
+&lt;p&gt;더불어, 인스턴스 멤버 &amp;gt; 인스턴스 멤버 역시 언제나 가능하다.&lt;/p&gt;
+
+&lt;p&gt;하지만, 인스턴스 멤버 &amp;gt; 클래스 멤버는 클래스 멤버의 인스턴스 생성이 필요하다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Java&quot;&gt;/* Example */
+class MemberCall{
+  int instance_variable_1 = 10;
+  int class_variable_1 = 20;
+
+  // 인스턴스 변수는 클래스 변수를 사용할 수 있음
+  int instance_variable_2 = class_variable_1 // instance_variable_2: 20
+
+  // 클래스 변수는 인스턴스 변수를 바로 사용할 수 없음
+  static int class_variable_2 = instance_variable_1 // ERROR
+  
+  // 굳이 사용하려면 인스턴스를 생성해야 함
+  static int class_variable_2 = new MemberCall().instance_variable_1 // class_variable_2: 10
+
+  // 클래스 메소드 생성
+  static void classMethod_1(){
+    System.out.println(class_variable_1); // 20
+    System.out.println(instance_variable_1); // ERROR
+    MemberCall mc = new MemberCall();
+    System.out.println(mc.instance_variable_1); // 10
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;5-요약&quot;&gt;5. 요약&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;클래스 설계 시, 멤버 변수 중 모든 인스턴스에서 공통적으로 활용하는 변수는 static 을 적용함
+    &lt;ul&gt;
+      &lt;li&gt;기본적으로 생성된 인스턴스는 서로 독립적이며 다른 공간을 참조하기 때문에 다른 값을 유지함&lt;/li&gt;
+      &lt;li&gt;경우에 따라 각 instance 가 공통적으로 같은 값이 유지되어야 하는 경우 static 을 활용함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;클래스 멤버는 인스턴스를 생성하지 않아도 사용할 수 있음
+    &lt;ul&gt;
+      &lt;li&gt;클래스 멤버는 클래스가 메모리에 올라갈 때 이미 자동적으로 생성됨&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;클래스 메소드에서는 인스턴스 변수를 직접적으로 사용할 수 없음
+    &lt;ul&gt;
+      &lt;li&gt;클래스 메소드에서는 인스턴스없이 클래스 멤버를 호출 가능함&lt;/li&gt;
+      &lt;li&gt;반면, 인스턴스 메소드에서는 인스턴스 생성 후 클래스 멤버를 호출 가능함&lt;/li&gt;
+      &lt;li&gt;인스턴스 변수가 존재한다는 것은 static이 붙은 변수가 이미 메모리에 존재한다는 것을 의미함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;메소드 내에서 인스턴스 변수를 사용하지 않는다면, static을 붙이는 것을 고려함
+    &lt;ul&gt;
+      &lt;li&gt;메소드의 작업 내용 중에서 인스턴스 변수를 필요로 한다면 static 을 붙일 수 없음&lt;/li&gt;
+      &lt;li&gt;반대로 인스턴스 변수를 필요로 하지 않는 다면, static을 붙이는 것이 좋음
+        &lt;ul&gt;
+          &lt;li&gt;메소드의 호출 시간이 짧아지기 때문에 효율이 높아짐&lt;/li&gt;
+          &lt;li&gt;static을 안붙은 메소드는 실행 시 호출되어야 할 메소드를 찾는 과정이 추가적으로 필요하기 때문에 시간이 더 걸림&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;클래스 설계 시 static의 사용 지침
+    &lt;ul&gt;
+      &lt;li&gt;먼저 class 의 멤버 변수 중 모든 인스턴스에 공통된 값을 유지해야하는 것이 있는지 살펴보고 있으면 static 을 붙임&lt;/li&gt;
+      &lt;li&gt;작성한 메소드 중에서 인스턴스 변수를 사용하지 않는 메소드에 대해서 static을 붙임&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;reference&quot;&gt;Reference:&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;http://rockdrumy.tistory.com/214&lt;/li&gt;
+  &lt;li&gt;http://minche.tistory.com/52&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 19 Nov 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/devlog/2018/11/19/static/</link>
+        <guid isPermaLink="true">http://localhost:4000/devlog/2018/11/19/static/</guid>
+        
+        <category>java</category>
+        
+        
+        <category>devlog</category>
+        
+      </item>
+    
+      <item>
+        <title>[HTML] onClick vs. onMouseUp</title>
+        <description>&lt;h1 id=&quot;배경---onclick-vs-onmouseup&quot;&gt;배경 - onClick vs. onMouseUp&lt;/h1&gt;
+&lt;p&gt;웹에서 버튼 클릭을 했을 때, 특정 액션이 나타나게 하기 위해서는 내장되어있는 액션 실행 keyword 를 활용할 수 있다.
+예를 들면, 다음과 같이 활용할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 버튼 &quot;Click me&quot; 를 클릭했을 때, &quot;myFunction()&quot; 이 수행된다.
+&amp;lt;button onclick=&quot;myFunction()&quot;&amp;gt;Click me&amp;lt;/button&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;버튼이 클릭되었을 때 나는 예시처럼 &lt;code class=&quot;highlighter-rouge&quot;&gt;onClick()&lt;/code&gt;을 주로 활용했었다.&lt;/p&gt;
+
+&lt;p&gt;관련된 개념을 찾아보는 중, 똑같은 액션을 수행할 수 있는 &lt;code class=&quot;highlighter-rouge&quot;&gt;onMouseUp()&lt;/code&gt;을 찾았다.&lt;/p&gt;
+
+&lt;p&gt;엄밀히 말하면 조금 다른 개념이긴 하다.&lt;/p&gt;
+
+&lt;h1 id=&quot;설명---무엇이-다른가&quot;&gt;설명 - 무엇이 다른가?&lt;/h1&gt;
+&lt;p&gt;사용자가 ‘클릭’이라는 행동을 취하려면 버튼A를 마우스로 눌럿다 떼야 한다.&lt;/p&gt;
+
+&lt;p&gt;여기서 &lt;code class=&quot;highlighter-rouge&quot;&gt;onClick()&lt;/code&gt;은 눌럿다 떼는, 두 행동을 합친 것을 의미한다.&lt;/p&gt;
+
+&lt;p&gt;그렇다면 &lt;code class=&quot;highlighter-rouge&quot;&gt;onMouseUp()&lt;/code&gt;은 떼는 행동이 일어났을 때를 의미한다.&lt;/p&gt;
+
+&lt;p&gt;해당 버튼을 눌렀을 때는 &lt;code class=&quot;highlighter-rouge&quot;&gt;onMouseDown()&lt;/code&gt; 이라는 keyword 를 활용하면 된다.&lt;/p&gt;
+
+&lt;p&gt;하나의 case 로 사용자가 다른 곳을 &lt;code class=&quot;highlighter-rouge&quot;&gt;onMouseDown()&lt;/code&gt; 했다가 버튼A에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;onMouseUp()&lt;/code&gt; 을 한다면?&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;onClick()&lt;/code&gt; 은 수행되지 않고, &lt;code class=&quot;highlighter-rouge&quot;&gt;onMouseUp()&lt;/code&gt; 은 수행된다.&lt;/p&gt;
+
+&lt;h1 id=&quot;정리&quot;&gt;정리&lt;/h1&gt;
+&lt;p&gt;따라서 사용자가 버튼A를 클릭했을 때, 내부적으로는:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;onMouseDown()&lt;/code&gt; 이 수행되고 &lt;code class=&quot;highlighter-rouge&quot;&gt;onMouseUp()&lt;/code&gt; 뒤따른다.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;onClick()&lt;/code&gt; 은 두 액션을 AND 조건으로 수행되는 것을 의미한다.&lt;/p&gt;
+
+&lt;p&gt;일반적인 사용자의 ‘클릭’을 생각하여 구현을 한다면 onClick() 을 활용하여 구현하는 것이 사용자의 사용성을 조금이라도 생각할 수 있을 것이다.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 18 Nov 2018 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/devlog/2018/11/18/html-on-click-on-mouse-click/</link>
+        <guid isPermaLink="true">http://localhost:4000/devlog/2018/11/18/html-on-click-on-mouse-click/</guid>
+        
+        <category>html</category>
+        
+        
+        <category>devlog</category>
+        
+      </item>
+    
+  </channel>
+</rss>
