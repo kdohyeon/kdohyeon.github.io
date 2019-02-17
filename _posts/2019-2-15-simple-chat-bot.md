@@ -41,4 +41,16 @@ tags: python
   - Second, give it to a friend who is told nothing about it other than to talk to them about this topic. 
   - Write down some of your friend's impressions.
 3. Based on how your ELIZA performs in conversations, describe in a sentence or two one way you could improve its performance, in principle, other than adding more rules [10pts].
+  - *(Opinion: use 'search' than 'match', return a response from all possible responses, build a machine learning model that trains on user inputs)*
 4. Finally, turn in a single sentence that you think nobody’s implementation will perform well on, but every human would. Explain why [5pts].
+  - *(Opinion: Typically, a long sentence does not work well on ELIZA-like chat-bots.)*
+
+# Simple Chat-bot algorithm
+- Define regular expression with possible responses in map
+- For every possible expression:
+  - If input string matches with one of the expressions:
+    - Find a random possible response 
+
+# Sites for reference
+- Python Code Example - https://github.com/jezhiggins/eliza.py
+- Paper on ELIZA - https://cse.buffalo.edu/~rapaport/572/S02/weizenbaum.eliza.1966.pdf
