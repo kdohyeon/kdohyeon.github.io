@@ -13,12 +13,14 @@ tags: python
 
 # Basic Patterns
 - 가장 쉬운 부분부터 시작해본다. 먼저 예시를 살펴보자.
-> pattern = r"Cookie" \
-> sequence = "Cookie in a jar" \
-> if re.match(pattern, sequence): \
->   print("Match!") \ 
-> else : \
->   print("Not a match!") \
+```
+pattern = r"Cookie"
+sequence = "Cookie in a jar" 
+if re.match(pattern, sequence): 
+  print("Match!") 
+else :
+  print("Not a match!")
+```
 
 - 예시에서 활용된 `match()`는 해당 패턴이 sequence 내에 포함이 되는지를 확인한다. 만약 존재한다면 true 를 반환하며, 아닌 경우에는 None 을 리턴하여 결과값이 없음을 나타낸다.
 - pattern 이라는 변수는 `r"Cookie"` 라고 정의가 되었는데, Cookie 앞에 붙은 `r` 은 무슨 뜻일까?
