@@ -27,7 +27,7 @@ else :
   - `raw string literal` 이라는 의미를 가지고 있다.
   - 자세히 설명을 하면, 쌍 따옴표 내에 있는 string 을 그 자체로 활용하겠다는 의미이다.
   - 예를 들어, escape string 으로 활용되는 backslash \ 의 경우, backslash 그 자체의 string 보다는 escape string 으로 활용되는 경우가 많다. 만약 backslash 그 자체를 패턴으로 활용하고 싶으면 r 과 함꼐 활용하면 된다.
-    - E.g., r"\"
+    - E.g., r"\\"
   - 물론, "Cookie"의 경우, 필요가 없겠지만 패턴의 prefix 로 r 을 활용하는 것은 좋은 practice 이다.
   
 # Special Characters
@@ -39,6 +39,14 @@ else :
 > re.search(r'Co.k.e', 'Cookie').group()
   - `.` 이 위치할 곳에 모든 single 문자열로 대체 가능하다.
 - 결과값으로는 'Cookie' 가 리턴될 것이다.
+
+# Useful Functions in re Library
+
+## Match
+
+## Search
+
+## Compile
 
 # Reference
 - https://www.datacamp.com/community/tutorials/python-regular-expression-tutorial#modulecontent
