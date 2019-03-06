@@ -9,7 +9,7 @@ tags: react
 React 를 사용하며 중요하다고 생각되는 부분에 대해서 정리가 필요하다고 느껴 챕터별로 나누어 정리해보았다.
 
 # Table of Contents
-## [1편. Introduction to React]((https://kdohyeon.github.io/review/2019/3/6/react-1-introduction/))
+## [1편. Introduction to React](https://kdohyeon.github.io/devlog/2019/3/6/react-1-introduction/)
 - 리액트는 무엇인가? 어디서부터 왔는가? 주로 어디서 활용되는가? 왜 사용하는가? 등에 대해 알아본다.
 
 ## 2편. Structure of React
