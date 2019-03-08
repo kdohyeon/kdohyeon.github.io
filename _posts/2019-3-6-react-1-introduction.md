@@ -15,15 +15,18 @@ tags: react
 ## Front-end 라이브러리 없이 웹 개발을 한다면?
 - 하나의 예시를 살펴보자. 버튼을 클릭했을 때, 숫자값이 하나씩 올라가는 기능을 만들어야 한다면 어떻게 할까?
 - 아마 다음과 같이 할 수 있을 것이다. 
-```html
+
+```
 <div>
   <h1>Counter</h1>
   <h2 id="number">0</h2>
   <button id="increase">+</button>
 </div>
-``` 
+```
+
 - 그럼 버튼을 클릭했을 때 숫자 0이라는 값을 어떻게 증가시켜줄 수 있을까?
 - 버튼을 클릭해서 숫자 0이라는 값을 바꿔주려면 각 DOM Element 에 대한 레퍼런스를 찾고, 이에 접근하여 원하는 작업을 해주어야 한다.
+
 ```javascript
 var number = 0;
 var elNumber = document.getElementById('number');
@@ -34,6 +37,7 @@ btnIncrease.onclick = function() {
   elNumber.innerText = number;
 };
 ```
+
 - 위 예시에서는 `btnIncrease` 라는 변수를 통해 increase 버튼에 대한 접근을 하고 `elNumber` 라는 변수를 통해 0 에 대한 접근을 하고 있다. 
 - `onclick` 함수를 통해 버튼이 클릭될 때마다 `elNumber` 변수의 값을 하나씩 증가시킨다.
 - 예시를 통해 살펴보았듯이, 수많은 DOM Element 를 직접 다 관리하고 코드 정리를 한다는 것은 매우 복잡하고 어려운 작업일 것이다.
