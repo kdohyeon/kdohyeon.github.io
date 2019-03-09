@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[React] 3편. Simplar Grammar in React"
+title:  "[React] 3편. Simple Grammar in React"
 subtitle:   "react"
 categories: devlog
 tags: react
