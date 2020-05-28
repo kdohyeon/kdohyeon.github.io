@@ -1,7 +1,7 @@
 ---
 layout: tag-blog
-title: HTML
-slug: html
+title: General
+slug: general
 category: devlog
 menu: false
 order: 4
