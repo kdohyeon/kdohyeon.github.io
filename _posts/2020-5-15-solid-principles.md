@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "S.O.L.I.D 원칙"
+title:  "[General] S.O.L.I.D 원칙"
 subtitle:   "general"
 categories: devlog
 tags: general
@@ -9,8 +9,8 @@ tags: general
 # SOLID 원칙
 - 객체지향의 5대 원칙
 
-|  A    |  B                |  C                              |
-| ---   | ----------------- | ------------------------------- |
+|  Acronym  |  Korean                |  English                              |
+| --------- | ----------------- | ------------------------------- |
 | 'SRP' | 단일 책임 원칙       | Single Responsibility Principle |
 | 'OCP' | 개방 및 폐쇄 원칙     | Open-Closed Principle |
 | 'LSP' | 리스코프 치환 원칙    | Liskov Substitution Principle |
