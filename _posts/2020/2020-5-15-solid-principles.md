@@ -5,7 +5,7 @@ subtitle:   "general"
 categories: devlog
 tags: general
 ---
-
+-- 작성 중
 # SOLID 원칙
 - 객체지향 프로그래밍에서 지켜야 할 ```5대 원칙```을 뜻한다.
 
@@ -38,3 +38,4 @@ tags: general
 # Reference
 - https://bit.ly/2TJEEK7
 - https://bit.ly/2M7v9Ae
+- https://bit.ly/3derCvR
