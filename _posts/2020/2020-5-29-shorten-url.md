@@ -29,9 +29,9 @@ https://bitly.com/ 에 가서 아무 웹 사이트 주소를 입력하면 https:
 ## 실제로는 어떤 값이 활용되나?
 Short URL 을 사용자가 입력하는 순간, 개발자 도구에서 'Network' 쪽을 보면..
 
-> General - Request URL: https://bit.ly/3es5xKk
-> Response Headers - Location: http://naver.com/
-> Request Headers - Host: bit.ly
+> General - Request URL: https://bit.ly/3es5xKk \
+> Response Headers - Location: http://naver.com/ \
+> Request Headers - Host: bit.ly \
 
 ### 예시
 1. 원본 URL 은 'naver.com'
