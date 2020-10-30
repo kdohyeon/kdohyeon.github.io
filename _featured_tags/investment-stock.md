@@ -1,6 +1,6 @@
 ---
 layout: tag-blog
-title: 가상화폐
+title: 주식
 slug: stock
 category: investment
 menu: false
