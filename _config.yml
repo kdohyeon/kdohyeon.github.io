@@ -36,7 +36,7 @@ linkedin_username: kdohyeon
 # Additional icon links
 additional_links:
 - title: 개발 블로그
-  # icon: Font Awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&s=brands&m=free)
+  icon: images/tistory-icon.png
   url: kdohyeon.tistory.com
 # - title: another link
 #   icon: font awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&s=brands&m=free)
@@ -57,6 +57,23 @@ about_content: | # this will include new lines to allow paragraphs
   - 데이터를 활용하여 새로운 인사이트를 찾아내어 좀 더 나은 서비스를 구현하는 것에 관심이 많습니다.
 
 content:
+  - title: Work Experience
+    layout: list
+    content:
+      - layout: right
+        title: 트렌비 (Trenbe)
+        sub_title: 백엔드 엔지니어
+        caption: 2022년 3월 ~ 재직 중
+        link: www.trenbe.com
+        quote: >
+          명품 이커머스
+      - layout: right
+        title: 쿠팡 (Coupang)
+        sub_title: 백엔드 엔지니어
+        caption: 2018년 8월 ~ 2022년 3월
+        link: www.coupang.com
+        quote: >
+          이커머스
   - title: Projects # Title for the section
     layout: list # Type of content section (list/text)
     content:
