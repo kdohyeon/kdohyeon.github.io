@@ -6,14 +6,14 @@ repository: Git repository where your resume will be hosted, only required if yo
 version: 2
 
 # Personal info
-name: 김도현, Dohyeon Kim
-title: Software Engineer
+name: 김도현
+title: 백엔드 엔지니어
 email: kdohyeon@gmail.com
 # email_title: Email (Email title override)
 # phone: Your phone number (optional)
 # phone_title: Phone (Phone title override)
-# website: kdohyeon.tistory.com
-# website_title: Web (Website title override)
+website: kdohyeon.tistory.com
+website_title: 개발 블로그 (Website title override)
 
 # Dark Mode (true/false/never)
 darkmode: true
@@ -34,10 +34,6 @@ linkedin_username: kdohyeon
 #googlescholar_username: D847cGsAAAAJ
 
 # Additional icon links
-additional_links:
-- title: 개발 블로그
-  icon: images/tistory-icon.png
-  url: kdohyeon.tistory.com
 # - title: another link
 #   icon: font awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&s=brands&m=free)
 #   url: Link url (eg. https://google.com)
@@ -52,9 +48,7 @@ additional_links:
 # about_title: About Me (Use this to override about section title)
 about_profile_image: images/kdohyeon.png
 about_content: | # this will include new lines to allow paragraphs
-  안녕하세요, 백엔드 개발자 김도현입니다.
-  
-  - 데이터를 활용하여 새로운 인사이트를 찾아내어 좀 더 나은 서비스를 구현하는 것에 관심이 많습니다.
+  - 5
 
 content:
   - title: Work Experience
@@ -68,10 +62,10 @@ content:
         quote: >
           명품 패션 이커머스 서비스
         description: | # this will include new lines to allow paragraphs
-          [명품 패션의 실 착용 정보를 제공하는 스타일 서비스 설계 및 개발](https://kdohyeon.tistory.com/74)
-          [상품 카탈로그 시스템 설계 및 개발](https://kdohyeon.tistory.com/76)
-          [CMS (컨텐츠 관리 시스템) 설계 및 개발](https://kdohyeon.tistory.com/75)
-          [리뷰 서비스 안정화 및 성능 개선](https://kdohyeon.tistory.com/72)
+          - [명품 패션의 실 착용 정보를 제공하는 스타일 서비스 설계 및 개발](https://kdohyeon.tistory.com/74)
+          - [상품 카탈로그 시스템 설계 및 개발](https://kdohyeon.tistory.com/76)
+          - [CMS (컨텐츠 관리 시스템) 설계 및 개발](https://kdohyeon.tistory.com/75)
+          - [리뷰 서비스 안정화 및 성능 개선](https://kdohyeon.tistory.com/72)
       - layout: left
         title: 쿠팡 (Coupang)
         sub_title: 백엔드 엔지니어
@@ -80,9 +74,9 @@ content:
         quote: >
           이커머스 서비스
         description: | # this will include new lines to allow paragraphs
-          [통계 기반 상품의 이상 가격 탐지 서비스 설계 및 개발](https://kdohyeon.tistory.com/79)
-          [리테일 (로켓) 상품 카탈로그 관리 시스템 분석 및 개발](https://kdohyeon.tistory.com/78)
-          [대규모 서비스 분리](https://kdohyeon.tistory.com/77)
+          - [통계 기반 상품의 이상 가격 탐지 서비스 설계 및 개발](https://kdohyeon.tistory.com/79)
+          - [리테일 (로켓) 상품 카탈로그 관리 시스템 분석 및 개발](https://kdohyeon.tistory.com/78)
+          - [대규모 서비스 분리](https://kdohyeon.tistory.com/77)
   - title: Projects # Title for the section
     layout: list # Type of content section (list/text)
     content:
@@ -106,18 +100,18 @@ content:
   - title: 학력
     layout: list
     content:
-      - layout: top-right
+      - layout: top-left
         title: POSTECH, 포항공과대학교
         sub_title: 산업경영공학 석사
         caption: 2016년 7월 ~ 2018년 7월
         description: | # this will include new lines to allow paragraphs
-          졸업 논문: 프로세스 마이닝을 활용한 다각도 관점에서의 이상 (Anomaly) 탐지 방법 제안
-      - layout: top-right
+          - 졸업 논문: 프로세스 마이닝을 활용한 다각도 관점에서의 이상 (Anomaly) 탐지 방법 제안
+      - layout: top-left
         title: UNIST, 울산과힉기술원
         sub_title: 컴퓨터 공학 학사, 기술 경영 학사
         caption: 2012년 3월 ~ 2016년 2월
         description: | # this will include new lines to allow paragraphs
-          컴퓨터 공학 및 기술 경영 복수 전공
+          - 컴퓨터 공학 및 기술 경영 복수 전공
 
 # Footer
 footer_show_references: true
