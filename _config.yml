@@ -7,13 +7,13 @@ version: 2
 
 # Personal info
 name: 김도현
-title: 백엔드 엔지니어
+title: Backend Engineer
 email: kdohyeon@gmail.com
 # email_title: Email (Email title override)
 # phone: Your phone number (optional)
 # phone_title: Phone (Phone title override)
 website: kdohyeon.tistory.com
-website_title: 개발 블로그 (Website title override)
+website_title: Blog
 
 # Dark Mode (true/false/never)
 darkmode: true
@@ -48,7 +48,10 @@ linkedin_username: kdohyeon
 # about_title: About Me (Use this to override about section title)
 about_profile_image: images/kdohyeon.png
 about_content: | # this will include new lines to allow paragraphs
-  - 5
+  - 5 년차 개발자로 이커머스 시장에서의 상품 카탈로그, 리뷰, 백오피스 등과 관련된 대규모 서버사이드 웹 서비스 개발에서 다양한 경험이 있습니다.
+  - 데이터에 기반한 의사결정을 하기 위해 노력하며, 고객을 위한 서비스를 구현하는 것에 관심이 많습니다.
+  - 문서화의 힘을 믿고, 항상 살아있는 문서를 관리하기 위해 노력합니다.
+  - 미국과 스웨덴에서 중, 고등학교를 다니며 다양한 문화를 이해하고 영어로 원활한 커뮤니케이션이 가능합니다.
 
 content:
   - title: Work Experience
@@ -56,8 +59,8 @@ content:
     content:
       - layout: left
         title: 트렌비 (Trenbe)
-        sub_title: 백엔드 엔지니어
-        caption: 2022년 3월 ~ 재직 중
+        sub_title: Backend Engineer
+        caption: 2022. 03 ~ Present
         link: www.trenbe.com
         quote: >
           명품 패션 이커머스 서비스
@@ -68,8 +71,8 @@ content:
           - [리뷰 서비스 안정화 및 성능 개선](https://kdohyeon.tistory.com/72)
       - layout: left
         title: 쿠팡 (Coupang)
-        sub_title: 백엔드 엔지니어
-        caption: 2018년 8월 ~ 2022년 3월
+        sub_title: Backend Engineer
+        caption: 2018. 08 ~ 2022. 03
         link: www.coupang.com
         quote: >
           이커머스 서비스
@@ -77,39 +80,47 @@ content:
           - [통계 기반 상품의 이상 가격 탐지 서비스 설계 및 개발](https://kdohyeon.tistory.com/79)
           - [리테일 (로켓) 상품 카탈로그 관리 시스템 분석 및 개발](https://kdohyeon.tistory.com/78)
           - [대규모 서비스 분리](https://kdohyeon.tistory.com/77)
-  - title: Projects # Title for the section
-    layout: list # Type of content section (list/text)
+          - 2018. 10 ~ 2021. 10 : 3년간 전문연구요원(병역 대체복무) 으로 근무
+  - title: 프로젝트
+    layout: list
     content:
       - layout: left
-        border: weak  # Value of `weak` will display a weak border below this item. # Any 
-                      # other value (or no value) means no border will be displayed
-        title: Project name
-        link: Link to project (eg. sproogen.github.io/modern-resume-theme)(optional)
-        link_text: Link Text
-        additional_links:
-          - title:  Github page for project (eg. sproogen/modern-resume-theme)
-            icon: fab fa-github
-            url: Link to project (eg. sproogen.github.io/modern-resume-theme)(optional)
-          - title:  Github page for project (eg. sproogen/modern-resume-theme)
-            icon: fab fa-github
-            url: Link to project (eg. sproogen.github.io/modern-resume-theme)(optional)
+        border: weak
+        title: 스타일 탭 서비스 개발
+        caption: 2022. 11 ~ 2022. 12
+        link: https://kdohyeon.tistory.com/74
+        link_text: 자세히 보기
         quote: >
-          Short overview of the project (optional)
-        description: | # this will include new lines to allow paragraphs
-          Description about the work on/with the project
+          명품 패션의 실 착용 정보를 제공하는 스타일 탭 서비스 설계 및 개발
+        description: |
+          - 역할: 스타일 탭 서비스 백엔드 아키텍쳐 설계 및 API 개발
+          - 기술 스택: Kotlin, SpringBoot 2.7, AWS, MySQL, Redis
+  - title: 기술 스택
+    layout: list
+    content:
+      - layout: left
+        border: weak
+        title: Language
+        description: | 
+          - Java
+          - Kotlin
+          - JavaScript
+          - Python
   - title: 학력
     layout: list
     content:
       - layout: top-left
-        title: POSTECH, 포항공과대학교
+        title: POSTECH
         sub_title: 산업경영공학 석사
-        caption: 2016년 7월 ~ 2018년 7월
+        caption: 2016. 07 ~ 2018. 07
         description: | # this will include new lines to allow paragraphs
+          - 현대자동차, 삼성전자, 삼성중공업, 근로복지공단 등 다양한 산학 프로젝트 수행
+          - 관심 연구 분야: 데이터 분석, 데이터 마이닝, 프로세스 마이닝
           - 졸업 논문: 프로세스 마이닝을 활용한 다각도 관점에서의 이상 (Anomaly) 탐지 방법 제안
       - layout: top-left
-        title: UNIST, 울산과힉기술원
+        title: UNIST
         sub_title: 컴퓨터 공학 학사, 기술 경영 학사
-        caption: 2012년 3월 ~ 2016년 2월
+        caption: 2012. 03 ~ 2016. 02
         description: | # this will include new lines to allow paragraphs
           - 컴퓨터 공학 및 기술 경영 복수 전공
 
