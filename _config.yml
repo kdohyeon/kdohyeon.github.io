@@ -80,7 +80,7 @@ content:
           - [통계 기반 상품의 이상 가격 탐지 서비스 설계 및 개발](https://kdohyeon.tistory.com/79)
           - [리테일 (로켓) 상품 카탈로그 관리 시스템 분석 및 개발](https://kdohyeon.tistory.com/78)
           - [대규모 서비스 분리](https://kdohyeon.tistory.com/77)
-          - 2018. 10 ~ 2021. 10 : 3년간 전문연구요원(병역 대체복무) 으로 근무
+          - (2018. 10 ~ 2021. 10) 전문연구요원(병역 대체복무) 으로 3년 근무
   - title: 프로젝트
     layout: list
     content:
@@ -95,17 +95,42 @@ content:
         description: |
           - 역할: 스타일 탭 서비스 백엔드 아키텍쳐 설계 및 API 개발
           - 기술 스택: Kotlin, SpringBoot 2.7, AWS, MySQL, Redis
+      - layout: left
+        border: weak
+        title: 상품 카탈로그 시스템 개발
+        caption: 2022. 07 ~ 2022. 11
+        link: https://kdohyeon.tistory.com/76
+        link_text: 자세히 보기
+        quote: >
+          트렌비 상품 데이터 구조 체계를 개선하여 비즈니스 확장성 확보
+        description: |
+          - 역할: 트렌비 상품 데이터 구조 설계 및 백엔드 API 개발
+          - 기술 스택: Kotlin, SpringBoot 2.7, AWS, PostgreSQL, Redis, Kafka
   - title: 기술 스택
     layout: list
     content:
       - layout: left
         border: weak
-        title: Language
+        title: Backend
         description: | 
-          - Java
-          - Kotlin
-          - JavaScript
-          - Python
+          - Java, Kotlin, Python
+          - SpringBoot, SpringBatch, Spring Data, Spring Cloud AWS
+          - JPA, QueryDSL
+          - JUnit5, Spock
+          - Gradle
+          - IntelliJ
+      - layout: left
+        border: weak
+        title: DevOps
+        description: |
+          - MySQL, PostgreSQL, Redis
+          - Jenkins, Github Action
+      - layout: left
+        border: weak
+        title: Frontend
+        description: |
+          - JavaScript 
+          - ReactJS
   - title: 학력
     layout: list
     content:
@@ -123,6 +148,12 @@ content:
         caption: 2012. 03 ~ 2016. 02
         description: | # this will include new lines to allow paragraphs
           - 컴퓨터 공학 및 기술 경영 복수 전공
+      - layout: top-left
+        title: Hvitfeldtska Gymnasiet
+        sub_title: 고등학교
+        caption: 2008. 09 ~ 2011. 05
+        description: | # this will include new lines to allow paragraphs
+          - International Baccalaureate (IB) 졸업
 
 # Footer
 footer_show_references: true
