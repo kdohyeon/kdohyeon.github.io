@@ -94,10 +94,10 @@ content:
           명품 패션의 실 착용 정보를 제공하는 스타일 탭 서비스 설계 및 개발
         description: |
           - 역할: 스타일 탭 서비스 백엔드 아키텍쳐 설계 및 API 개발
-          - 기술 스택: Kotlin, SpringBoot 2.7, AWS, MySQL, Redis
+          - 기술 스택: Kotlin, SpringBoot, AWS, MySQL, Redis
       - layout: left
         border: weak
-        title: 상품 카탈로그 시스템 개발
+        title: 카탈로그 시스템 개발
         caption: 2022. 07 ~ 2022. 11
         link: https://kdohyeon.tistory.com/76
         link_text: 자세히 보기
@@ -105,7 +105,29 @@ content:
           트렌비 상품 데이터 구조 체계를 개선하여 비즈니스 확장성 확보
         description: |
           - 역할: 트렌비 상품 데이터 구조 설계 및 백엔드 API 개발
-          - 기술 스택: Kotlin, SpringBoot 2.7, AWS, PostgreSQL, Redis, Kafka
+          - 기술 스택: Kotlin, SpringBoot, AWS, PostgreSQL, Redis, Kafka
+      - layout: left
+        border: weak
+        title: CMS 개발
+        caption: 2022. 06 ~ 2022. 07
+        link: https://kdohyeon.tistory.com/76
+        link_text: 자세히 보기
+        quote: >
+          트렌비 홈 화면을 관리할 수 있는 컨텐츠 관리 시스템 (CMS) 설계 및 개발
+        description: |
+          - 역할: CMS 백엔드 설계 및 백엔드 API 개발 
+          - 기술 스택: Java, SpringBoot, AWS, MySQL, Redis
+      - layout: left
+        border: weak
+        title: 사이즈 리뷰 기능 개발
+        caption: 2022. 05
+        link: https://kdohyeon.tistory.com/76
+        link_text: 자세히 보기
+        quote: >
+          각 상품별 사이즈에 대한 리뷰를 확인할 수 있는 기능 설계 및 개발
+        description: |
+          - 역할: 사이즈 리뷰 설계 및 백엔드 API 개발 
+          - 기술 스택: Java, SpringBoot, AWS, MySQL
   - title: 기술 스택
     layout: list
     content:
@@ -123,8 +145,10 @@ content:
         border: weak
         title: DevOps
         description: |
-          - MySQL, PostgreSQL, Redis
+          - MySQL, PostgreSQL, Redis, ES
           - Jenkins, Github Action
+          - Kafka
+          - Git
       - layout: left
         border: weak
         title: Frontend
