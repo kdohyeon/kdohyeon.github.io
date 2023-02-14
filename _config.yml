@@ -51,6 +51,7 @@ about_content: | # this will include new lines to allow paragraphs
   - 5 년차 개발자로 이커머스 시장에서의 상품 카탈로그, 리뷰, 백오피스 등과 관련된 대규모 서버사이드 웹 서비스 개발에서 다양한 경험이 있습니다.
   - 데이터에 기반한 의사결정을 하기 위해 노력하며, 고객을 위한 서비스를 구현하는 것에 관심이 많습니다.
   - 문서화의 힘을 믿고, 항상 살아있는 문서를 관리하기 위해 노력합니다.
+  - 알고 있는 것을 남에게 알려주는 것을 좋아합니다.
   - 미국과 스웨덴에서 중, 고등학교를 다니며 다양한 문화를 이해하고 영어로 원활한 커뮤니케이션이 가능합니다.
 
 content:
@@ -65,10 +66,12 @@ content:
         quote: >
           명품 패션 이커머스 서비스
         description: | # this will include new lines to allow paragraphs
-          - [명품 패션의 실 착용 정보를 제공하는 스타일 서비스 설계 및 개발](https://kdohyeon.tistory.com/74)
+          - [리뷰 서비스 안정화 및 성능 개선](https://kdohyeon.tistory.com/72)
+          - JIRA 데이터 기반 업무 분석 
+          - [명품 패션의 실 착용 정보를 제공하는 스타일 서비스 설계, 개발 및 분석](https://kdohyeon.tistory.com/74)
           - [상품 카탈로그 시스템 설계 및 개발](https://kdohyeon.tistory.com/76)
           - [CMS (컨텐츠 관리 시스템) 설계 및 개발](https://kdohyeon.tistory.com/75)
-          - [리뷰 서비스 안정화 및 성능 개선](https://kdohyeon.tistory.com/72)
+
       - layout: left
         title: 쿠팡 (Coupang)
         sub_title: Backend Engineer
@@ -81,11 +84,11 @@ content:
           - [리테일 (로켓) 상품 카탈로그 관리 시스템 분석 및 개발](https://kdohyeon.tistory.com/78)
           - [대규모 서비스 분리](https://kdohyeon.tistory.com/77)
           - (2018. 10 ~ 2021. 10) 전문연구요원(병역 대체복무) 으로 3년 근무
+
   - title: 프로젝트
     layout: list
     content:
       - layout: left
-        border: weak
         title: 스타일 탭 서비스 개발
         caption: 2022. 11 ~ 2022. 12
         link: https://kdohyeon.tistory.com/74
@@ -95,8 +98,8 @@ content:
         description: |
           - 역할: 스타일 탭 서비스 백엔드 아키텍쳐 설계 및 API 개발
           - 기술 스택: Kotlin, SpringBoot, AWS, MySQL, Redis
+
       - layout: left
-        border: weak
         title: 카탈로그 시스템 개발
         caption: 2022. 07 ~ 2022. 11
         link: https://kdohyeon.tistory.com/76
@@ -106,8 +109,8 @@ content:
         description: |
           - 역할: 트렌비 상품 데이터 구조 설계 및 백엔드 API 개발
           - 기술 스택: Kotlin, SpringBoot, AWS, PostgreSQL, Redis, Kafka
+
       - layout: left
-        border: weak
         title: CMS 개발
         caption: 2022. 06 ~ 2022. 07
         link: https://kdohyeon.tistory.com/76
@@ -117,6 +120,7 @@ content:
         description: |
           - 역할: CMS 백엔드 설계 및 백엔드 API 개발 
           - 기술 스택: Java, SpringBoot, AWS, MySQL, Redis
+
       - layout: left
         border: weak
         title: 사이즈 리뷰 기능 개발
@@ -128,11 +132,23 @@ content:
         description: |
           - 역할: 사이즈 리뷰 설계 및 백엔드 API 개발 
           - 기술 스택: Java, SpringBoot, AWS, MySQL
+
+      - layout: left
+        border: weak
+        title: 사이즈 리뷰 기능 개발
+        caption: 2022. 05
+        link: https://kdohyeon.tistory.com/76
+        link_text: 자세히 보기
+        quote: >
+          각 상품별 사이즈에 대한 리뷰를 확인할 수 있는 기능 설계 및 개발
+        description: |
+          - 역할: 사이즈 리뷰 설계 및 백엔드 API 개발 
+          - 기술 스택: Java, SpringBoot, AWS, MySQL
+
   - title: 기술 스택
     layout: list
     content:
       - layout: left
-        border: weak
         title: Backend
         description: | 
           - Java, Kotlin, Python
@@ -142,7 +158,6 @@ content:
           - Gradle
           - IntelliJ
       - layout: left
-        border: weak
         title: DevOps
         description: |
           - MySQL, PostgreSQL, Redis, ES
@@ -150,11 +165,11 @@ content:
           - Kafka
           - Git
       - layout: left
-        border: weak
         title: Frontend
         description: |
           - JavaScript 
           - ReactJS
+
   - title: 학력
     layout: list
     content:
@@ -178,6 +193,123 @@ content:
         caption: 2008. 09 ~ 2011. 05
         description: | # this will include new lines to allow paragraphs
           - International Baccalaureate (IB) 졸업
+
+  - title: 활동
+    layout: list
+    content:
+      - layout: top-left
+        title: 원데이 백엔드 클래스
+        sub_title: 광운대학교
+        caption: 2023. 01
+        link: https://kdpark.notion.site/7fb8cd1a9c7b4412a4239087a10fd13d
+          link_text: 자세히 보기
+        description: |
+          - 스프링부트 기반 백엔드 개발 시작하기
+          - CRA (create-react-app) 기반 프론트엔드 개발 시작하기
+          - 백엔드-프론트엔드 연동하기
+      - layout: top-left
+        title: 백엔드 온라인 강의
+        sub_title: 코멘토
+        caption: 2022. 11 ~ Present
+        link: https://comento.kr/class/pt
+          link_text: 자세히 보기
+        quote: >
+          Java & Spring 으로 클린아키텍처 기반 OpenAPI 백엔드시스템 개발하기
+        description: |
+          - 스프링 관련 핵심 개념 소개
+          - 클린 아키텍쳐 및 프로젝트 환경 구성 소개
+          - Spring JPA 소개
+          - 테스트 작성의 중요성과 JUnit 기반 방법 소개
+          - 1기. 2022년 11월, 2기. 2023년 1월
+      - layout: top-left
+        title: "쿠팡에서의 3년"
+        sub_title: 광운대학교
+        caption: 2021. 12
+        description: |
+          - 쿠팡에서의 주니어 백엔드 개발자로 겪은 시행착오, 경험에 대해 1시간동안 세미나 형식으로 진행
+
+  - title: 수상/특허
+    layout: list
+    content:
+      - layout: top-left
+        title: 특허
+        sub_title: 쿠팡
+        caption: 2021. 04
+        link: https://patents.google.com/patent/KR20220041800A/ko
+          link_text: 자세히 보기
+        description: |
+          - 상품 판매 관리 정보를 제공하는 전자 장치 및 그 방법
+          - 상품 가격의 이상 탐지를 위해 통계 기반 알고리즘 개발 및 발명
+      - layout: top-left
+        title: 수상
+        sub_title: UNIST
+        caption: 2015. 06
+        description: |
+          - Process Mining Case Competition. 3rd Prize Award
+          - The 2015 Asia-Pacific Conference on Business Process Management Conference
+
+  - title: 연구 경험
+    layout: list
+    content:
+      - layout: top-left
+        title: 이상 탐지 알고리즘 연구
+        sub_title: POSTECH, 참여연구원
+        caption: 2018. 03 ~ 2018. 06
+        quote: >
+          [삼성중공업] 공정 로그 데이터 기반 이상 공정 탐지 알고리즘 개발
+        description: |
+          - 공정 로그 데이터 구조 파악 및 이상 공정 탐지 알고리즘 개발
+
+      - layout: top-left
+        title: 데이터 기반 서비스 경험 산학 연구
+        sub_title: POSTECH, 참여연구원
+        caption: 2017. 12 ~ 2018. 04
+        quote: >
+          [삼성전자] DATA 기반 INTELLIGENCE 서비스 경험 산학 연구
+        description: |
+          - 데이터 기반 서비스 경험 개선 시나리오 구현 가능성 검토
+          - 샘플 데이터 기반의 포로토타입 프로그램 개발 (Python)
+
+      - layout: top-left
+        title: 시스템 로그 및 UX 분석 모델 연구
+        sub_title: POSTECH, 참여연구원
+        caption: 2017. 07 ~ 2017. 11
+        quote: >
+          [삼성중공업] 프로세스 마이닝 기반 시스템 로그 및 UX 분석 모델 개발
+        description: |
+          - 프로세스 마이닝 분석을 위해 데이터 및 UX 요구사항 분석
+          - 데이터 파악을 위해 EDA 수행 및 분석을 위한 데이터 전처리
+          - UI (화면), 부서, 사용자, 시간 관점에서 다각도 데이터 분석 수행
+
+      - layout: top-left
+        title: IoT Intelligence 서비스 경험 연구
+        sub_title: POSTECH, 참여연구원
+        caption: 2017. 05 ~ 2017. 09
+        quote: >
+          [삼성전자] Multi-device / Multi-source data 기반 IoT Intelligence 서비스 경험 연구
+        description: |
+          - 삼성 커넥트 서비스의 편의성 및 품질 향상을 위해 서비스 경험 및 컨셉 디자인
+          - 서비스 경험을 개선하기 위해 필요한 데이터 파악 및 프로세스 정의
+
+      - layout: top-left
+        title: LKAS 데이터 분석
+        sub_title: POSTECH, 참여연구원
+        caption: 2016. 05 ~ 2017. 07
+        quote: >
+          [현대자동차] LKAS 데이터 통계 분석 및 RATING 프로그램 개발
+        description: |
+          - LKA 성능 지표 및 통합 점수 산출 방법 개발 등 성능 분석 방법론 개발
+          - 분석 시스템 요구사항 분석 및 Java 기반 LKA 성능 분석 자동화 시스템 개발
+
+      - layout: top-left
+        title: 대용량 데이터 기반 모델링 연구
+        sub_title: UNIST, 참여연구원
+        caption: 2016. 05 ~ 2016. 08
+        quote: >
+          [근로복지공단] 대용량 데이터를 활용한 산재 및 고용보험 가입누락 조사대상 사업장 구축
+        description: |
+          - 사업장 관련 데이터 전처리 및 데이터 통합
+          - 의사결정나무 기반 모델링
 
 # Footer
 footer_show_references: true
