@@ -96,7 +96,7 @@ content:
         quote: >
           명품 패션의 실 착용 정보를 제공하는 스타일 탭 서비스 설계 및 개발
         description: |
-          - 역할: 스타일 탭 서비스 백엔드 아키텍쳐 설계 및 API 개발
+          - 역할: 팀원, 스타일 탭 서비스 백엔드 아키텍쳐 설계 및 API 개발
           - 기술 스택: Kotlin, SpringBoot, AWS, MySQL, Redis
 
       - layout: left
@@ -107,7 +107,7 @@ content:
         quote: >
           트렌비 상품 데이터 구조 체계를 개선하여 비즈니스 확장성 확보
         description: |
-          - 역할: 트렌비 상품 데이터 구조 설계 및 백엔드 API 개발
+          - 역할: 팀원, 트렌비 상품 데이터 구조 설계 및 백엔드 API 개발
           - 기술 스택: Kotlin, SpringBoot, AWS, PostgreSQL, Redis, Kafka
 
       - layout: left
@@ -118,7 +118,7 @@ content:
         quote: >
           트렌비 홈 화면을 관리할 수 있는 컨텐츠 관리 시스템 (CMS) 설계 및 개발
         description: |
-          - 역할: CMS 백엔드 설계 및 백엔드 API 개발 
+          - 역할: 팀원, CMS 백엔드 설계 및 백엔드 API 개발 
           - 기술 스택: Java, SpringBoot, AWS, MySQL, Redis
 
       - layout: left
@@ -142,7 +142,7 @@ content:
         quote: >
           각 상품별 사이즈에 대한 리뷰를 확인할 수 있는 기능 설계 및 개발
         description: |
-          - 역할: 사이즈 리뷰 설계 및 백엔드 API 개발 
+          - 역할: 사이즈 리뷰 설계 및 백엔드 API 개발
           - 기술 스택: Java, SpringBoot, AWS, MySQL
 
   - title: 기술 스택
@@ -202,7 +202,7 @@ content:
         sub_title: 광운대학교
         caption: 2023. 01
         link: https://kdpark.notion.site/7fb8cd1a9c7b4412a4239087a10fd13d
-          link_text: 자세히 보기
+        link_text: 자세히 보기
         description: |
           - 스프링부트 기반 백엔드 개발 시작하기
           - CRA (create-react-app) 기반 프론트엔드 개발 시작하기
@@ -212,7 +212,7 @@ content:
         sub_title: 코멘토
         caption: 2022. 11 ~ Present
         link: https://comento.kr/class/pt
-          link_text: 자세히 보기
+        link_text: 자세히 보기
         quote: >
           Java & Spring 으로 클린아키텍처 기반 OpenAPI 백엔드시스템 개발하기
         description: |
@@ -236,7 +236,7 @@ content:
         sub_title: 쿠팡
         caption: 2021. 04
         link: https://patents.google.com/patent/KR20220041800A/ko
-          link_text: 자세히 보기
+        link_text: 자세히 보기
         description: |
           - 상품 판매 관리 정보를 제공하는 전자 장치 및 그 방법
           - 상품 가격의 이상 탐지를 위해 통계 기반 알고리즘 개발 및 발명
