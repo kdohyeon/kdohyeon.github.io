@@ -90,68 +90,68 @@ content:
     content:
       - layout: left
         title: 스타일 탭 서비스 개발
+        sub_title: 트렌비, 팀원
         caption: 2022. 11 ~ 2022. 12
         link: https://kdohyeon.tistory.com/74
         link_text: 자세히 보기
-        quote: >
-          [트렌비] 명품 패션의 실 착용 정보를 제공하는 스타일 탭 서비스 설계 및 개발
         description: |
-          - 역할: 팀원, 스타일 탭 서비스 백엔드 아키텍쳐 설계 및 API 개발
+          - 명품 패션의 실 착용 정보를 제공하는 스타일 탭 서비스
+          - 역할: 스타일 탭 서비스 백엔드 아키텍쳐 설계 및 API 개발, 지표 데이터 분석
           - 기술 스택: Kotlin, SpringBoot, AWS, MySQL, Redis
 
       - layout: left
         title: 카탈로그 시스템 개발
         caption: 2022. 07 ~ 2022. 11
+        sub_title: 트렌비, 팀원
         link: https://kdohyeon.tistory.com/76
         link_text: 자세히 보기
-        quote: >
-          [트렌비] 상품 데이터 구조 체계를 개선하여 비즈니스 확장성 확보
         description: |
-          - 역할: 팀원, 트렌비 상품 데이터 구조 설계 및 백엔드 API 개발
+          - 상품 데이터 구조 체계를 개선하여 비즈니스 확장성 확보
+          - 역할: 상품 데이터 구조 설계 및 백엔드 API 개발
           - 기술 스택: Kotlin, SpringBoot, AWS, PostgreSQL, Redis, Kafka
 
       - layout: left
         title: CMS 개발
         caption: 2022. 06 ~ 2022. 07
+        sub_title: 트렌비, 팀원
         link: https://kdohyeon.tistory.com/76
         link_text: 자세히 보기
-        quote: >
-          [트렌비] 홈 화면을 관리할 수 있는 컨텐츠 관리 시스템 (CMS) 설계 및 개발
         description: |
-          - 역할: 팀원, CMS 백엔드 설계 및 백엔드 API 개발 
+          - 홈 화면을 관리할 수 있는 컨텐츠 관리 시스템 (CMS)
+          - 역할: CMS 백엔드 설계 및 백엔드 API 개발 
           - 기술 스택: Java, SpringBoot, AWS, MySQL, Redis
 
       - layout: left
         border: weak
         title: 사이즈 리뷰 기능 개발
         caption: 2022. 05
+        sub_title: 트렌비, 팀원
         link: https://kdohyeon.tistory.com/76
         link_text: 자세히 보기
-        quote: >
-          [트렌비] 각 상품별 사이즈에 대한 리뷰를 확인할 수 있는 기능 설계 및 개발
         description: |
-          - 역할: 팀원, 사이즈 리뷰 설계 및 백엔드 API 개발 
+          - 사용자의 사이즈와 상품의 타 구매자들의 사이즈를 비교할 수 있는 기능
+          - 역할: 사이즈 리뷰 설계 및 백엔드 API 개발 
           - 기술 스택: Java, SpringBoot, AWS, MySQL
 
       - layout: left
-        title: 이상 가격 탐지 시스템 개발
+        title: 이상 탐지 시스템 개발
         caption: 2019. 10 ~ 2019. 12
         link: https://kdohyeon.tistory.com/76
         link_text: 자세히 보기
-        quote: >
-          [쿠팡] 통계 기반 상품의 이상 가격 탐지 서비스 설계 및 개발
+        sub_title: 쿠팡, 팀원
         description: |
+          - 통계 기반 상품의 이상 가격 탐지 서비스
           - 역할: 팀원, 기반 알고리즘 방향 설정, 시스템 설계 및 백엔드 API 개발 
           - 기술 스택: Java, SpringBoot, AWS, MySQL, Redis
 
       - layout: left
-        title: 리테일 상품 관리 시스템 개발
+        title: 카탈로그 시스템 개발
         caption: 2018. 10 ~ 2019. 06
         link: https://kdohyeon.tistory.com/76
         link_text: 자세히 보기
-        quote: >
-          [쿠팡] 리테일 (로켓) 상품 카탈로그 관리 시스템 분석 및 개발
+        sub_title: 쿠팡, 팀원
         description: |
+          - 리테일 (로켓) 상품 카탈로그 관리 시스템 분석 및 개발
           - 역할: 팀원, 시스템 설계, 어드민 화면 개발 (ReactJS), 백엔드 API 개발 
           - 기술 스택: Java, SpringBoot, AWS, MySQL, Kafka
 
