@@ -62,9 +62,9 @@ content:
   - title: 역량
     layout: list
     content:
-      - layout: left
+      - layout: top-left
         title: 서비스 개발
-        sub_title: 신규 서비스 분석, 설계 및 개발
+        sub_title: 신규 서비스 분석 및 개발
         description: |
           - [2022. 11 ~ 2022. 12, 트렌비] [명품 패션의 실 착용 정보를 제공하는 스타일 탭 서비스 개발](https://kdohyeon.tistory.com/74)
           - [2022. 06 ~ 2022. 07, 트렌비] 컨텐츠 관리 시스템 개발 (자료 추가 예정)
@@ -72,7 +72,7 @@ content:
           - [2020. 01 ~ 2020. 03, 쿠팡] 통계 기반 상품의 이상 가격 탐지 서비스 개발 (자료 추가 예정)
           - [2019. 04 ~ 2019. 12, 쿠팡] 리테일 (로켓) 상품 카탈로그 관리 백오피스 개발 (자료 추가 예정)
 
-      - layout: left
+      - layout: top-left
         title: 시스템 리엔지니어링
         sub_title: 시스템 성능 개선, 서비스 분리 및 마이그레이션 등
         description: |
@@ -80,15 +80,17 @@ content:
           - [2018. 10 ~ 2019. 03, 쿠팡] 리테일 (로켓) 상품 카탈로그 시스템 마이그레이션 (자료 추가 예정)
           - [2020. 09 ~ 2020. 12, 쿠팡] 리테일 (로켓) 상품 카탈로그 서비스 분리 (자료 추가 예정)
 
-      - layout: left
-        title: 데이터 구조 및 시스템 설계
+      - layout: top-left
+        title: 시스템 설계
+        sub_title: 데이터 구조 및 시스템 설계
         description: |
           - [2023. 01 ~ 2023. 03, 트렌비] 기획전 수정 이력 구조 설계 (자료 추가 예정)
           - [2022. 07 ~ 2022. 11, 트렌비] 상품 카탈로그 시스템 설계 (자료 추가 예정)
           - [2019. 04 ~ 2019. 12, 쿠팡] 상품 수정 이력 구조 설계 (자료 추가 예정)
 
-      - layout: left
+      - layout: top-left
         title: 데이터 분석
+        sub_title: 데이터 기반 업무 수행
         description: |
           - [2023. 01, 트렌비] 스타일 서비스 런칭 후 한달간의 데이터 분석
           - [2022. 12, 트렌비] 올해 우리 팀은 어떻게 일 했나? JIRA 데이터 기반으로 (자료 추가 예정)
@@ -181,7 +183,7 @@ content:
         title: "쿠팡에서의 3년"
         sub_title: 광운대학교
         caption: 2021. 12
-        link: https://www.instagram.com/p/CXX9RTqPook
+        link: https://kdohyeon.tistory.com/83
         link_text: 자세히 보기
         description: |
           - 쿠팡 주니어 백엔드 개발자로 겪은 시행착오 및 경험에 대해 1시간동안 세미나 형식으로 진행
