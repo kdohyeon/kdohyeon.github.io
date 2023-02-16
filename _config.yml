@@ -16,7 +16,7 @@ website: kdohyeon.tistory.com
 website_title: Blog
 
 # Dark Mode (true/false/never)
-darkmode: true
+darkmode: false
 
 # Social links
 #twitter_username: jekyllrb
@@ -48,11 +48,16 @@ linkedin_username: kdohyeon
 # about_title: About Me (Use this to override about section title)
 about_profile_image: images/kdohyeon.png
 about_content: | # this will include new lines to allow paragraphs
-  - 5 년차 개발자로 이커머스의 상품 카탈로그, 리뷰, 백오피스 등과 관련된 AWS 기반 서비스 개발에서 다양한 경험이 있습니다.
-  - 데이터에 기반한 의사결정을 하기 위해 노력하며, **고객을 위한 서비스**를 구현하는 것에 관심이 많습니다.
-  - 문서화의 힘을 믿고, 항상 살아있는 문서를 관리하기 위해 노력합니다.
-  - 알고 있는 것을 알려주는 것을 좋아합니다.
-  - 미국과 스웨덴에서 중, 고등학교를 다니며 다양한 문화를 이해하고 영어로 원활한 커뮤니케이션이 가능합니다.
+  5년간 MSA 환경에서 Java & Spring, AWS 기반으로 리테일 비즈니스, MAU 200만 명품 패션 이커머스 등과 관련된 백엔드 서비스를 개발을 해왔으며, 
+  상품 카탈로그, 리뷰, 전시 등 다양한 도메인에 대한 경험이 있습니다.
+  
+  `고객이 필요로 하는` 서비스를 개발하는 것이 중요하다는 생각에 데이터에 기반한 의사결정, UI/UX, 서비스 사용성 등에 대해 고민하며 업무를 수행합니다. 
+  
+  문서화의 힘을 믿고, 항상 살아있는 문서를 관리하기 위해 노력합니다.
+  
+  "배워서 남주자" 라는 말을 좋아해서 대학생들을 위한 특강, 스프링 온라인 강의를 진행해왔습니다.
+  
+  6년간 미국과 스웨덴에서 중, 고등학교를 다녔기에 다양한 문화를 이해하고 영어로 원활한 커뮤니케이션이 가능합니다. 
 
 content:
   - title: Work Experience
@@ -66,7 +71,7 @@ content:
         quote: >
           명품 패션 이커머스 서비스
         description: | # this will include new lines to allow paragraphs
-          - [리뷰 서비스 안정화 및 성능 개선](https://kdohyeon.tistory.com/72)
+          - [리뷰 서비스 안정화 및 성능 개선, pw: dhkim](https://kdohyeon.tistory.com/72)
           - JIRA 데이터 기반 업무 분석 
           - [명품 패션의 실 착용 정보를 제공하는 스타일 서비스 설계, 개발 및 분석](https://kdohyeon.tistory.com/74)
           - [상품 카탈로그 시스템 설계 및 개발](https://kdohyeon.tistory.com/76)
@@ -85,76 +90,39 @@ content:
           - [대규모 서비스 분리](https://kdohyeon.tistory.com/77)
           - (2018. 10 ~ 2021. 10) 전문연구요원(병역 대체복무) 으로 3년 근무
 
-  - title: 프로젝트
-    layout: list
+  - title: 역량
+    layout: text
     content:
-      - layout: left
-        title: 스타일 탭 서비스 개발
-        sub_title: 트렌비, 팀원
-        caption: 2022. 11 ~ 2022. 12
-        link: https://kdohyeon.tistory.com/74
-        link_text: > 
-          자세히 보기 (pw: dhkim)
+      - layout: top-middle
+        title: 신규 서비스, 비즈니스 개발
         description: |
-          - 명품 패션의 실 착용 정보를 제공하는 스타일 탭 서비스
-          - 역할: 스타일 탭 서비스 백엔드 아키텍쳐 설계 및 API 개발, 지표 데이터 분석
-          - 기술 스택: Kotlin, SpringBoot, AWS, MySQL, Redis
+          - [2022. 11 ~ 2022. 12 | 트렌비] [명품 패션의 실 착용 정보를 제공하는 스타일 탭 서비스 개발](https://kdohyeon.tistory.com/74)
+          - [2022. 06 ~ 2022. 07 | 트렌비] 컨텐츠 관리 시스템 개발
+          - [2022. 05 ~ 2022. 06 | 트렌비] 사이즈 리뷰 기능 개발
+          - [2020. 01 ~ 2020. 03 | 쿠팡] 통계 기반 상품의 이상 가격 탐지 서비스 개발
+          - [2019. 04 ~ 2019. 12 | 쿠팡] 리테일 (로켓) 상품 카탈로그 관리 백오피스 개발
 
-      - layout: left
-        title: 카탈로그 시스템 개발
-        caption: 2022. 07 ~ 2022. 11
-        sub_title: 트렌비, 팀원
-        link: https://kdohyeon.tistory.com/76
-        link_text: 자세히 보기
+      - layout: top-middle
+        title: MSA 환경 개선 (서비스 분리 및 시스템 마이그레이션)
         description: |
-          - 상품 데이터 구조 체계를 개선하여 비즈니스 확장성 확보
-          - 역할: 상품 데이터 구조 설계 및 백엔드 API 개발
-          - 기술 스택: Kotlin, SpringBoot, AWS, PostgreSQL, Redis, Kafka
+          - [2018. 10 ~ 2019. 03 | 쿠팡] 리테일 (로켓) 상품 카탈로그 시스템 마이그레이션
+          - [2020. 09 ~ 2020. 12 | 쿠팡] 리테일 (로켓) 상품 카탈로그 서비스 분리
 
-      - layout: left
-        title: CMS 개발
-        caption: 2022. 06 ~ 2022. 07
-        sub_title: 트렌비, 팀원
-        link: https://kdohyeon.tistory.com/76
-        link_text: 자세히 보기
+      - layout: top-middle
+        title: 데이터 구조 및 시스템 설계
         description: |
-          - 홈 화면을 관리할 수 있는 컨텐츠 관리 시스템 (CMS)
-          - 역할: CMS 백엔드 설계 및 백엔드 API 개발 
-          - 기술 스택: Java, SpringBoot, AWS, MySQL, Redis
+          - [2022. 07 ~ 2022. 11 | 트렌비] 상품 카탈로그 시스템 설계
 
-      - layout: left
-        border: weak
-        title: 사이즈 리뷰 기능 개발
-        caption: 2022. 05
-        sub_title: 트렌비, 팀원
-        link: https://kdohyeon.tistory.com/76
-        link_text: 자세히 보기
+      - layout: top-middle
+        title: 성능 개선 및 시스템 안정화
         description: |
-          - 사용자의 사이즈와 상품의 타 구매자들의 사이즈를 비교할 수 있는 기능
-          - 역할: 사이즈 리뷰 설계 및 백엔드 API 개발 
-          - 기술 스택: Java, SpringBoot, AWS, MySQL
+          - [2022. 05 | 트렌비] [리뷰 서비스 안정화 및 p90 API 응답 속도 250ms -> 30ms 개선](https://kdohyeon.tistory.com/72)
 
-      - layout: left
-        title: 이상 탐지 시스템 개발
-        caption: 2019. 10 ~ 2019. 12
-        link: https://kdohyeon.tistory.com/76
-        link_text: 자세히 보기
-        sub_title: 쿠팡, 팀원
+      - layout: top-middle
+        title: 데이터 분석 사례
         description: |
-          - 통계 기반 상품의 이상 가격 탐지 서비스
-          - 역할: 팀원, 기반 알고리즘 방향 설정, 시스템 설계 및 백엔드 API 개발 
-          - 기술 스택: Java, SpringBoot, AWS, MySQL, Redis
-
-      - layout: left
-        title: 카탈로그 시스템 개발
-        caption: 2018. 10 ~ 2019. 06
-        link: https://kdohyeon.tistory.com/76
-        link_text: 자세히 보기
-        sub_title: 쿠팡, 팀원
-        description: |
-          - 리테일 (로켓) 상품 카탈로그 관리 시스템 분석 및 개발
-          - 역할: 팀원, 시스템 설계, 어드민 화면 개발 (ReactJS), 백엔드 API 개발 
-          - 기술 스택: Java, SpringBoot, AWS, MySQL, Kafka
+          - [2023. 01 | 트렌비] 스타일 서비스 런칭 후 한달간의 데이터 분석
+          - [2022. 12 | 트렌비] 올해 우리 팀은 어떻게 일 했나? JIRA 데이터 기반으로
 
   - title: 기술 스택
     layout: list
