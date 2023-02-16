@@ -63,7 +63,7 @@ content:
   - title: 역량
     layout: list
     content:
-      - layout: top-middle
+      - layout: left
         title: 신규 서비스, 비즈니스 개발
         description: |
           - [2022. 11 ~ 2022. 12 | 트렌비] [명품 패션의 실 착용 정보를 제공하는 스타일 탭 서비스 개발](https://kdohyeon.tistory.com/74)
@@ -72,23 +72,23 @@ content:
           - [2020. 01 ~ 2020. 03 | 쿠팡] 통계 기반 상품의 이상 가격 탐지 서비스 개발
           - [2019. 04 ~ 2019. 12 | 쿠팡] 리테일 (로켓) 상품 카탈로그 관리 백오피스 개발
 
-      - layout: top-middle
+      - layout: left
         title: MSA 환경 개선 (서비스 분리 및 시스템 마이그레이션)
         description: |
           - [2018. 10 ~ 2019. 03 | 쿠팡] 리테일 (로켓) 상품 카탈로그 시스템 마이그레이션
           - [2020. 09 ~ 2020. 12 | 쿠팡] 리테일 (로켓) 상품 카탈로그 서비스 분리
 
-      - layout: top-middle
+      - layout: left
         title: 데이터 구조 및 시스템 설계
         description: |
           - [2022. 07 ~ 2022. 11 | 트렌비] 상품 카탈로그 시스템 설계
 
-      - layout: top-middle
+      - layout: left
         title: 성능 개선 및 시스템 안정화
         description: |
           - [2022. 05 | 트렌비] [리뷰 서비스 안정화 및 p90 API 응답 속도 250ms -> 30ms 개선](https://kdohyeon.tistory.com/72)
 
-      - layout: top-middle
+      - layout: left
         title: 데이터 분석 사례
         description: |
           - [2023. 01 | 트렌비] 스타일 서비스 런칭 후 한달간의 데이터 분석
