@@ -9,53 +9,23 @@ version: 2
 name: 김도현
 title: Backend Engineer
 email: kdohyeon@gmail.com
-# email_title: Email (Email title override)
-# phone: Your phone number (optional)
-# phone_title: Phone (Phone title override)
 website: kdohyeon.tistory.com
 website_title: Blog
 
-# Dark Mode (true/false/never)
 darkmode: false
 
-# Social links
-#twitter_username: jekyllrb
-#github_username:  jekyll
-#stackoverflow_username: "00000001"
-#dribbble_username: jekyll
-#facebook_username: jekyll
-#flickr_username: jekyll
-#instagram_username: jekyll
 linkedin_username: kdohyeon
-#xing_username: jekyll
-#pinterest_username: jekyll
-#youtube_username: jekyll
-#orcid_username: 0000-0000-0000-0000
-#googlescholar_username: D847cGsAAAAJ
 
-# Additional icon links
-# - title: another link
-#   icon: font awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&s=brands&m=free)
-#   url: Link url (eg. https://google.com)
-
-# Google Analytics and Tag Manager
-# Using more than one of these may cause issues with reporting
-# gtm: "GTM-0000000"
-# gtag: "UA-00000000-0"
-# google_analytics: "UA-00000000-0"
-
-# About Section
-# about_title: About Me (Use this to override about section title)
 about_profile_image: images/kdohyeon.png
-about_content: | # this will include new lines to allow paragraphs
-  5년간 MSA 환경에서 Java & Spring, AWS 기반으로 리테일 비즈니스, MAU 200만 명품 패션 이커머스 등과 관련된 백엔드 서비스를 개발을 해왔으며, 
-  상품 카탈로그, 리뷰, 전시 등 다양한 도메인에 대한 경험이 있습니다.
+about_content: |
+  5년간 MSA 환경에서 Java & Spring, AWS 기반으로 **리테일 비즈니스, MAU 200만 명품 패션 이커머스** 등과 관련된 백엔드 서비스를 개발해왔으며, 
+  **상품 카탈로그, 리뷰, 전시** 등 다양한 도메인에 대한 경험이 있습니다.
   
   `고객이 필요로 하는` 서비스를 개발하는 것이 중요하다는 생각에 데이터에 기반한 의사결정, UI/UX, 서비스 사용성 등에 대해 고민하며 업무를 수행합니다. 
   
-  문서화의 힘을 믿고, 항상 살아있는 문서를 관리하기 위해 노력합니다.
+  `문서화`의 힘을 믿고, 항상 살아있는 문서를 관리하기 위해 노력합니다.
   
-  "배워서 남주자" 라는 말을 좋아해서 대학생들을 위한 특강, 스프링 온라인 강의를 진행해왔습니다.
+  `"배워서 남주자"` 라는 말을 좋아해서 대학생들을 위한 특강, 스프링 온라인 강의를 진행해왔습니다.
   
   6년간 미국과 스웨덴에서 중, 고등학교를 다녔기에 다양한 문화를 이해하고 영어로 원활한 커뮤니케이션이 가능합니다. 
 
@@ -91,7 +61,7 @@ content:
           - (2018. 10 ~ 2021. 10) 전문연구요원(병역 대체복무) 으로 3년 근무
 
   - title: 역량
-    layout: text
+    layout: list
     content:
       - layout: top-middle
         title: 신규 서비스, 비즈니스 개발
