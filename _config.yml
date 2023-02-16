@@ -93,7 +93,8 @@ content:
         sub_title: 트렌비, 팀원
         caption: 2022. 11 ~ 2022. 12
         link: https://kdohyeon.tistory.com/74
-        link_text: 자세히 보기
+        link_text: > 
+          자세히 보기 (pw: dhkim)
         description: |
           - 명품 패션의 실 착용 정보를 제공하는 스타일 탭 서비스
           - 역할: 스타일 탭 서비스 백엔드 아키텍쳐 설계 및 API 개발, 지표 데이터 분석
@@ -371,6 +372,9 @@ content:
         title: 대용량 데이터 기반 모델링 연구
         sub_title: UNIST, 참여연구원
         caption: 2016. 05 ~ 2016. 08
+        link: https://kdohyeon.tistory.com/70
+        link_text: > 
+          자세히 보기 (pw: dhkim)
         quote: >
           [근로복지공단] 대용량 데이터를 활용한 산재 및 고용보험 가입누락 조사대상 사업장 구축
         description: |
