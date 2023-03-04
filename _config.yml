@@ -77,8 +77,9 @@ content:
         sub_title: 시스템 성능 개선, 서비스 분리 및 마이그레이션 등
         description: |
           - [2022. 05, 트렌비] [리뷰 서비스 안정화 및 p90 API 응답 속도 250ms -> 30ms 개선, pw: dhkim](https://kdohyeon.tistory.com/72)
-          - [2018. 10 ~ 2019. 03, 쿠팡] 리테일 (로켓) 상품 카탈로그 시스템 마이그레이션 (자료 추가 예정)
+          - [2021. 09 ~ 2021. 12, 쿠팡] [API 교체](https://kdohyeon.tistory.com/96)
           - [2020. 09 ~ 2020. 12, 쿠팡] 리테일 (로켓) 상품 카탈로그 서비스 분리 (자료 추가 예정)
+          - [2018. 10 ~ 2019. 03, 쿠팡] 리테일 (로켓) 상품 카탈로그 시스템 마이그레이션 (자료 추가 예정)
 
       - layout: top-left
         title: 시스템 설계
@@ -113,7 +114,7 @@ content:
         description: |
           - MySQL, PostgreSQL, Redis, ES
           - Jenkins, Github Action
-          - AWS (Beanstalk, EC2, ELB, S3, Route53, ...) 
+          - AWS 
           - Kafka
           - Git
       - layout: left
