@@ -169,7 +169,29 @@ content:
     layout: list
     content:
       - layout: top-left
-        title: 원데이 백엔드 클래스
+        title: [교육] "10개 프로젝트로 시작하는 백엔드 웹개발"
+        sub_title: 패스트캠퍼스
+        caption: 2024. 02
+        link: https://fastcampus.co.kr/dev_online_javaspring
+        link_text: 자세히 보기
+        description: |
+          - 프로젝트 1. 형상관리와 Git
+          - 프로젝트 2. 자바와 객체지향 프로그래밍
+          - 프로젝트 3. 스프링과 데이터베이스
+          - 프로젝트 4. 스프링과 외부 데이터 연결하기
+
+      - layout: top-left
+        title: [특강] "어쩌다 개발 6년차"
+        sub_title: 광운대학교
+        caption: 2023. 11
+        link: https://kdohyeon.tistory.com/141
+        link_text: 자세히 보기
+        description: |
+          - 6년간의 개발자 커리어 공유
+          - 취업 및 커리어에 대한 생각 공유
+
+      - layout: top-left
+        title: [특강] 원데이 백엔드 클래스
         sub_title: 광운대학교
         caption: 2023. 01
         link: https://kdpark.notion.site/7fb8cd1a9c7b4412a4239087a10fd13d
@@ -180,7 +202,7 @@ content:
           - 백엔드-프론트엔드 연동하기
 
       - layout: top-left
-        title: 백엔드 온라인 강의
+        title: [교육] 백엔드 온라인 강의
         sub_title: 코멘토
         caption: 2022. 11 ~ Present
         link: https://comento.kr/class/pt
@@ -195,7 +217,7 @@ content:
           - 1기. 2022년 11월, 2기. 2023년 1월
 
       - layout: top-left
-        title: "쿠팡에서의 3년"
+        title: [특강] "쿠팡에서의 3년"
         sub_title: 광운대학교
         caption: 2021. 12
         link: https://kdohyeon.tistory.com/83
