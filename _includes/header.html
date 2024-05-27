@@ -55,6 +55,13 @@
             </a>
           </li>
         {%- endif -%}
+        {%- if site.tistory_username -%}
+        <li>
+          <a target="_blank" href="https://www.{{ site.tistory_username| cgi_escape | escape }}.tistory.com" class="button button--sacnite button--round-l">
+            <i class="fab fa-solid fa-book" title="Tistory link"></i>
+          </a>
+        </li>
+        {%- endif -%}
         {%- if site.xing_username -%}
           <li>
             <a target="_blank" href="https://www.xing.com/profile/{{ site.xing_username| cgi_escape | escape }}" class="button button--sacnite button--round-l">

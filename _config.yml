@@ -7,7 +7,7 @@ version: 2
 
 # Personal info
 name: 김도현
-title: Backend Engineer
+title: Software Engineer
 email: kdohyeon@gmail.com
 website: kdohyeon.tistory.com
 website_title: Blog
@@ -15,8 +15,9 @@ website_title: Blog
 darkmode: false
 
 linkedin_username: kdohyeon
+tistory_username: kdohyeon
 
-about_profile_image: images/kdohyeon.png
+about_profile_image: images/kdohyeon2.jpeg
 about_content: |
   7년간 MSA 환경에서 Java, Kotlin, Spring, AWS 기반으로 **리테일 비즈니스, 명품 패션 이커머스, 대고객 금융 채널** 등과 관련된 백엔드 서비스를 개발해왔으며, 
   **상품 카탈로그, 리뷰, 전시, 금융, 알림 발송** 등 다양한 도메인에 대한 경험이 있습니다.
@@ -30,7 +31,7 @@ about_content: |
   6년간 미국과 스웨덴에서 중, 고등학교를 다녔기에 다양한 문화를 이해하고 영어로 원활한 커뮤니케이션이 가능합니다. 
 
 content:
-  - title: Work Experience
+  - title: 경력
     layout: list
     content:
       - layout: left
@@ -183,6 +184,24 @@ content:
           - Part E. 구독 서비스 만들기
 
       - layout: top-left
+        title: "[특강] 네카라쿠배에서 살아남기"
+        sub_title: 동국대학교
+        caption: 2024. 05
+        link: https://dice.dongguk.edu/board/view.do?id=S181&seq=626
+        link_text: 자세히 보기
+        description: |
+          - 개발자 커리어 공유
+          - 개발자로 성장했던 과정 공유
+
+      - layout: top-left
+        title: "[멘토링] 융합캡스톤디자인 멘토링"
+        sub_title: 동국대학교
+        caption: 2024. 03 ~ 2024. 08
+        description: |
+          - 졸업 프로젝트 멘토링
+          - 취업 및 진로에 대한 상담
+
+      - layout: top-left
         title: "[교육] 10개 프로젝트로 시작하는 백엔드 웹개발"
         sub_title: 패스트캠퍼스
         caption: 2024. 02
@@ -218,7 +237,7 @@ content:
       - layout: top-left
         title: "[교육] 백엔드 온라인 강의"
         sub_title: 코멘토
-        caption: 2022. 11 ~ Present
+        caption: 2022. 11 ~ 2024.04
         link: https://comento.kr/class/pt
         link_text: 자세히 보기
         quote: >
@@ -228,7 +247,7 @@ content:
           - 클린 아키텍쳐 및 프로젝트 환경 구성 소개
           - Spring JPA 소개
           - 테스트 작성의 중요성과 JUnit 기반 방법 소개
-          - 1기. 2022년 11월, 2기. 2023년 1월
+          - 총 10개 기수 멘토링
 
       - layout: top-left
         title: "[특강] 쿠팡에서의 3년"
