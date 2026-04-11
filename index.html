@@ -296,6 +296,14 @@
     .card-title { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.92rem; font-weight: 700; }
     .card-date { font-family: 'JetBrains Mono', monospace; font-size: 0.67rem; color: var(--text-muted); white-space: nowrap; padding-top: 3px; }
     .card-sub { font-size: 0.78rem; color: var(--accent); font-weight: 500; margin-bottom: 8px; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .card-tag {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+      padding: 2px 8px; border-radius: 4px;
+      background: var(--accent-soft); color: var(--accent);
+      border: 1px solid var(--accent); letter-spacing: 0.02em;
+    }
+    .card-company { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; }
     .card-desc { font-size: 0.82rem; color: var(--text-sub); line-height: 1.7; }
     .card-desc li { padding-left: 12px; position: relative; margin-bottom: 2px; }
     .card-desc li::before { content: '·'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
@@ -339,8 +347,7 @@
         <a href="#skills">역량</a>
         <a href="#stack">기술스택</a>
         <a href="#education">학력</a>
-        
-        <a href="#activities">블로그/강연</a>
+        <a href="#activities">활동</a>
         <a href="#awards">수상/특허</a>
         <a href="#papers">논문</a>
         <a href="#research">연구</a>
@@ -389,7 +396,7 @@
             등 다양한 도메인에 대한 경험이 있습니다.
           </p>
           <p style="margin-bottom:12px;">
-            <code style="font-family:'JetBrains Mono',monospace;font-size:0.82em;background:var(--badge-bg);color:var(--accent);padding:1px 6px;border-radius:4px;">고객이 필요로 하는</code> 서비스를 개발하는 것이 중요하다는 생각에
+            <strong>고객이 필요로 하는 서비스</strong>를 개발하는 것이 중요하다는 생각에
             데이터에 기반한 의사결정, UI/UX &amp; 서비스 사용성 등에 대해서도 함께 고민하며 업무를 수행합니다.
           </p>
           <p style="margin-bottom:12px;">
@@ -468,58 +475,158 @@
 
           <div class="card">
             <div class="card-header">
-              <span class="card-title">서비스 개발</span>
+              <span class="card-title">알림 발송 서비스 설계 및 개발</span>
+              <span class="card-date">2023. 11 — 현재</span>
             </div>
-            <div class="card-sub">신규 서비스 분석 및 개발</div>
-            <ul class="card-desc">
-              <li>알림 발송 서비스 설계 및 개발 <span style="color:var(--text-muted);font-size:0.73em">(2023~)</span></li>
-              <li>내 문서함 서비스 가입 및 문서 발송</li>
-              <li>계좌 비밀번호 기반 인증서 발급</li>
-              <li><a href="posts/exhibition-service.html">기획전 서비스 개발</a></li>
-              <li><a href="posts/style-service.html">스타일 탭 서비스 개발</a></li>
-              <li><a href="posts/price-anomaly-service.html">이상 가격 탐지 서비스</a></li>
-            </ul>
+            <div class="card-tags"><span class="card-tag">서비스 개발</span></div>
+            <div class="card-company">카카오뱅크 (KakaoBank)</div>
           </div>
 
           <div class="card">
             <div class="card-header">
-              <span class="card-title">시스템 리엔지니어링</span>
+              <span class="card-title">수신 상품 가입 시 내 문서함 서비스 가입 및 문서 발송</span>
+              <span class="card-date">2023. 08 — 2023. 10</span>
             </div>
-            <div class="card-sub">시스템 성능 개선, 서비스 분리 및 마이그레이션</div>
-            <ul class="card-desc">
-              <li><a href="posts/review-performance.html">리뷰 서비스 p90 250ms→30ms 개선</a></li>
-              <li><a href="posts/api-migration.html">API 교체 (쿠팡)</a></li>
-              <li>리테일 상품 카탈로그 서비스 분리</li>
-              <li>상품 카탈로그 시스템 마이그레이션</li>
-            </ul>
+            <div class="card-tags"><span class="card-tag">서비스 개발</span></div>
+            <div class="card-company">카카오뱅크 (KakaoBank)</div>
           </div>
 
           <div class="card">
             <div class="card-header">
-              <span class="card-title">시스템 설계</span>
+              <span class="card-title">계좌 비밀번호 기반 인증서 발급 방식 개발</span>
+              <span class="card-date">2023. 04 — 2023. 07</span>
             </div>
-            <div class="card-sub">데이터 구조 및 시스템 설계</div>
-            <ul class="card-desc">
-              <li>상품 카탈로그 시스템 설계 (트렌비)</li>
-              <li>상품 수정 이력 구조 설계 (쿠팡)</li>
-              <li><a href="posts/cms-development.html">CMS 설계 및 개발</a></li>
-            </ul>
+            <div class="card-tags"><span class="card-tag">서비스 개발</span></div>
+            <div class="card-company">카카오뱅크 (KakaoBank)</div>
           </div>
 
           <div class="card">
             <div class="card-header">
-              <span class="card-title">데이터 분석</span>
+              <span class="card-title">기획전 서비스 개발</span>
+              <span class="card-date">2023. 01 — 2023. 03</span>
             </div>
-            <div class="card-sub">데이터 기반 업무 수행</div>
-            <ul class="card-desc">
-              <li>스타일 서비스 런칭 후 한 달간 데이터 분석</li>
-              <li><a href="posts/jira-analysis.html">JIRA 데이터 기반 팀 업무 분석</a></li>
-              <li>상품 가격 이상 탐지 알고리즘 개발</li>
-            </ul>
+            <div class="card-tags"><span class="card-tag">서비스 개발</span></div>
+            <div class="card-company">트렌비 (Trenbe)</div>
+            <a class="card-link" href="posts/exhibition-service.html">자세히 보기 →</a>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">스타일 서비스 런칭 후 데이터 분석</span>
+              <span class="card-date">2023. 01</span>
+            </div>
+            <div class="card-tags"><span class="card-tag">데이터 분석</span></div>
+            <div class="card-company">트렌비 (Trenbe)</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">JIRA 데이터 기반 팀 업무 분석</span>
+              <span class="card-date">2022. 12</span>
+            </div>
+            <div class="card-tags"><span class="card-tag">데이터 분석</span></div>
+            <div class="card-company">트렌비 (Trenbe)</div>
+            <a class="card-link" href="posts/jira-analysis.html">자세히 보기 →</a>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">명품 패션의 실 착용 정보를 제공하는 스타일 탭 서비스 개발</span>
+              <span class="card-date">2022. 11 — 2022. 12</span>
+            </div>
+            <div class="card-tags"><span class="card-tag">서비스 개발</span></div>
+            <div class="card-company">트렌비 (Trenbe)</div>
+            <a class="card-link" href="posts/style-service.html">자세히 보기 →</a>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">상품 카탈로그 시스템 설계</span>
+              <span class="card-date">2022. 07 — 2022. 11</span>
+            </div>
+            <div class="card-tags"><span class="card-tag">시스템 설계</span></div>
+            <div class="card-company">트렌비 (Trenbe)</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">CMS (컨텐츠 관리 시스템) 설계 및 개발</span>
+              <span class="card-date">2022. 06 — 2022. 07</span>
+            </div>
+            <div class="card-tags"><span class="card-tag">시스템 설계</span></div>
+            <div class="card-company">트렌비 (Trenbe)</div>
+            <a class="card-link" href="posts/cms-development.html">자세히 보기 →</a>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">리뷰 서비스 안정화 및 p90 API 응답 속도 개선 (250ms → 30ms)</span>
+              <span class="card-date">2022. 05</span>
+            </div>
+            <div class="card-tags"><span class="card-tag">시스템 리엔지니어링</span></div>
+            <div class="card-company">트렌비 (Trenbe)</div>
+            <a class="card-link" href="posts/review-performance.html">자세히 보기 →</a>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">API 교체</span>
+              <span class="card-date">2021. 09 — 2021. 12</span>
+            </div>
+            <div class="card-tags"><span class="card-tag">시스템 리엔지니어링</span></div>
+            <div class="card-company">쿠팡 (Coupang)</div>
+            <a class="card-link" href="posts/api-migration.html">자세히 보기 →</a>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">리테일 (로켓) 상품 카탈로그 서비스 분리</span>
+              <span class="card-date">2020. 09 — 2020. 12</span>
+            </div>
+            <div class="card-tags"><span class="card-tag">시스템 리엔지니어링</span></div>
+            <div class="card-company">쿠팡 (Coupang)</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">통계 기반 상품의 이상 가격 탐지 서비스 개발</span>
+              <span class="card-date">2020. 01 — 2020. 03</span>
+            </div>
+            <div class="card-tags"><span class="card-tag">서비스 개발</span><span class="card-tag">데이터 분석</span></div>
+            <div class="card-company">쿠팡 (Coupang)</div>
+            <a class="card-link" href="posts/price-anomaly-service.html">자세히 보기 →</a>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">리테일 (로켓) 상품 카탈로그 관리 백오피스 개발</span>
+              <span class="card-date">2019. 04 — 2019. 12</span>
+            </div>
+            <div class="card-tags"><span class="card-tag">서비스 개발</span></div>
+            <div class="card-company">쿠팡 (Coupang)</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">상품 수정 이력 구조 설계</span>
+              <span class="card-date">2019. 04 — 2019. 12</span>
+            </div>
+            <div class="card-tags"><span class="card-tag">시스템 설계</span></div>
+            <div class="card-company">쿠팡 (Coupang)</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">리테일 (로켓) 상품 카탈로그 시스템 마이그레이션</span>
+              <span class="card-date">2018. 10 — 2019. 03</span>
+            </div>
+            <div class="card-tags"><span class="card-tag">시스템 리엔지니어링</span></div>
+            <div class="card-company">쿠팡 (Coupang)</div>
           </div>
 
         </div>
       </section>
+
 
       <!-- ── Tech Stack ── -->
       <section id="stack" class="fade-up">
@@ -630,28 +737,18 @@
       <section id="activities" class="fade-up">
         <div class="section-header">
           <span class="section-num">05</span>
-          <h2 class="section-title">기술 블로그 / 강연 / 교육 / 멘토링</h2>
+          <h2 class="section-title">활동</h2>
         </div>
         <div class="card-list">
 
           <div class="card">
             <div class="card-header">
-              <span class="card-title">Spring State Machine으로 FSM 구현하기</span>
+              <span class="card-title">[기술 블로그] Spring State Machine으로 FSM 구현하기</span>
               <span class="card-date">2025</span>
             </div>
             <div class="card-sub">카카오뱅크 기술 블로그</div>
             <div class="card-desc">Spring State Machine을 활용하여 FSM(유한 상태 기계)을 구현한 경험과 설계 과정을 공유합니다.</div>
             <a class="card-link" href="https://tech.kakaobank.com/posts/2511-fsm-using-spring-statemachine/" target="_blank" rel="noopener">글 보기 →</a>
-          </div>
-
-          <div class="card">
-            <div class="card-header">
-              <span class="card-title">트렌비 리뷰 서비스의 성능 개선기</span>
-              <span class="card-date">2022. 09</span>
-            </div>
-            <div class="card-sub">트렌비 기술 블로그</div>
-            <div class="card-desc">리뷰 서비스의 p90 API 응답 속도를 250ms에서 30ms로 개선한 과정과 적용한 기술적 접근법을 소개합니다.</div>
-            <a class="card-link" href="https://tech.trenbe.com/2022/09/14/%ed%8a%b8%eb%a0%8c%eb%b9%84-%eb%a6%ac%eb%b7%b0-%ec%84%9c%eb%b9%84%ec%8a%a4%ec%9d%98-%ec%84%b1%eb%8a%a5-%ea%b0%9c%ec%84%a0%ea%b8%b0.html" target="_blank" rel="noopener">글 보기 →</a>
           </div>
 
           <div class="card">
@@ -771,6 +868,16 @@
               <li>테스트 작성의 중요성과 JUnit 기반 방법 소개</li>
             </ul>
             <a class="card-link" href="https://comento.kr/class/pt" target="_blank" rel="noopener">자세히 보기 →</a>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">[기술 블로그] 트렌비 리뷰 서비스의 성능 개선기</span>
+              <span class="card-date">2022. 09</span>
+            </div>
+            <div class="card-sub">트렌비 기술 블로그</div>
+            <div class="card-desc">리뷰 서비스의 p90 API 응답 속도를 250ms에서 30ms로 개선한 과정과 적용한 기술적 접근법을 소개합니다.</div>
+            <a class="card-link" href="https://tech.trenbe.com/2022/09/14/%ed%8a%b8%eb%a0%8c%eb%b9%84-%eb%a6%ac%eb%b7%b0-%ec%84%9c%eb%b9%84%ec%8a%a4%ec%9d%98-%ec%84%b1%eb%8a%a5-%ea%b0%9c%ec%84%a0%ea%b8%b0.html" target="_blank" rel="noopener">글 보기 →</a>
           </div>
 
           <div class="card">
