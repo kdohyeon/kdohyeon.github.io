@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" data-theme="light">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,35 +10,166 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/css/main.css" />
   <style>
-    .post-header{padding-bottom:36px;border-bottom:1px solid var(--border);margin-bottom:48px;}
-    .post-category{font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:500;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;}
-    .post-title{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px;}
-    .post-meta{display:flex;flex-wrap:wrap;gap:16px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-muted);}
-    .post-meta span{display:flex;align-items:center;gap:5px;}
-    .post-body{font-size:0.95rem;color:var(--text-sub);line-height:1.9;}
-    .post-body p{margin-bottom:20px;}
-    .post-body h2{font-size:1.15rem;font-weight:700;color:var(--text);margin:40px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
-    .post-body h3{font-size:1rem;font-weight:700;color:var(--text);margin:28px 0 10px;}
-    .post-body ul,.post-body ol{padding-left:20px;margin-bottom:20px;}
-    .post-body ul{list-style:disc;}.post-body ol{list-style:decimal;}
-    .post-body li{margin-bottom:6px;}
-    .post-body strong{color:var(--text);font-weight:600;}
-    .post-body code{font-family:'JetBrains Mono',monospace;font-size:0.82em;background:var(--badge-bg);color:var(--accent);padding:2px 6px;border-radius:4px;}
-    .post-body pre{background:var(--badge-bg);border:1px solid var(--border);border-radius:8px;padding:20px;overflow-x:auto;margin-bottom:24px;}
-    .post-body pre code{background:none;padding:0;font-size:0.84rem;color:var(--text-sub);}
-    .post-body blockquote{border-left:3px solid var(--accent);padding-left:16px;margin:24px 0;color:var(--text-muted);font-style:italic;}
-    .post-body img{max-width:100%;border-radius:8px;border:1px solid var(--border);margin:8px 0 24px;}
-    .placeholder{padding:64px 32px;text-align:center;border:2px dashed var(--border);border-radius:12px;}
-    .placeholder-icon{font-size:2rem;margin-bottom:16px;}
-    .placeholder-text{font-size:0.9rem;color:var(--text-muted);line-height:1.7;}
-    footer{margin-top:60px;}
+    .post-header {
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .post-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .post-title {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .post-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .post-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .post-body {
+      font-size: 0.95rem;
+      color: var(--text-sub);
+      line-height: 1.9;
+    }
+
+    .post-body p {
+      margin-bottom: 20px;
+    }
+
+    .post-body h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 40px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .post-body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 28px 0 10px;
+    }
+
+    .post-body ul,
+    .post-body ol {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .post-body ul {
+      list-style: disc;
+    }
+
+    .post-body ol {
+      list-style: decimal;
+    }
+
+    .post-body li {
+      margin-bottom: 6px;
+    }
+
+    .post-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .post-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82em;
+      background: var(--badge-bg);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .post-body pre {
+      background: var(--badge-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+    }
+
+    .post-body pre code {
+      background: none;
+      padding: 0;
+      font-size: 0.84rem;
+      color: var(--text-sub);
+    }
+
+    .post-body blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+      margin: 24px 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .post-body img {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin: 8px 0 24px;
+    }
+
+    .placeholder {
+      padding: 64px 32px;
+      text-align: center;
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+    }
+
+    .placeholder-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .placeholder-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    footer {
+      margin-top: 60px;
+    }
   </style>
 </head>
+
 <body>
   <nav>
     <div class="nav-inner">
       <a class="nav-back" href="../../index.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
         김도현
       </a>
       <div class="toggle-wrap">
@@ -52,19 +184,113 @@
         <p class="post-category">역량 · 시스템 설계</p>
         <h1 class="post-title">CMS (컨텐츠 관리 시스템) 설계 및 개발</h1>
         <div class="post-meta">
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2022. 06 — 2022. 07</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"/><path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"/></svg>트렌비 (Trenbe)</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>2022. 06 — 2022. 07</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" />
+              <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" />
+            </svg>트렌비 (Trenbe)</span>
         </div>
       </div>
       <div class="post-body">
-        <div class="placeholder">
-          <div class="placeholder-icon">✍️</div>
-          <p class="placeholder-text">내용을 작성해 주세요.<br />placeholder div를 삭제하고 내용을 입력하면 됩니다.</p>
-        </div>
+        <h2>1. 프로젝트 개요</h2>
+        <ul>
+          <li><strong>개발 기간:</strong> 2022. 06 ~ 2022. 07 (2개월)</li>
+          <li><strong>개발 인원:</strong> 총 6명 (백엔드 2명, 프론트 2명, UI/UX 1명, QA 1명)</li>
+          <li><strong>담당 역할:</strong>
+            <ul>
+              <li>백엔드 개발 리드 및 시스템 설계 (50%)</li>
+              <li>백엔드 API 개발 (70%)</li>
+              <li>멀티 모듈 및 클린 아키텍처 기반 프로젝트 환경 구성 (100%)</li>
+              <li>문서화 (회의록, API 스펙, 기술 문서 등) (70%)</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2>2. 기술 스택</h2>
+        <ul>
+          <li><strong>Language & Framework:</strong> Java 17, Spring Boot 2.7</li>
+          <li><strong>Database:</strong> MySQL 8 (JSON 데이터 타입 활용), Redis Cache</li>
+          <li><strong>Library:</strong> JPA, QueryDSL, Spring Batch</li>
+          <li><strong>Infra & Tool:</strong> ArgoCD, IntelliJ IDEA 2021</li>
+        </ul>
+
+        <h2>3. 배경 및 필요성</h2>
+        <ul>
+          <li>기존 홈 화면 관리가 프론트엔드 하드코딩 방식으로 되어 있어 확장성과 유지보수성이 낮고 개발 속도가 저하되는 이슈가 있었습니다.</li>
+          <li>더욱 다양하고 유연한 모듈 단위로 홈 화면을 자유롭게 구성할 수 있는 시스템 구축이 필요했습니다.</li>
+        </ul>
+
+        <h2>4. 어려웠던 점 및 해결 방안</h2>
+        <ul>
+          <li><strong>다양한 컨텐츠 유형 대응:</strong>
+            <ul>
+              <li>상품, 이미지, 타임딜 등 다양한 유형의 컨텐츠를 유연하게 관리 및 처리해야 했습니다.</li>
+              <li><strong>해결:</strong> 확장성을 크게 높이기 위해 컨텐츠 데이터를 JSON 형태로 저장하도록 시스템을 설계했고, <code>@JsonType</code>과 MySQL의
+                JSON 타입을 효과적으로 활용했습니다.</li>
+            </ul>
+          </li>
+          <li><strong>인력 공백 발생:</strong>
+            <ul>
+              <li>협업하던 다른 백엔드 개발자 분의 신혼여행으로 인해 개발 공백이 발생했습니다.</li>
+              <li><strong>해결:</strong> 제한된 시간을 최대한 밀도 있게 사용하기 위해 '오전 소통, 오후 집중 개발' 이라는 전략적 루틴을 세워 무사히 혼자서 소통과 메인 개발 업무를
+                병행했습니다.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2>5. 아쉬웠던 점</h2>
+        <ul>
+          <li><strong>기술적 측면:</strong>
+            <ul>
+              <li><strong>캐시 단위 설정 오류:</strong> 초기에 전체 데이터를 한 번에 캐싱하는 단일 키 방식으로 설계하여, 리프레시 시 타임아웃이 간헐적으로 발생했습니다. 이후 진행된
+                스타일 서비스 프로젝트에서는 이를 교훈 삼아 개별 단위 캐싱 방식으로 개선했습니다.</li>
+              <li><strong>ID 체계:</strong> 식별자로 순수 UUID만을 사용하여 로그 트래킹 및 유지보수가 꽤 번거로웠습니다. Sequential ID와 병행하는 것이 운영상 훨씬 더
+                효율적이었을 것이라 판단합니다.</li>
+            </ul>
+          </li>
+          <li><strong>협업 측면:</strong>
+            <ul>
+              <li><strong>불명확한 요구사항:</strong> 프로젝트 초기 플래닝 단계에서 기획 스펙 및 요구사항이 다소 명확하지 않아 결국 개발팀 측에서 기획서를 역으로 재정리해야 하는 리소스
+                낭비가 있었습니다.</li>
+              <li><strong>우선순위 부재:</strong> 기능별로 필수(Mandatory) 요건과 선택(Optional) 요건에 대한 명확한 구분이 미흡해 일정 산출 및 관리에 아쉬움이
+                남았습니다.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2>6. 좋았던 점</h2>
+        <ul>
+          <li><strong>커뮤니케이션 프로세스 개선:</strong> 백엔드와 프론트엔드 개발자들만의 전용 슬랙 채널을 별도로 운영하여 의사소통 비용을 낮추고 팀워크를 강화했습니다. 이를 통해 대기
+            시간을 최소화하고 전반적인 업무 효율을 대폭 향상시켰습니다.</li>
+        </ul>
+
+        <h2>7. 주요 성과 (성능 개선 지표)</h2>
+        <ul>
+          <li><strong>시스템 설계 확장성:</strong> 도입 후 시스템이 처리 가능한 홈 화면 컨텐츠 유형이 2개에서 6개로 유연하게 확장되었습니다.</li>
+          <li><strong>프론트엔드 브라우저 렌더링 성능 향상:</strong>
+            <ul>
+              <li><strong>Speed Index (SI):</strong> 5.0s → 3.5s (<strong>30% 감소</strong>)</li>
+              <li><strong>Time to Interactive (TTI):</strong> 6.5s → 6.0s (<strong>8% 감소</strong>)</li>
+              <li><strong>Largest Contentful Paint (LCP):</strong> 6.8s → 6.3s (<strong>7% 감소</strong>)</li>
+              <li><strong>Total Blocking Time (TBT):</strong> 0.8s → 0.6s (<strong>25% 감소</strong>)</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p><br><em>(원문 출처: <a href="https://kdohyeon.tistory.com/75" target="_blank"
+              rel="noopener">https://kdohyeon.tistory.com/75 [대니기록:티스토리]</a>)</em></p>
       </div>
     </div>
   </main>
-  <footer><div class="container">© 2025 김도현 · <a href="../../index.html" style="color:inherit">홈으로</a></div></footer>
+  <footer>
+    <div class="container">© 2025 김도현 · <a href="../../index.html" style="color:inherit">홈으로</a></div>
+  </footer>
   <script src="../../assets/js/main.js"></script>
 </body>
+
 </html>
