@@ -1,61 +1,175 @@
 <!DOCTYPE html>
 <html lang="ko" data-theme="light">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>스타일 탭 서비스 개발 — 김도현</title>
+  <title>생각보다 쉽지 않았던 API 교체</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/main.css" />
   <style>
-    :root{--bg:#F8F9FA;--bg-card:#FFFFFF;--bg-nav:rgba(248,249,250,0.88);--text:#111827;--text-sub:#4B5563;--text-muted:#9CA3AF;--accent:#2563EB;--accent-soft:#EFF6FF;--border:#E5E7EB;--badge-bg:#F3F4F6;--t:0.22s ease;}
-    [data-theme="dark"]{--bg:#0F1117;--bg-card:#1A1D27;--bg-nav:rgba(15,17,23,0.9);--text:#F1F5F9;--text-sub:#94A3B8;--text-muted:#64748B;--accent:#60A5FA;--accent-soft:#1E3A5F;--border:#2D3140;--badge-bg:#1E2130;}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;transition:background var(--t),color var(--t);}
-    a{color:var(--accent);text-decoration:none;}a:hover{text-decoration:underline;}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg-nav);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:background var(--t),border-color var(--t);}
-    .nav-inner{max-width:760px;margin:0 auto;padding:0 24px;height:54px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
-    .nav-back{display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;font-weight:500;color:var(--text-sub);transition:color var(--t);}
-    .nav-back:hover{color:var(--accent);text-decoration:none;}
-    .nav-back svg{width:14px;height:14px;}
-    .toggle-wrap{display:flex;align-items:center;gap:7px;}
-    .toggle-icon{font-size:0.82rem;user-select:none;}
-    .theme-toggle{width:38px;height:21px;background:var(--border);border-radius:11px;border:none;cursor:pointer;position:relative;transition:background var(--t);outline:none;}
-    .theme-toggle::after{content:'';position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:var(--bg-card);box-shadow:0 1px 4px rgba(0,0,0,0.2);transition:transform 0.22s cubic-bezier(0.4,0,0.2,1);}
-    [data-theme="dark"] .theme-toggle{background:var(--accent);}
-    [data-theme="dark"] .theme-toggle::after{transform:translateX(17px);}
-    .container{max-width:760px;margin:0 auto;padding:0 24px;}
-    main{padding-top:90px;padding-bottom:80px;}
-    .post-header{padding-bottom:36px;border-bottom:1px solid var(--border);margin-bottom:48px;}
-    .post-category{font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:500;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;}
-    .post-title{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px;}
-    .post-meta{display:flex;flex-wrap:wrap;gap:16px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-muted);}
-    .post-meta span{display:flex;align-items:center;gap:5px;}
-    .post-body{font-size:0.95rem;color:var(--text-sub);line-height:1.9;}
-    .post-body p{margin-bottom:20px;}
-    .post-body h2{font-size:1.15rem;font-weight:700;color:var(--text);margin:40px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
-    .post-body h3{font-size:1rem;font-weight:700;color:var(--text);margin:28px 0 10px;}
-    .post-body ul,.post-body ol{padding-left:20px;margin-bottom:20px;}
-    .post-body ul{list-style:disc;}.post-body ol{list-style:decimal;}
-    .post-body li{margin-bottom:6px;}
-    .post-body strong{color:var(--text);font-weight:600;}
-    .post-body code{font-family:'JetBrains Mono',monospace;font-size:0.82em;background:var(--badge-bg);color:var(--accent);padding:2px 6px;border-radius:4px;}
-    .post-body pre{background:var(--badge-bg);border:1px solid var(--border);border-radius:8px;padding:20px;overflow-x:auto;margin-bottom:24px;}
-    .post-body pre code{background:none;padding:0;font-size:0.84rem;color:var(--text-sub);}
-    .post-body blockquote{border-left:3px solid var(--accent);padding-left:16px;margin:24px 0;color:var(--text-muted);font-style:italic;}
-    .post-body img{max-width:100%;border-radius:8px;border:1px solid var(--border);margin:8px 0 24px;}
-    .placeholder{padding:64px 32px;text-align:center;border:2px dashed var(--border);border-radius:12px;}
-    .placeholder-icon{font-size:2rem;margin-bottom:16px;}
-    .placeholder-text{font-size:0.9rem;color:var(--text-muted);line-height:1.7;}
-    footer{text-align:center;padding:28px 24px;margin-top:60px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-muted);border-top:1px solid var(--border);}
+    .post-header {
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .post-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .post-title {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .post-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .post-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .post-body {
+      font-size: 0.95rem;
+      color: var(--text-sub);
+      line-height: 1.9;
+    }
+
+    .post-body p {
+      margin-bottom: 20px;
+    }
+
+    .post-body h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 40px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .post-body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 28px 0 10px;
+    }
+
+    .post-body ul,
+    .post-body ol {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .post-body ul {
+      list-style: disc;
+    }
+
+    .post-body ol {
+      list-style: decimal;
+    }
+
+    .post-body li {
+      margin-bottom: 6px;
+    }
+
+    .post-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .post-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82em;
+      background: var(--badge-bg);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .post-body pre {
+      background: var(--badge-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+    }
+
+    .post-body pre code {
+      background: none;
+      padding: 0;
+      font-size: 0.84rem;
+      color: var(--text-sub);
+    }
+
+    .post-body blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+      margin: 24px 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .post-body img {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin: 8px 0 24px;
+    }
+
+    .placeholder {
+      padding: 64px 32px;
+      text-align: center;
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+    }
+
+    .placeholder-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .placeholder-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    footer {
+      margin-top: 60px;
+    }
   </style>
 </head>
+
 <body>
   <nav>
     <div class="nav-inner">
       <a class="nav-back" href="../../index.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
         김도현
       </a>
       <div class="toggle-wrap">
@@ -70,24 +184,118 @@
         <p class="post-category">역량 · 시스템 리엔지니어링</p>
         <h1 class="post-title">API 교체</h1>
         <div class="post-meta">
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2021. 09 — 2021. 12</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"/><path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"/></svg>쿠팡 (Coupang)</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>2021. 09 — 2021. 12</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" />
+              <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" />
+            </svg>쿠팡 (Coupang)</span>
         </div>
       </div>
       <div class="post-body">
-        <div class="placeholder">
-          <div class="placeholder-icon">✍️</div>
-          <p class="placeholder-text">내용을 작성해 주세요.<br />placeholder div를 삭제하고 내용을 입력하면 됩니다.</p>
-        </div>
+        <p>MSA 환경에서는 주로 API 호출을 통해 타 서비스와 통신을 주고 받습니다. 타 서비스에서 제공하는 API 의 스펙이 변경되면 이 API 에 의존하고 있는 내부 서비스도 맞춰서 변경을 해주어야
+          합니다. 단순히 생각하면 기존 API 로의 호출을 끊고, 버전업이 된 API 로 호출하기만 하면 될 것 같습니다. 아래 그림처럼요.</p>
+
+        <img src="./images/image01.jpeg" alt="API 교체 단순 구상" />
+
+        <p>하지만 이렇게 단순하지는 않았고, 좀 더 복잡했습니다. API 를 교체하는 방법에 대해 한번 정리해보고자 합니다.</p>
+
+        <h2>들어가기에 앞서</h2>
+        <p>용어 정리를 먼저 하려고 한다.</p>
+        <ul>
+          <li>외부 서비스에서 제공되던 기존 API 는 <strong>"API v1"</strong></li>
+          <li>외부 서비스에서 제공될 신규, 버전업된 API 는 <strong>"API v2"</strong></li>
+        </ul>
+
+        <h2>상황에 대한 이해</h2>
+        <p>API 를 교체해야 했던 당시 상황은 다음과 같다.</p>
+        <ul>
+          <li><strong>상황 1.</strong> API v1 의 DTO 가 내부 서비스 전체에서 사용되고 있었다. (API v2 의 DTO 로 교체하기 위해서는 내부 서비스 전체를 수정해야 함)
+          </li>
+          <li><strong>상황 2.</strong> 내부 서비스 대부분의 기능이 API v1 에 의존하고 있었다. (장애가 발생하면 임팩트가 큼)</li>
+          <li><strong>상황 3.</strong> API v1 의 DTO 에는 100개가 넘는 필드가 존재하며 객체의 구조가 상당히 복잡함 (v1 과 v2 DTO 를 비교하기 어려움)</li>
+        </ul>
+
+        <h2>API 교체 전략</h2>
+        <p>상황이 어떻든 API 교체는 해야 하니.. 다음과 같이 전략을 세워보았다.</p>
+        <ol>
+          <li>API v1 에 의존하고 있는 내부 서비스 코드를 분석하여 영향도가 낮은 순부터 리스트 업 한다.</li>
+          <li>본격적으로 API v2 로 교체하기 이전에 데이터 정합성 모니터링을 위해 API v1 과 v2 를 서로 비교할 수 있는 코드를 작성한다.</li>
+          <li>데이터 정합성 과정에서 데이터가 다른 부분이 발생하면 슬랙으로 메시지를 발생한다.</li>
+          <li>하루동안 모니터링을 하고 이슈가 없으면 API v1 에서 v2 로 조금씩 교체한다. API v2 의 호출 빈도를 1%에서 점점 늘려 100%까지 전체 교체한다.</li>
+        </ol>
+        <p>영향도가 크지 않았다면 한번에 모든 코드에 대해 API 교체를 진행했을텐데, 장애가 나면 영향도가 꽤나 컸기 때문에 안정성을 위해 한 부분씩 교체해나갔다.</p>
+
+        <h2>내부 전용 DTO</h2>
+        <p>또한, API v1 의 DTO 가 내부 서비스 전체에서 사용되고 있었기 때문에 내부 서비스 전용 DTO 를 별도로 만들었다. 이를 통해 얻을 수 있는 장점으로는 추후 v3, v4 로 버전업이 될
+          때 v3, v4 의 DTO 에서 내부 전용 DTO 로 변환만 잘 해주면 되기 때문이다. 코드의 변경점이 줄어들어 유지보수 비용이 많이 줄어들 수 있다.</p>
+
+        <img src="./images/image02.jpeg" alt="내부 전용 DTO 구조" />
+
+        <h2>데이터 정합성 체크</h2>
+        <p>API v1 에서 제공하는 필드는 100여개가 넘게 있었고 모든 필드가 v2 에서 1:1 맵핑이 되진 않았다. 또한, 그 데이터 자체도 다를 수 있다고 전달받았기 때문에 데이터 정합성을 체크하는
+          과정은 필수였다. 당시에는 객체 비교를 위해 알고있는 라이브러리가 없어 한땀한땀 비교하는 로직을 구현해주었다. 예를 들면 다음과 같다.</p>
+
+        <pre><code class="language-java">public boolean isDifferent(ApiV1Dto v1Dto, ApiV2Dto v2Dto) {
+    if (v1Dto.getA() != v2Dto.getA()) {
+        return true;
+    }
+    if (v1Dto.getB() != v2Dto.getB()) {
+        return true;
+    }
+    ...
+    return false;
+}</code></pre>
+
+        <p>또한, 두 객체간 데이터가 다르면 슬랙 메시지로 알럿 메시지를 전송하여 바로 확인할 수 있도록 만들었다.</p>
+
+        <img src="./images/image03.jpeg" alt="데이터 정합성 실패 슬랙 알람" />
+
+        <h3>데이터가 다른 경우에는</h3>
+        <p>API v1 과 v2 를 제공하는 팀에 미팅요청을 하여 데이터가 다른 경우를 설명하고, v1 에서 제공하는 데이터를 v2 에서도 동일하게 제공받을 수 있도록 요청하였다. 커뮤니케이션 하는 이
+          과정이 꽤 많이 힘들었다. 내용을 정리해서 잘 전달하는 것부터, v2 에서는 제공할 수 없다는 피드백을 받았을 때, 새로운 솔루션을 찾아내는 것도 힘들었다. 최대한 v2 에서 동일한 데이터를
+          전달받을 수 있도록 요청했고, 그렇게 할 수 없는 경우에는 다른 API 에서 동일한 데이터를 전달받을 수 있도록 요청했다.</p>
+
+        <h3>장애 발생 지점</h3>
+        <p>List 형태의 데이터에 대해서는 그 개수가 같은지 다른지에 대해서만 확인하는 로직을 작성해두었었고, 값 자체를 비교하진 않았다. 개수가 동일하면 값은 똑같겠지 라는 안일한 생각이었다. 하지만
+          여기가 장애 발생 지점이었고, 개수는 동일하지만 데이터가 다른 경우가 발생했다. 데이터 정합성 하는 과정에서는 개수가 동일했기 때문에 문제가 되지 않았지만 API v2 로 이관하는 과정에서 점점
+          문제가 발생했다.</p>
+        <p>결국 롤백과 데이터 보정 작업을 거쳐 장애 대응을 했고, 데이터 정합성을 확인하는 로직을 전면 수정했다.</p>
+
+        <h2>API v2 로 서서히 교체하기</h2>
+        <p>API v2 로 한번에 교체하면 많이 위험할 것 같다는 생각이 들어, 1%, 2% 등 천천히 옮겨가고자 했다. 이를 위해 1~100 사이의 랜덤 숫자를 생성해서 특정 % 내에 포함되면 API v2
+          를, 아니면 API v1 을 호출하도록 만들었다.</p>
+        <p>특정 % 를 설정하기 위해서는 코드 내에 하드코딩 해두어야 하지만 이렇게 하면 단점이 퍼센티지를 변경할 때마다 배포를 새로 해주어야 한다. 따라서 배포를 하지 않고 다이나믹하게 컨트롤 하기 위해
+          s3 를 활용했고, s3 에서 값을 지속적으로 읽으면서 사용하도록 구현했다. 예시는 다음과 같다.</p>
+
+        <pre><code class="language-java">public void abTest() {
+    var random = (int)(Math.random() * 100);
+    var n = getNfromS3();
+    if (random < n) {
+        // call API v2
+    } else {
+        // call API v1
+    }
+}</code></pre>
+
+        <h2>코드 정리</h2>
+        <p>v2 로 이관이 완료되면 v1 관련 코드와 데이터 정합성을 체크하는 코드를 제거했다.</p>
+
+        <h2>느낀점</h2>
+        <p>처음으로 이런 과정을 혼자 진행하다 보니 많이 벅찼던 기억이다. 도망치고 싶었는데.. 그래도 마무리는 잘 해야 하니까 라는 생각으로 작업을 했던 것 같다.</p>
+        <p>아쉬웠던 점으로는 데이터 정합성을 체크하는 부분이었고 만족스러웠던 점으로는 내부 서비스에서 사용할 수 있는 전용 DTO 를 만들어두어 추후 v3, v4 로 업그레이드할 때 유지보수 비용을
+          최소화했던 점이 있다.</p>
       </div>
     </div>
   </main>
-  <footer><div class="container">© 2025 김도현 · <a href="../../index.html" style="color:inherit">홈으로</a></div></footer>
-  <script>
-    const html=document.documentElement,btn=document.getElementById('themeToggle'),icon=document.getElementById('toggle-icon');
-    const saved=localStorage.getItem('theme');
-    if(saved){html.setAttribute('data-theme',saved);icon.textContent=saved==='dark'?'🌙':'☀️';}
-    btn.addEventListener('click',()=>{const next=html.getAttribute('data-theme')==='dark'?'light':'dark';html.setAttribute('data-theme',next);icon.textContent=next==='dark'?'🌙':'☀️';localStorage.setItem('theme',next);});
-  </script>
+  <footer>
+    <div class="container">© 2025 김도현 · <a href="../../index.html" style="color:inherit">홈으로</a></div>
+  </footer>
+  <script src="../../assets/js/main.js"></script>
 </body>
+
 </html>
