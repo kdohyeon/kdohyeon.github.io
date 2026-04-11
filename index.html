@@ -286,6 +286,8 @@
 
     /* ── Cards (mentoring, lectures, awards) ─────────────── */
     .card-list { display: flex; flex-direction: column; gap: 14px; }
+    .card-list-2col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    @media (max-width: 620px) { .card-list-2col { grid-template-columns: 1fr; } }
     .card {
       background: var(--bg-card); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow);
@@ -471,7 +473,7 @@
           <span class="section-num">02</span>
           <h2 class="section-title">역량</h2>
         </div>
-        <div class="card-list">
+        <div class="card-list-2col">
 
           <div class="card">
             <div class="card-header">
@@ -507,7 +509,7 @@
             </div>
             <div class="card-tags"><span class="card-tag">서비스 개발</span></div>
             <div class="card-company">트렌비 (Trenbe)</div>
-            <a class="card-link" href="posts/exhibition-service/">자세히 보기 →</a>
+            <a class="card-link" href="posts/exhibition-service/index.html">자세히 보기 →</a>
           </div>
 
           <div class="card">
@@ -526,7 +528,7 @@
             </div>
             <div class="card-tags"><span class="card-tag">데이터 분석</span></div>
             <div class="card-company">트렌비 (Trenbe)</div>
-            <a class="card-link" href="posts/jira-analysis/">자세히 보기 →</a>
+            <a class="card-link" href="posts/jira-analysis/index.html">자세히 보기 →</a>
           </div>
 
           <div class="card">
@@ -536,7 +538,7 @@
             </div>
             <div class="card-tags"><span class="card-tag">서비스 개발</span></div>
             <div class="card-company">트렌비 (Trenbe)</div>
-            <a class="card-link" href="posts/style-service/">자세히 보기 →</a>
+            <a class="card-link" href="posts/style-service/index.html">자세히 보기 →</a>
           </div>
 
           <div class="card">
@@ -555,7 +557,7 @@
             </div>
             <div class="card-tags"><span class="card-tag">시스템 설계</span></div>
             <div class="card-company">트렌비 (Trenbe)</div>
-            <a class="card-link" href="posts/cms-development/">자세히 보기 →</a>
+            <a class="card-link" href="posts/cms-development/index.html">자세히 보기 →</a>
           </div>
 
           <div class="card">
@@ -565,7 +567,7 @@
             </div>
             <div class="card-tags"><span class="card-tag">시스템 리엔지니어링</span></div>
             <div class="card-company">트렌비 (Trenbe)</div>
-            <a class="card-link" href="posts/review-performance/">자세히 보기 →</a>
+            <a class="card-link" href="posts/review-performance/index.html">자세히 보기 →</a>
           </div>
 
           <div class="card">
@@ -575,7 +577,7 @@
             </div>
             <div class="card-tags"><span class="card-tag">시스템 리엔지니어링</span></div>
             <div class="card-company">쿠팡 (Coupang)</div>
-            <a class="card-link" href="posts/api-migration/">자세히 보기 →</a>
+            <a class="card-link" href="posts/api-migration/index.html">자세히 보기 →</a>
           </div>
 
           <div class="card">
@@ -594,7 +596,7 @@
             </div>
             <div class="card-tags"><span class="card-tag">서비스 개발</span><span class="card-tag">데이터 분석</span></div>
             <div class="card-company">쿠팡 (Coupang)</div>
-            <a class="card-link" href="posts/price-anomaly-service/">자세히 보기 →</a>
+            <a class="card-link" href="posts/price-anomaly-service/index.html">자세히 보기 →</a>
           </div>
 
           <div class="card">
