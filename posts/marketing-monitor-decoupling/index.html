@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마케팅 발송 모니터링 시스템 아키텍처 개선</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <style>
+        .post-header {
+            padding-bottom: 36px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 48px;
+        }
+
+        .post-category {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .post-title {
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .post-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        .post-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .post-body {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            line-height: 1.9;
+        }
+
+        .post-body p {
+            margin-bottom: 20px;
+        }
+
+        .post-body h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 40px 0 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .post-body h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 28px 0 10px;
+        }
+
+        .post-body ul,
+        .post-body ol {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .post-body ul {
+            list-style: disc;
+        }
+
+        .post-body ol {
+            list-style: decimal;
+        }
+
+        .post-body li {
+            margin-bottom: 6px;
+        }
+
+        .post-body strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .post-body code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82em;
+            background: var(--badge-bg);
+            color: var(--accent);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .post-body pre {
+            background: var(--badge-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            margin-bottom: 24px;
+        }
+
+        .post-body pre code {
+            background: none;
+            padding: 0;
+            font-size: 0.84rem;
+            color: var(--text-sub);
+        }
+
+        .post-body blockquote {
+            border-left: 3px solid var(--accent);
+            padding-left: 16px;
+            margin: 24px 0;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .post-body img {
+            max-width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin: 8px 0 24px;
+        }
+
+        .placeholder {
+            padding: 64px 32px;
+            text-align: center;
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+        }
+
+        .placeholder-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .placeholder-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        footer {
+            margin-top: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a class="nav-back" href="../../index.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                </svg>
+                김도현
+            </a>
+            <div class="toggle-wrap">
+                <span class="toggle-icon" id="toggle-icon">☀️</span>
+                <button class="theme-toggle" id="themeToggle" aria-label="다크모드 전환"></button>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            <div class="post-header">
+                <p class="post-category">TPM · 시스템 아키텍처</p>
+                <h1 class="post-title">마케팅 발송 모니터링 시스템 아키텍처 개선 (Decoupling)</h1>
+                <div class="post-meta">
+                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" />
+                            <line x1="16" y1="2" x2="16" y2="6" />
+                            <line x1="8" y1="2" x2="8" y2="6" />
+                            <line x1="3" y1="10" x2="21" y2="10" />
+                        </svg>2025</span>
+                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" />
+                            <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" />
+                        </svg>카카오뱅크 (KakaoBank)</span>
+                </div>
+            </div>
+            <div class="post-body">
+                <p><strong>Role:</strong> Technical Program Manager / System Architect</p>
+                <p><strong>Key Achievement:</strong> 모니터링 시스템 가용성 100% 확보, 어드민 응답 속도 80% 개선 (최대 1s → 0.1s)</p>
+
+                <h2>1. Context &amp; Problem (배경 및 문제점)</h2>
+                <p>기존 시스템은 전사 분석용 데이터 플랫폼인 <strong>Hadoop(Hue)</strong>에 어드민 모니터링 기능을 직접 의존하는 구조였습니다. 이로 인해 비즈니스 운영상 다음과
+                    같은 치명적인 리스크가 발생했습니다.</p>
+                <ul>
+                    <li><strong>SLA(서비스 수준 협약) 불일치:</strong> 분석 전용인 Hadoop은 실시간성이나 고가용성을 보장하지 않음. 주말 장애 발생 시 데이터팀의 대응이
+                        월요일에 이루어져, 주말 발송 현황 파악이 불가능한 상황 빈번히 발생.</li>
+                    <li><strong>시스템 강결합으로 인한 성능 저하:</strong> 대규모 분석용 쿼리(Heavy Query)가 수행될 때마다 백오피스 어드민 조회 성능이 급격히 저하되어
+                        사용자 경험 악화.</li>
+                    <li><strong>안정성 결여:</strong> 데이터 소스의 불안정성이 곧 마케팅 운영의 중단으로 이어지는 구조적 결함 존재.</li>
+                </ul>
+
+                <h2>2. Strategy &amp; Action (전략 및 실행)</h2>
+                <p>분석(OLAP)과 서비스(OLTP)의 목적을 분리하고, 각 데이터의 성격에 맞는 기술 스택을 재구성하는 전략을 주도했습니다.</p>
+                <ul>
+                    <li><strong>이해관계자 요구사항 조율:</strong> DBA, 데이터팀, 개발팀, 현업 사용자를 아우르는 다자간 협의를 주도. 'Hadoop 적재는 유지하되, 서비스용
+                        데이터는 별도 관리한다'는 합의점 도출.</li>
+                    <li><strong>데이터 스토리지 최적화 (Hadoop to MySQL):</strong>
+                        <ul>
+                            <li>실시간 조회가 핵심인 어드민용 데이터 소스를 MySQL로 교체하여 인덱싱 최적화 및 안정적인 응답 속도 확보.</li>
+                            <li>전체 데이터 분석은 기존 Hadoop을 활용하도록 이중 적재 파이프라인 설계.</li>
+                        </ul>
+                    </li>
+                    <li><strong>데이터 거버넌스 및 최적화 정책 수립:</strong>
+                        <ul>
+                            <li><strong>Data Retention Policy:</strong> 대용량 로그 처리를 위해 최근 5일치 상세 데이터만 MySQL에 유지하고 이전 데이터는
+                                자동 삭제하도록 설계(DBA 협의).</li>
+                            <li><strong>Batch Statistics:</strong> 과거 통계 데이터는 새벽 배치를 통해 요약 테이블로 가공하여 조회 효율 극대화.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h2>3. Result &amp; Impact (성과 및 영향)</h2>
+                <ul>
+                    <li><strong>조회 성능 혁신:</strong> 어드민 응답 속도를 기존 0.5s~1s에서 0.1s~0.2s 내외로 약 80% 단축.</li>
+                    <li><strong>시스템 안정성 100% 확보:</strong> 외부 분석 플랫폼(Hadoop)의 장애 여부와 관계없이 마케팅 운영팀이 24/7 실시간 발송 현황을 모니터링할
+                        수 있는 환경 구축.</li>
+                    <li><strong>운영 리소스 최적화:</strong> 시스템 간 강결합을 해소함으로써 장애 전파 리스크를 제거하고, 유관 부서 간의 긴급 장애 대응 피로도 대폭 감소.
+                    </li>
+                </ul>
+
+                <h2>💡 TPM 역량 포인트 (Resume Summary)</h2>
+                <ul>
+                    <li><strong>Technical Architecture Insight:</strong> Hadoop(분석)과 MySQL(서비스)의 기술적 특성을 이해하고 비즈니스 목적에
+                        맞게 재설계하는 아키텍처 역량.</li>
+                    <li><strong>Efficiency Driven Leadership:</strong> 정량적인 성능 지표(Latency 80% 개선)를 기반으로 시스템 효율화를 증명.
+                    </li>
+                    <li><strong>Stakeholder Alignment:</strong> 서로 다른 KPI를 가진 팀들 사이에서 비즈니스 연속성을 위한 기술적 타협점과 정책(Retention
+                        Policy 등)을 수립하는 커뮤니케이션 능력.</li>
+                </ul>
+
+                <p><br><em>#System-Architecture #Decoupling #Data-Engineering #TPM</em></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">© 2026 김도현 · <a href="../../index.html" style="color:inherit">홈으로</a></div>
+    </footer>
+    <script src="../../assets/js/main.js"></script>
+</body>
+
+</html>
