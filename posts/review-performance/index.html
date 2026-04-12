@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" data-theme="light">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,35 +10,166 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/css/main.css" />
   <style>
-    .post-header{padding-bottom:36px;border-bottom:1px solid var(--border);margin-bottom:48px;}
-    .post-category{font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:500;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;}
-    .post-title{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px;}
-    .post-meta{display:flex;flex-wrap:wrap;gap:16px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-muted);}
-    .post-meta span{display:flex;align-items:center;gap:5px;}
-    .post-body{font-size:0.95rem;color:var(--text-sub);line-height:1.9;}
-    .post-body p{margin-bottom:20px;}
-    .post-body h2{font-size:1.15rem;font-weight:700;color:var(--text);margin:40px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
-    .post-body h3{font-size:1rem;font-weight:700;color:var(--text);margin:28px 0 10px;}
-    .post-body ul,.post-body ol{padding-left:20px;margin-bottom:20px;}
-    .post-body ul{list-style:disc;}.post-body ol{list-style:decimal;}
-    .post-body li{margin-bottom:6px;}
-    .post-body strong{color:var(--text);font-weight:600;}
-    .post-body code{font-family:'JetBrains Mono',monospace;font-size:0.82em;background:var(--badge-bg);color:var(--accent);padding:2px 6px;border-radius:4px;}
-    .post-body pre{background:var(--badge-bg);border:1px solid var(--border);border-radius:8px;padding:20px;overflow-x:auto;margin-bottom:24px;}
-    .post-body pre code{background:none;padding:0;font-size:0.84rem;color:var(--text-sub);}
-    .post-body blockquote{border-left:3px solid var(--accent);padding-left:16px;margin:24px 0;color:var(--text-muted);font-style:italic;}
-    .post-body img{max-width:100%;border-radius:8px;border:1px solid var(--border);margin:8px 0 24px;}
-    .placeholder{padding:64px 32px;text-align:center;border:2px dashed var(--border);border-radius:12px;}
-    .placeholder-icon{font-size:2rem;margin-bottom:16px;}
-    .placeholder-text{font-size:0.9rem;color:var(--text-muted);line-height:1.7;}
-    footer{margin-top:60px;}
+    .post-header {
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .post-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .post-title {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .post-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .post-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .post-body {
+      font-size: 0.95rem;
+      color: var(--text-sub);
+      line-height: 1.9;
+    }
+
+    .post-body p {
+      margin-bottom: 20px;
+    }
+
+    .post-body h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 40px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .post-body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 28px 0 10px;
+    }
+
+    .post-body ul,
+    .post-body ol {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .post-body ul {
+      list-style: disc;
+    }
+
+    .post-body ol {
+      list-style: decimal;
+    }
+
+    .post-body li {
+      margin-bottom: 6px;
+    }
+
+    .post-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .post-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82em;
+      background: var(--badge-bg);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .post-body pre {
+      background: var(--badge-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+    }
+
+    .post-body pre code {
+      background: none;
+      padding: 0;
+      font-size: 0.84rem;
+      color: var(--text-sub);
+    }
+
+    .post-body blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+      margin: 24px 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .post-body img {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin: 8px 0 24px;
+    }
+
+    .placeholder {
+      padding: 64px 32px;
+      text-align: center;
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+    }
+
+    .placeholder-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .placeholder-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    footer {
+      margin-top: 60px;
+    }
   </style>
 </head>
+
 <body>
   <nav>
     <div class="nav-inner">
       <a class="nav-back" href="../../index.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
         김도현
       </a>
       <div class="toggle-wrap">
@@ -52,19 +184,80 @@
         <p class="post-category">역량 · 시스템 리엔지니어링</p>
         <h1 class="post-title">리뷰 서비스 안정화 및 p90 API 응답 속도 개선</h1>
         <div class="post-meta">
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2022. 05</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"/><path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"/></svg>트렌비 (Trenbe)</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>2022. 05</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" />
+              <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" />
+            </svg>트렌비 (Trenbe)</span>
         </div>
       </div>
       <div class="post-body">
-        <div class="placeholder">
-          <div class="placeholder-icon">✍️</div>
-          <p class="placeholder-text">내용을 작성해 주세요.<br />placeholder div를 삭제하고 내용을 입력하면 됩니다.</p>
-        </div>
+        <h2>들어가며</h2>
+        <p>트렌비 백엔드 개발자로서 트렌비 리뷰 서비스 (review-service) 의 성능을 개선하게 된 이야기를 해보고자 합니다.</p>
+
+        <h2>문제 상황</h2>
+        <p>리뷰 서비스 런칭 후 사용자와 트래픽이 증가함에 따라 아래 두 가지 시스템 알럿이 지속적으로 발생했습니다.</p>
+        <ul>
+          <li>DB 커넥션 풀 고갈 이슈</li>
+          <li>API 타임아웃 이슈</li>
+        </ul>
+        <p>또한, 리뷰 서비스의 p90 API 응답 속도가 약 200ms ~ 250ms 수준이었으며 트래픽 증가 시 더 느려지기도 했습니다.</p>
+        <p>일반적으로 사용자가 '즉각적인 응답'으로 느끼는 한계 시간인 100ms 이내의 응답을 제공하지 못하고 있었습니다.</p>
+
+        <h2>개선 목표</h2>
+        <ul>
+          <li>API 응답 속도를 100ms 이하로 단축</li>
+          <li>리뷰 서비스에서 발생하는 시스템 알럿 해결</li>
+        </ul>
+
+        <h2>개선 이야기. 5가지 과정</h2>
+
+        <h3>1. n번의 API 호출을 1번으로 줄일 수 있을까?</h3>
+        <p>기존 로직은 n개의 주문 ID에 대한 구매 옵션을 조회하기 위해 주문 서비스(order-service)를 루프를 돌며 n번 호출하고 있었습니다.<br>
+          이를 파라미터로 List를 받아 한 번의 API 호출로 모두 가져오는 <strong>Bulk 형태의 API</strong>로 변경함으로써 p90 응답 속도를 200ms 수준에서 약 100ms
+          수준으로 개선했습니다.</p>
+
+        <h3>2. 굳이 외부 서비스를 호출해야 할까?</h3>
+        <p>주문 서비스에서 가져오는 '구매 옵션' 데이터는 생각해보면 리뷰를 작성할 때 리뷰 도메인 내부에도 함께 저장될 수 있는 데이터였습니다.<br>
+          리뷰 저장 시 옵션 데이터도 자체적으로 저장 및 관리하도록 변경하여, 외부 서비스 의존성을 끊어내고 API 속도를 100ms 수준에서 30~40ms까지 획기적으로 개선했습니다.</p>
+
+        <h3>3. "Could not open JPA EntityManager" 에러 해결하기 (트랜잭션 분리)</h3>
+        <p>대량 트래픽이 몰릴 때 DB 커넥션 풀 고갈이 발생했습니다. 원인을 분석해보니 <code>@Transactional</code>이 선언된 메소드 내부에서 지연이 발생할 수 있는 <strong>외부
+            API 호출</strong>을 먼저 하고, 이후에 내부 DB 접근을 하고 있었습니다.<br>
+          메소드 진입 순간부터 커넥션을 점유한 채 외부 응답 대기가 발생하면서 커넥션 풀 고갈이 일어났던 것입니다.<br>
+          이를 해결하기 위해 외부 I/O와 DB I/O 트랜잭션을 분리하고, DB 로직 구간에만 <code>TransactionTemplate</code>을 명시적으로 적용함으로써 커넥션 풀 고갈 문제를
+          해결하고 시스템을 안정화했습니다.</p>
+
+        <h3>4. 성능이 안 좋은 외부 API에 의존하고 있으면 어떻게 해야 할까? (캐시 적용)</h3>
+        <p>리뷰 서비스는 중고 상품 데이터를 조회하기 위해 지속적으로 상품 시스템을 호출했는데, 이 외부 API가 타겟에서 종종 타임아웃 문제를 일으켰습니다.<br>
+          본 도메인에 필요한 외부의 상품 정보가 주로 변동성이 적은 데이터임을 간파하고 <strong>Redis 캐시 레이어</strong>를 앞단에 적용하여 매번 호출하지 않고 캐시를 참조하게
+          만들었습니다. 이를 통해 외부 의존으로 인한 장애 전파 스파이크성 에러를 확연히 통제했습니다.</p>
+
+        <h3>5. 핀포인트를 활용한 병목 지점 개선 (인덱스 누락)</h3>
+        <p>APM 도구인 핀포인트(Pinpoint)를 통해 특정 조회 API가 예상보다 긴 시간(약 600ms) 소요되는 것을 발견했습니다.<br>
+          해석된 쿼리는 중복 리뷰 방지를 위한 단순 조회성 쿼리(<code>SELECT * FROM review WHERE order_item_id = ?</code>)였는데,
+          <code>order_item_id</code>에 인덱스가 누락되어 DB 풀 스캔을 돌고 있었습니다.<br>
+          해당 테이블 컬럼에 인덱스를 추가함으로써 단기간에 큰 폭의 성능 최적화를 적용했습니다.</p>
+
+        <h2>정리하며</h2>
+        <p>최종적으로 API 응답 속도를 200~250ms에서 약 30~40ms 수준으로 개선했으며 (<strong>약 80% 이상의 통신 시간 단축</strong>), 간헐적으로 발생하던 무수히 많은
+          시스템 알럿들도 더 이상 발생하지 않게 되었습니다.</p>
+        <p><br><em>(원문 출처: <a
+              href="https://tech.trenbe.com/2022/09/14/%ed%8a%b8%eb%a0%8c%eb%b9%84-%eb%a6%ac%eb%b7%b0-%ec%84%9c%eb%b9%84%ec%8a%a4%ec%9d%98-%ec%84%b1%eb%8a%a5-%ea%b0%9c%ec%84%a0%ea%b8%b0.html"
+              target="_blank" rel="noopener">https://tech.trenbe.com/2022/09/14/트렌비-리뷰-서비스의-성능-개선기.html [트렌비
+              기술블로그]</a>)</em></p>
       </div>
     </div>
   </main>
-  <footer><div class="container">© 2025 김도현 · <a href="../../index.html" style="color:inherit">홈으로</a></div></footer>
+  <footer>
+    <div class="container">© 2025 김도현 · <a href="../../index.html" style="color:inherit">홈으로</a></div>
+  </footer>
   <script src="../../assets/js/main.js"></script>
 </body>
+
 </html>
