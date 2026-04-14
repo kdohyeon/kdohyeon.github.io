@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko" data-theme="light">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,35 +10,166 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../assets/css/main.css" />
   <style>
-    .post-header{padding-bottom:36px;border-bottom:1px solid var(--border);margin-bottom:48px;}
-    .post-category{font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:500;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;}
-    .post-title{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px;}
-    .post-meta{display:flex;flex-wrap:wrap;gap:16px;font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-muted);}
-    .post-meta span{display:flex;align-items:center;gap:5px;}
-    .post-body{font-size:0.95rem;color:var(--text-sub);line-height:1.9;}
-    .post-body p{margin-bottom:20px;}
-    .post-body h2{font-size:1.15rem;font-weight:700;color:var(--text);margin:40px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
-    .post-body h3{font-size:1rem;font-weight:700;color:var(--text);margin:28px 0 10px;}
-    .post-body ul,.post-body ol{padding-left:20px;margin-bottom:20px;}
-    .post-body ul{list-style:disc;}.post-body ol{list-style:decimal;}
-    .post-body li{margin-bottom:6px;}
-    .post-body strong{color:var(--text);font-weight:600;}
-    .post-body code{font-family:'JetBrains Mono',monospace;font-size:0.82em;background:var(--badge-bg);color:var(--accent);padding:2px 6px;border-radius:4px;}
-    .post-body pre{background:var(--badge-bg);border:1px solid var(--border);border-radius:8px;padding:20px;overflow-x:auto;margin-bottom:24px;}
-    .post-body pre code{background:none;padding:0;font-size:0.84rem;color:var(--text-sub);}
-    .post-body blockquote{border-left:3px solid var(--accent);padding-left:16px;margin:24px 0;color:var(--text-muted);font-style:italic;}
-    .post-body img{max-width:100%;border-radius:8px;border:1px solid var(--border);margin:8px 0 24px;}
-    .placeholder{padding:64px 32px;text-align:center;border:2px dashed var(--border);border-radius:12px;}
-    .placeholder-icon{font-size:2rem;margin-bottom:16px;}
-    .placeholder-text{font-size:0.9rem;color:var(--text-muted);line-height:1.7;}
-    footer{margin-top:60px;}
+    .post-header {
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .post-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .post-title {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .post-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .post-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .post-body {
+      font-size: 0.95rem;
+      color: var(--text-sub);
+      line-height: 1.9;
+    }
+
+    .post-body p {
+      margin-bottom: 20px;
+    }
+
+    .post-body h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 40px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .post-body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 28px 0 10px;
+    }
+
+    .post-body ul,
+    .post-body ol {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .post-body ul {
+      list-style: disc;
+    }
+
+    .post-body ol {
+      list-style: decimal;
+    }
+
+    .post-body li {
+      margin-bottom: 6px;
+    }
+
+    .post-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .post-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82em;
+      background: var(--badge-bg);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .post-body pre {
+      background: var(--badge-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+    }
+
+    .post-body pre code {
+      background: none;
+      padding: 0;
+      font-size: 0.84rem;
+      color: var(--text-sub);
+    }
+
+    .post-body blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 16px;
+      margin: 24px 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .post-body img {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin: 8px 0 24px;
+    }
+
+    .placeholder {
+      padding: 64px 32px;
+      text-align: center;
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+    }
+
+    .placeholder-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .placeholder-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    footer {
+      margin-top: 60px;
+    }
   </style>
 </head>
+
 <body>
   <nav>
     <div class="nav-inner">
       <a class="nav-back" href="../../index.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
         김도현
       </a>
       <div class="toggle-wrap">
@@ -52,19 +184,97 @@
         <p class="post-category">역량 · 데이터 분석</p>
         <h1 class="post-title">JIRA 데이터 기반 팀 업무 분석</h1>
         <div class="post-meta">
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2022. 12</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"/><path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"/></svg>트렌비 (Trenbe)</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>2022. 12</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" />
+              <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" />
+            </svg>트렌비 (Trenbe)</span>
         </div>
       </div>
       <div class="post-body">
-        <div class="placeholder">
-          <div class="placeholder-icon">✍️</div>
-          <p class="placeholder-text">내용을 작성해 주세요.<br />placeholder div를 삭제하고 내용을 입력하면 됩니다.</p>
-        </div>
+        <h2>분석 목적</h2>
+        <p>아래 분석 목적을 이루고자 팀의 JIRA 데이터를 분석했습니다.</p>
+        <ul>
+          <li>2022년도에 어떤 프로젝트를 수행했고, 핵심 프로젝트는 어떤 것이 있었는지?</li>
+          <li>개발자별 업무 스타일은 어떤지?</li>
+          <li>팀 내부 협업(프론트엔드-백엔드, PO-개발자 등)은 어떻게 이뤄졌는지?</li>
+        </ul>
+
+        <h2>데이터 분석 과정</h2>
+        <p>대부분의 데이터 분석 과정과 비슷하게 아래의 흐름으로 진행했습니다.</p>
+        <p><strong>데이터 추출 > 데이터에 대한 이해 > 전처리 (파생 변수 생성) > 분석 > 리포팅 (시각화)</strong></p>
+        <ul>
+          <li><strong>데이터 추출:</strong> JIRA 에서 제공하는 데이터를 엑셀 형태로 추출</li>
+          <li><strong>데이터에 대한 이해:</strong> 어떤 필드가 존재하는지 파악하고, 분석을 위한 주요 필드를 설정</li>
+          <li><strong>전처리:</strong> 분석에 사용하지 않거나 필요없는 데이터 삭제, 분석을 위한 파생 변수 생성</li>
+          <li><strong>분석:</strong> 엑셀을 활용하여 데이터를 분석</li>
+          <li><strong>리포팅:</strong> 결과를 알맞은 시각화 형태로 변경하여 팀에게 리포팅</li>
+        </ul>
+
+        <h2>데이터 추출 및 이해 특성파악</h2>
+        <p>JIRA 에 등록되어 있는 모든 티켓은 "이슈 내보내기" 기능을 통해 Excel CSV 형식으로 추출했습니다. 한 번에 최대 1,000건 추출 제한이 있어서 1년 치 데이터를 분기별로 나누어
+          추출했습니다.</p>
+        <p>추출한 엑셀 파일을 기준으로 154개의 필드가 존재했습니다. 파악해본 특성은 다음과 같습니다.</p>
+        <ul>
+          <li><strong>중복된 의미의 필드:</strong> "지켜보는 사람"과 같이 복수 명을 지원하는 필드는 데이터가 펼쳐져 복수 개의 컬럼으로 존재했습니다.</li>
+          <li><strong>의미 없는 필드:</strong> 첨부 파일, 이슈 링크 등 본 분석 목적과 부합하지 않는 필드가 다수 존재했습니다.</li>
+        </ul>
+
+        <h2>전처리하기</h2>
+        <ul>
+          <li><strong>분석용 필드 압축:</strong> 의미 있는 필드(이슈키, 이슈유형, 보고자 등), 결측치 비율이 적은 필드, 날짜 필드 위주로 선택하여 154개 필드에서 17개의 핵심
+            필드로 압축했습니다.</li>
+          <li><strong>파생 변수 생성:</strong> JIRA 기본 필드에는 없었지만, 팀원의 직군(프론트엔드, 백엔드, QA 등)에 따른 업무 스타일 파악을 위해
+            <code>업무 포지션</code> 파생 변수를 추가했습니다.</li>
+          <li><strong>데이터 통합:</strong> 분기별로 나누어 추출했던 파일들을 하나의 큰 데이터셋으로 통합했습니다.</li>
+        </ul>
+
+        <h2>데이터 분석 결과</h2>
+
+        <h3>분석 1. 2022년도 핵심 프로젝트와 수행 내역</h3>
+        <ul>
+          <li><strong>스프린트 기초 통계:</strong> 2022년 한 해 약 30개의 스프린트를 진행하며 1,700여 개의 티켓을 생성했습니다. 특이한 패턴으로는 티켓이 단기에 급증하는 스프린트
+            이후에는 2~3주간 티켓 생성이 줄었는데, 이는 큰 프로젝트 시작 전 전체 작업을 미리 쪼개 등록하는 팀의 경향성 때문임을 확인했습니다.</li>
+          <li><strong>이슈 상태:</strong> KTLO/Bug 제외 일반 목적 스프린트 티켓은 90% 이상 종료 처리되어, 팀의 스프린트 관리가 잘 이뤄지고 있음을 확인했습니다.</li>
+          <li><strong>에픽(Epic):</strong> 대형 프로젝트(NFT, 스타일 탭 등)는 100개 가까운 티켓을 묶어 관리했고, 보통 에픽 하나당 3개 스프린트(6주)에 걸쳐 건강하게
+            마무리되는 형태를 보였습니다.</li>
+        </ul>
+
+        <h3>분석 2. 개발 직군별 업무 스타일</h3>
+        <ul>
+          <li><strong>프론트엔드:</strong> 연차가 높을수록 더 많은 티켓을 처리했습니다. 특히 KTLO 성격의 티켓이 프론트엔드에 많다는 점이 반영되었습니다.</li>
+          <li><strong>백엔드:</strong> 연차가 낮은 개발자가 가장 많은 티켓(주로 Bug, KTLO)을 처리하는 양상을 보였습니다.</li>
+          <li><strong>작업 시간 (Estimation):</strong> 평균 Task Estimation을 비교한 결과, 프론트엔드는 <strong>1.2일</strong>, 백엔드는
+            <strong>1.6일</strong>로 나타났습니다. 프론트엔드는 일정을 타이트하게 잡고, 백엔드는 버퍼를 두어 산정하는 성향의 차이를 정량적 데이터로 확인할 수 있었습니다.</li>
+        </ul>
+
+        <h3>분석 3. 팀 내부 협업 네트워크</h3>
+        <p>"보고자(Reporter)"와 "작업자(Assignee)" 필드를 활용한 소셜 네트워크 분석 내용입니다.</p>
+        <ul>
+          <li>본인이 티켓을 생성하고 본인 스스로에게 할당하는 자기 주도적 생성이 대다수를 차지했습니다.</li>
+          <li><strong>프론트-백엔드 간 교차 협업</strong> 시에는 주로 백엔드 개발자가 티켓을 생성하고 프론트엔드 개발자에게 할당하며 업무를 연계하는 흐름(API 제공 후 연동 요청 등)을
+            보였습니다.</li>
+          <li>프론트엔드 개발자들은 다채로운 보고자로부터 KTLO 티켓을 폭넓게 할당받아 처리하는 집중 현상이 있었습니다.</li>
+        </ul>
+
+        <h2>마무리하며</h2>
+        <p>"데이터 분석"이 반드시 복잡한 전용 툴이나 수식을 써야만 하는 것은 아닙니다. JIRA 데이터를 있는 그대로 엑셀로 내려받아 <code>평균</code> 같은 기초 통계로만 접근해도 팀이 1년간
+          어떤 방식으로 호흡을 맞추며 일해왔는지를 훌륭하게 회고할 수 있었습니다. 일단 시작해 보는 것이 중요합니다!</p>
+
+        <p><br><em>(원문 출처: <a href="https://kdohyeon.tistory.com/86" target="_blank"
+              rel="noopener">https://kdohyeon.tistory.com/86 [대니기록:티스토리]</a>)</em></p>
       </div>
     </div>
   </main>
-  <footer><div class="container">© 2025 김도현 · <a href="../../index.html" style="color:inherit">홈으로</a></div></footer>
+  <footer>
+    <div class="container">© 2025 김도현 · <a href="../../index.html" style="color:inherit">홈으로</a></div>
+  </footer>
   <script src="../../assets/js/main.js"></script>
 </body>
+
 </html>
