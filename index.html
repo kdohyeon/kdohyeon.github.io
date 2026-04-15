@@ -488,46 +488,45 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-period">2023. 04 — 현재</div>
-            <div class="timeline-company"><a href="https://www.kakaobank.com" target="_blank" rel="noopener">카카오뱅크
-                (KakaoBank)</a></div>
-            <div class="timeline-role">Backend Engineer</div>
+            <div class="timeline-company"><a href="https://www.kakaobank.com" target="_blank" rel="noopener">카카오뱅크</a></div>
+            <div class="timeline-role">Server Engineer <span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:500;color:var(--text-muted);">(3yrs+)</span></div>
             <div class="timeline-quote">고객인증 및 알림 발송 관련 서비스 담당</div>
             <ul class="timeline-bullets">
-              <li>대고객 채널 알림 발송 서비스 개발</li>
-              <li>수신 상품 가입 시 내 문서함 서비스 가입 및 문서 발송 서비스 개발 <strong style="color:var(--text)">(내 문서함 서비스 가입자 80배
-                  상승)</strong></li>
-              <li>인증서 발급 시 계좌 비밀번호 인증 방식 개발 <strong style="color:var(--text)">(약 60%의 고객이 기존 방식에서 해당 방식으로 인증서
-                  발급)</strong></li>
+              <li>알림 발송 서비스 설계 및 개발 — Kafka 기반 대고객 채널 발송 파이프라인 구축</li>
+              <li>Kafka 파티션 불균형 해결 및 Reactive 컨슈머 도입으로 TPS ~400 → ~10,000 개선</li>
+              <li>Kafka + Project Reactor 병렬화로 3,000만 건 로그 처리 시간 10시간 → 수십 분 단축</li>
+              <li>Redis List → Set 자료구조 교체로 CPU 100% 장애 해소 (O(N) → O(1))</li>
+              <li>마케팅 모니터링 시스템 Hadoop 의존 제거 — MySQL 이중 적재 구조로 어드민 응답 속도 80% 개선 및 24/7 가용성 확보</li>
+              <li>내 문서함 서비스 연동 개발 <strong style="color:var(--text)">(가입자 80배 상승)</strong> / 계좌 비밀번호 기반 인증서 발급 방식 개발 <strong style="color:var(--text)">(전체 인증서 발급의 약 60% 점유)</strong></li>
             </ul>
           </div>
 
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-period">2022. 03 — 2023. 04</div>
-            <div class="timeline-company"><a href="https://www.trenbe.com" target="_blank" rel="noopener">트렌비
-                (Trenbe)</a></div>
-            <div class="timeline-role">Backend Engineer</div>
+            <div class="timeline-company"><a href="https://www.trenbe.com" target="_blank" rel="noopener">트렌비</a></div>
+            <div class="timeline-role">Backend Engineer <span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:500;color:var(--text-muted);">(1yr)</span></div>
             <div class="timeline-quote">고객 접점 (주문, 상품, 리뷰 등) 관련 서비스 담당</div>
             <ul class="timeline-bullets">
-              <li>리뷰 서비스 안정화 및 성능 개선</li>
-              <li>명품 패션의 실 착용 정보를 제공하는 스타일 서비스 설계, 개발 및 분석</li>
-              <li>상품 카탈로그 시스템 설계 및 개발</li>
-              <li>CMS (컨텐츠 관리 시스템) 설계 및 개발</li>
-              <li>JIRA 데이터 기반 업무 분석</li>
+              <li>리뷰 서비스 p90 API 응답 속도 250ms → 30ms 개선 및 DB 커넥션 풀 고갈 해소</li>
+              <li>스타일 탭 서비스 백엔드 설계·개발 — Clean Architecture + Multi-module 환경 구성, 런칭 후 재방문율 30~40% 달성 (타 서비스 대비 2배)</li>
+              <li>상품 카탈로그 시스템 및 CMS 설계·개발</li>
+              <li>데이터 분석 기반 UX 개선 제안 채택 (스타일 서비스 상세화면 전환율 개선)</li>
             </ul>
           </div>
 
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-period">2018. 08 — 2022. 03</div>
-            <div class="timeline-company"><a href="https://www.coupang.com" target="_blank" rel="noopener">쿠팡
-                (Coupang)</a></div>
-            <div class="timeline-role">Backend Engineer</div>
+            <div class="timeline-company"><a href="https://www.coupang.com" target="_blank" rel="noopener">쿠팡</a></div>
+            <div class="timeline-role">Sr. Backend Engineer <span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:500;color:var(--text-muted);">(3.5yrs)</span></div>
             <div class="timeline-quote">리테일 상품 관련 서비스 담당</div>
             <ul class="timeline-bullets">
-              <li>통계 기반 상품의 이상 가격 탐지 서비스 설계 및 개발</li>
-              <li>리테일 (로켓) 상품 카탈로그 관리 시스템 분석 및 개발</li>
-              <li>전문연구요원 (병역 대체복무) 으로 3년 근무 (2018.10 — 2021.10)</li>
+              <li>통계 기반 상품 이상 가격 탐지 서비스 설계 및 개발</li>
+              <li>리테일 (로켓) 상품 카탈로그 서비스 분리 및 시스템 마이그레이션</li>
+              <li>상품 수정 이력 구조 설계 및 카탈로그 관리 백오피스 개발</li>
+              <li>레거시 API 교체 프로젝트 주도</li>
+              <li>전문연구요원 (병역 대체복무) 3년 근무 (2018. 10 — 2021. 10)</li>
             </ul>
           </div>
 
