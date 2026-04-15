@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>마케팅 메시지 발송 파이프라인 운영 효율화</title>
+    <title>파이프라인 생성 공수 80% 절감 — 데이터 기반 개선 제안부터 구현까지 — 김도현</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -182,7 +182,7 @@
         <div class="container">
             <div class="post-header">
                 <p class="post-category">TPM · 프로세스 최적화</p>
-                <h1 class="post-title">마케팅 메시지 발송 파이프라인 운영 효율화</h1>
+                <h1 class="post-title">파이프라인 생성 공수 80% 절감 — 데이터 기반 개선 제안부터 구현까지</h1>
                 <div class="post-meta">
                     <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -199,48 +199,28 @@
                 </div>
             </div>
             <div class="post-body">
-                <p><strong>Role:</strong> Lead Backend Developer &amp; Technical Product Lead</p>
-                <p><strong>Key Achievement:</strong> 파이프라인 생성 공수 80% 절감 (10분 → 2분), 데이터 기반 프로세스 혁신 제안 및 실행</p>
 
-                <h2>1. Context &amp; Problem (배경 및 문제점)</h2>
-                <p>금융 도메인 특성상 모든 마케팅 메시지는 엄격한 결재 프로세스를 거치며, 보안 및 추적성을 위해 1회성 파이프라인 구조로 설계되어 있습니다. 이로 인해 다음과 같은 운영 병목 현상이
-                    발생했습니다.</p>
+                <h2>Situation</h2>
+                <p>금융 도메인 특성상 모든 마케팅 메시지는 엄격한 결재 프로세스를 거치며, 보안·추적성을 위해 1회성 파이프라인 구조로 운영됩니다. 이로 인해 다음과 같은 운영 비효율이 발생했습니다.</p>
                 <ul>
-                    <li><strong>반복 작업의 과다:</strong> 연간 생성되는 파이프라인 중 약 50%가 동일한 템플릿, 속도, 필터를 사용함에도 불구하고 매번 수동으로 신규 생성해야
-                        함. (예: 오전/오후 분할 발송, 채널별 분할 발송 등)</li>
-                    <li><strong>높은 운영 리소스:</strong> 파이프라인 1개 생성 시 최소 5~10분의 수동 입력 시간이 소요되어, 마케팅 운영팀의 생산성 저하 및 휴먼 에러 가능성
-                        존재.</li>
+                    <li><strong>반복 작업 과다:</strong> 연간 생성 파이프라인의 약 50%가 동일한 템플릿·속도·필터를 사용함에도 매번 수동으로 신규 생성해야 했습니다. (예: 오전/오후 분할 발송, 채널별 분할 발송 등)</li>
+                    <li><strong>높은 운영 리소스:</strong> 파이프라인 1개 생성에 최소 5~10분의 수동 입력 시간이 소요되어 생산성 저하 및 휴먼 에러 가능성이 존재했습니다.</li>
                 </ul>
 
-                <h2>2. Strategy &amp; Action (전략 및 실행)</h2>
-                <p>단순한 기능 구현을 넘어, TPM으로서 데이터 기반의 문제 제기와 사용자 중심의 설계를 주도했습니다.</p>
+                <h2>Behavior</h2>
+                <p>단순 기능 구현에 머물지 않고, 데이터 기반의 문제 제기부터 사용자 중심 설계까지 직접 주도했습니다.</p>
                 <ul>
-                    <li><strong>데이터 기반 개선 제안:</strong> 1년간의 파이프라인 생성 로그를 분석하여 동일 패턴의 파이프라인 비중(약 50%)을 산출. 이를 근거로 '파이프라인
-                        복사 기능' 도입 시 얻을 수 있는 기대 효과(ROI)를 정량화하여 유관 부서에 제안.</li>
-                    <li><strong>요구사항 명세화 및 기획:</strong> 개발자로서 직접 기획서를 작성하고, 사용자 인터뷰를 통해 실질적인 워크플로우를 파악. 단순히 모든 데이터를 복사하는
-                        것이 아니라, 금융 보안 정책상 '반드시 새로 입력해야 하는 필드'와 '자동 복사가 가능한 필드'를 구분하여 정책 수립.</li>
-                    <li><strong>비즈니스 로직 최적화:</strong> 결재 프로세스와의 정합성을 맞추면서도, 복사 기능을 통해 중복 입력을 최소화하는 예외 처리 로직 설계 및 구현 주도.
-                    </li>
+                    <li><strong>데이터 기반 개선 제안:</strong> 1년간의 파이프라인 생성 로그를 분석하여 동일 패턴 비중(약 50%)을 산출. 이를 근거로 '파이프라인 복사 기능' 도입 효과(ROI)를 정량화하여 유관 부서에 제안.</li>
+                    <li><strong>요구사항 기획 및 명세:</strong> 직접 기획서를 작성하고 사용자 인터뷰를 통해 워크플로우를 파악. 금융 보안 정책상 '반드시 새로 입력해야 하는 필드'와 '자동 복사 가능한 필드'를 구분하여 정책 수립.</li>
+                    <li><strong>비즈니스 로직 구현:</strong> 결재 프로세스 정합성을 유지하면서 중복 입력을 최소화하는 복사 로직 설계 및 구현.</li>
                 </ul>
 
-                <h2>3. Result &amp; Impact (성과 및 영향)</h2>
+                <h2>Impact</h2>
                 <ul>
-                    <li><strong>운영 효율 극대화:</strong> 파이프라인 생성 소요 시간을 평균 7.5분에서 1.5분으로 약 80% 단축.</li>
-                    <li><strong>확장성 확보:</strong> 복사 기능 도입 이후, 대규모 마케팅 캠페인 시 파이프라인 분할 발송 대응 속도가 비약적으로 향상됨.</li>
-                    <li><strong>제품 내재화:</strong> 해당 기능은 릴리즈 이후 마케팅 운영팀의 핵심 기능으로 자리 잡았으며, 현재까지 안정적으로 운영 중.</li>
+                    <li><strong>파이프라인 생성 공수 80% 절감:</strong> 평균 생성 소요 시간 7.5분 → 1.5분으로 단축.</li>
+                    <li><strong>캠페인 대응 속도 향상:</strong> 대규모 마케팅 캠페인 시 파이프라인 분할 발송 대응이 비약적으로 빨라짐.</li>
+                    <li><strong>핵심 기능으로 정착:</strong> 릴리즈 이후 마케팅 운영팀의 필수 기능으로 자리잡아 안정적으로 운영 중.</li>
                 </ul>
-
-                <h2>💡 TPM 역량 포인트 (Resume Summary)</h2>
-                <p>이 프로젝트를 통해 다음과 같은 TPM 핵심 역량을 증명했습니다.</p>
-                <ul>
-                    <li><strong>Data-Driven Decision Making:</strong> 운영 로그 분석을 통해 비효율의 원인을 수치로 증명하고 솔루션을 제안함.</li>
-                    <li><strong>Product Ownership:</strong> 개발 단계에 머물지 않고 기획서 작성부터 사용자 인터뷰까지 제품의 Life-cycle 전체에 관여함.
-                    </li>
-                    <li><strong>Domain Expertise:</strong> 금융 도메인의 특수성(결재 및 1회성 생명주기)을 이해하고 이를 기술적 제약 사항 내에서 효율적으로 풀어냄.
-                    </li>
-                </ul>
-
-                <p><br><em>#Efficiency #Data-Driven #Financial-Domain #Process-Optimization</em></p>
             </div>
         </div>
     </main>

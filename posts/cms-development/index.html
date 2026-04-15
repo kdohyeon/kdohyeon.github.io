@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>스타일 탭 서비스 개발 — 김도현</title>
+  <title>홈 화면 CMS 도입으로 콘텐츠 유형 2개 → 6개 확장 — 김도현</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -182,7 +182,7 @@
     <div class="container">
       <div class="post-header">
         <p class="post-category">역량 · 시스템 설계</p>
-        <h1 class="post-title">CMS (컨텐츠 관리 시스템) 설계 및 개발</h1>
+        <h1 class="post-title">홈 화면 CMS 도입으로 콘텐츠 유형 2개 → 6개 확장</h1>
         <div class="post-meta">
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="3" y="4" width="18" height="18" rx="2" />
@@ -197,89 +197,38 @@
         </div>
       </div>
       <div class="post-body">
-        <h2>1. 프로젝트 개요</h2>
+
+        <h2>Situation</h2>
+        <p>트렌비 홈 화면은 프론트엔드 <strong>하드코딩</strong> 방식으로 관리되고 있었습니다. 새로운 콘텐츠 유형(타임딜, 이미지 배너 등)을 추가하거나 노출 순서를 변경하려면 매번 개발자가 직접 코드를 수정해야 했고, 확장성과 유지보수성이 모두 낮은 상태였습니다.</p>
         <ul>
           <li><strong>개발 기간:</strong> 2022. 06 ~ 2022. 07 (2개월)</li>
           <li><strong>개발 인원:</strong> 총 6명 (백엔드 2명, 프론트 2명, UI/UX 1명, QA 1명)</li>
-          <li><strong>담당 역할:</strong>
-            <ul>
-              <li>백엔드 개발 리드 및 시스템 설계 (50%)</li>
-              <li>백엔드 API 개발 (70%)</li>
-              <li>멀티 모듈 및 클린 아키텍처 기반 프로젝트 환경 구성 (100%)</li>
-              <li>문서화 (회의록, API 스펙, 기술 문서 등) (70%)</li>
-            </ul>
-          </li>
+          <li><strong>담당 역할:</strong> 백엔드 개발 리드·시스템 설계, 멀티 모듈 및 클린 아키텍처 환경 구성 (100%)</li>
+          <li><strong>기술 스택:</strong> Java 17, Spring Boot 2.7, MySQL 8 (JSON 타입), Redis, JPA, QueryDSL, Spring Batch</li>
         </ul>
 
-        <h2>2. 기술 스택</h2>
-        <ul>
-          <li><strong>Language & Framework:</strong> Java 17, Spring Boot 2.7</li>
-          <li><strong>Database:</strong> MySQL 8 (JSON 데이터 타입 활용), Redis Cache</li>
-          <li><strong>Library:</strong> JPA, QueryDSL, Spring Batch</li>
-          <li><strong>Infra & Tool:</strong> ArgoCD, IntelliJ IDEA 2021</li>
-        </ul>
+        <h2>Behavior</h2>
 
-        <h2>3. 배경 및 필요성</h2>
-        <ul>
-          <li>기존 홈 화면 관리가 프론트엔드 하드코딩 방식으로 되어 있어 확장성과 유지보수성이 낮고 개발 속도가 저하되는 이슈가 있었습니다.</li>
-          <li>더욱 다양하고 유연한 모듈 단위로 홈 화면을 자유롭게 구성할 수 있는 시스템 구축이 필요했습니다.</li>
-        </ul>
+        <h3>JSON 타입 기반 유연한 콘텐츠 설계</h3>
+        <p>상품·이미지·타임딜 등 다양한 콘텐츠 유형을 하나의 구조로 처리하기 위해, 콘텐츠 데이터를 <strong>MySQL JSON 타입</strong>으로 저장하고 <code>@JsonType</code>으로 역직렬화하는 방식을 설계했습니다. 이 접근 덕분에 새로운 콘텐츠 유형 추가 시 테이블 스키마를 변경하지 않아도 됩니다.</p>
 
-        <h2>4. 어려웠던 점 및 해결 방안</h2>
+        <h3>인력 공백 대응: '오전 소통, 오후 집중 개발' 루틴</h3>
+        <p>협업 백엔드 개발자가 신혼여행으로 개발 공백이 발생했습니다. 제한된 시간 내 혼자서 소통과 메인 개발을 모두 소화하기 위해 <strong>오전 소통·협의, 오후 집중 개발</strong>이라는 전략적 루틴을 세워 일정을 지킬 수 있었습니다.</p>
+
+        <h3>팀 커뮤니케이션 개선</h3>
+        <p>백엔드-프론트엔드 전용 슬랙 채널을 별도로 운영하여 대기 시간을 최소화하고 협업 효율을 높였습니다.</p>
+
+        <h2>Impact</h2>
         <ul>
-          <li><strong>다양한 컨텐츠 유형 대응:</strong>
+          <li><strong>콘텐츠 유형 확장:</strong> CMS 도입 후 처리 가능한 홈 화면 콘텐츠 유형이 <strong>2개 → 6개</strong>로 확장.</li>
+          <li><strong>렌더링 성능 향상:</strong>
             <ul>
-              <li>상품, 이미지, 타임딜 등 다양한 유형의 컨텐츠를 유연하게 관리 및 처리해야 했습니다.</li>
-              <li><strong>해결:</strong> 확장성을 크게 높이기 위해 컨텐츠 데이터를 JSON 형태로 저장하도록 시스템을 설계했고, <code>@JsonType</code>과 MySQL의
-                JSON 타입을 효과적으로 활용했습니다.</li>
+              <li><strong>Speed Index:</strong> 5.0s → 3.5s (<strong>30% 개선</strong>)</li>
+              <li><strong>Total Blocking Time:</strong> 0.8s → 0.6s (25% 개선)</li>
+              <li><strong>LCP:</strong> 6.8s → 6.3s (7% 개선)</li>
             </ul>
           </li>
-          <li><strong>인력 공백 발생:</strong>
-            <ul>
-              <li>협업하던 다른 백엔드 개발자 분의 신혼여행으로 인해 개발 공백이 발생했습니다.</li>
-              <li><strong>해결:</strong> 제한된 시간을 최대한 밀도 있게 사용하기 위해 '오전 소통, 오후 집중 개발' 이라는 전략적 루틴을 세워 무사히 혼자서 소통과 메인 개발 업무를
-                병행했습니다.</li>
-            </ul>
-          </li>
-        </ul>
-
-        <h2>5. 아쉬웠던 점</h2>
-        <ul>
-          <li><strong>기술적 측면:</strong>
-            <ul>
-              <li><strong>캐시 단위 설정 오류:</strong> 초기에 전체 데이터를 한 번에 캐싱하는 단일 키 방식으로 설계하여, 리프레시 시 타임아웃이 간헐적으로 발생했습니다. 이후 진행된
-                스타일 서비스 프로젝트에서는 이를 교훈 삼아 개별 단위 캐싱 방식으로 개선했습니다.</li>
-              <li><strong>ID 체계:</strong> 식별자로 순수 UUID만을 사용하여 로그 트래킹 및 유지보수가 꽤 번거로웠습니다. Sequential ID와 병행하는 것이 운영상 훨씬 더
-                효율적이었을 것이라 판단합니다.</li>
-            </ul>
-          </li>
-          <li><strong>협업 측면:</strong>
-            <ul>
-              <li><strong>불명확한 요구사항:</strong> 프로젝트 초기 플래닝 단계에서 기획 스펙 및 요구사항이 다소 명확하지 않아 결국 개발팀 측에서 기획서를 역으로 재정리해야 하는 리소스
-                낭비가 있었습니다.</li>
-              <li><strong>우선순위 부재:</strong> 기능별로 필수(Mandatory) 요건과 선택(Optional) 요건에 대한 명확한 구분이 미흡해 일정 산출 및 관리에 아쉬움이
-                남았습니다.</li>
-            </ul>
-          </li>
-        </ul>
-
-        <h2>6. 좋았던 점</h2>
-        <ul>
-          <li><strong>커뮤니케이션 프로세스 개선:</strong> 백엔드와 프론트엔드 개발자들만의 전용 슬랙 채널을 별도로 운영하여 의사소통 비용을 낮추고 팀워크를 강화했습니다. 이를 통해 대기
-            시간을 최소화하고 전반적인 업무 효율을 대폭 향상시켰습니다.</li>
-        </ul>
-
-        <h2>7. 주요 성과 (성능 개선 지표)</h2>
-        <ul>
-          <li><strong>시스템 설계 확장성:</strong> 도입 후 시스템이 처리 가능한 홈 화면 컨텐츠 유형이 2개에서 6개로 유연하게 확장되었습니다.</li>
-          <li><strong>프론트엔드 브라우저 렌더링 성능 향상:</strong>
-            <ul>
-              <li><strong>Speed Index (SI):</strong> 5.0s → 3.5s (<strong>30% 감소</strong>)</li>
-              <li><strong>Time to Interactive (TTI):</strong> 6.5s → 6.0s (<strong>8% 감소</strong>)</li>
-              <li><strong>Largest Contentful Paint (LCP):</strong> 6.8s → 6.3s (<strong>7% 감소</strong>)</li>
-              <li><strong>Total Blocking Time (TBT):</strong> 0.8s → 0.6s (<strong>25% 감소</strong>)</li>
-            </ul>
-          </li>
+          <li><strong>교훈 전파:</strong> 단일 키 캐싱으로 인한 타임아웃 문제를 이후 스타일 서비스 프로젝트에서 개별 단위 캐싱으로 개선하는 데 활용.</li>
         </ul>
 
         <p><br><em>(원문 출처: <a href="https://kdohyeon.tistory.com/75" target="_blank"
