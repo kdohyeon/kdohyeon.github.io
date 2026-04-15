@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dohyeon Kim — Software Engineer → Technical Program Manager</title>
+  <meta name="description" content="Dohyeon Kim — 8+ years of backend engineering experience transitioning to Technical Program Management. Specializing in cross-functional program leadership, data-driven system optimization, and stakeholder alignment in fintech." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <style>
+    /* ── Page-specific: Main layout ─────────────────────── */
+    main {
+      padding-top: 82px;
+    }
+
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-child {
+      border-bottom: none;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .section-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+    }
+
+    .section-title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    #hero {
+      padding-top: 44px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero-name {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: clamp(2.2rem, 5.5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .hero-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0;
+    }
+
+    .hero-desc {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      line-height: 1.8;
+      margin-top: 24px;
+      margin-bottom: 28px;
+    }
+
+    .hero-desc p {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .hero-desc-label {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 2px 10px;
+      border-radius: 5px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .hero-desc strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .hero-desc code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82em;
+      background: var(--badge-bg);
+      color: var(--accent);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      background: var(--bg-card);
+      transition: border-color var(--t), color var(--t), box-shadow var(--t);
+      text-decoration: none;
+    }
+
+    .hero-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+      text-decoration: none;
+    }
+
+    .hero-link svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .hero-photo {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--border);
+      flex-shrink: 0;
+      transition: border-color var(--t);
+    }
+
+    .hero-photo-wrap {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 4px;
+    }
+
+    /* ── Timeline ────────────────────────────────────────── */
+    .timeline {
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      bottom: 0;
+      width: 1px;
+      background: var(--timeline);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 26px;
+      margin-bottom: 40px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -4px;
+      top: 6px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      transition: background var(--t), border-color var(--t);
+    }
+
+    .timeline-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .timeline-company {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .timeline-company a {
+      color: var(--text);
+    }
+
+    .timeline-company a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .timeline-role {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .timeline-quote {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .timeline-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .timeline-bullets li {
+      font-size: 0.86rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .timeline-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    /* ── Projects ────────────────────────────────────────── */
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+      transition: background var(--t), border-color var(--t);
+    }
+
+    .project-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .project-title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .project-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.67rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .project-company {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      border: 1px solid var(--border);
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    .project-company.kakao {
+      background: #FDF4CD;
+      color: #8C6A00;
+      border-color: #FDF4CD;
+    }
+
+    .project-company.coupang {
+      background: #FEE2E2;
+      color: #991B1B;
+      border-color: #FEE2E2;
+    }
+
+    .project-company.trenbe {
+      background: #F3E8FF;
+      color: #6B21A8;
+      border-color: #F3E8FF;
+    }
+
+    .project-category {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    .project-desc {
+      font-size: 0.84rem;
+      color: var(--text-sub);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .project-impact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .impact-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 5px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    /* ── Tech stack ──────────────────────────────────────── */
+    .stack-group {
+      margin-bottom: 24px;
+    }
+
+    .stack-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .stack-group-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .stack-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.73rem;
+      padding: 4px 11px;
+      border-radius: 6px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      border: 1px solid var(--border);
+      letter-spacing: 0.02em;
+      transition: background var(--t), color var(--t), border-color var(--t);
+    }
+
+    .badge:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .badge.hi {
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      border-color: var(--border);
+    }
+
+    /* ── Papers ──────────────────────────────────────────── */
+    .paper-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .paper-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .paper-title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.93rem;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 5px;
+    }
+
+    .paper-authors {
+      font-size: 0.78rem;
+      color: var(--text-sub);
+      margin-bottom: 4px;
+    }
+
+    .paper-authors em {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .paper-venue {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+    }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 620px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-photo-wrap {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Nav ── -->
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-logo">Dohyeon Kim</span>
+      <div class="nav-links">
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#stack">Tech Stack</a>
+        <a href="#education">Education</a>
+        <a href="#publications">Publications</a>
+        <a href="#activities">Activities</a>
+      </div>
+      <div class="toggle-wrap">
+        <span class="toggle-icon" id="toggle-icon">☀️</span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <!-- ── Hero ── -->
+      <section id="hero" class="fade-up">
+        <div class="hero-grid">
+          <div>
+            <p class="hero-eyebrow">Building services that customers actually need</p>
+            <h1 class="hero-name">Dohyeon Kim</h1>
+            <div class="hero-title-row">
+              <p class="hero-title">Software Engineer → Technical Program Manager <span
+                  style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;font-weight:500;color:var(--text-muted);letter-spacing:0.04em;">(8yrs+)</span>
+              </p>
+            </div>
+          </div>
+          <div class="hero-photo-wrap" style="flex-direction: column; align-items: center; gap: 16px;">
+            <img class="hero-photo" src="../images/kdohyeon2.jpeg" alt="Dohyeon Kim" onerror="this.style.display='none'" />
+            <div class="hero-links" style="justify-content: center;">
+              <!-- GitHub -->
+              <a class="hero-link" href="https://github.com/kdohyeon" target="_blank" rel="noopener" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                </svg>
+              </a>
+              <!-- LinkedIn -->
+              <a class="hero-link" href="https://linkedin.com/in/kdohyeon" target="_blank" rel="noopener"
+                title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+              </a>
+              <!-- Email -->
+              <a class="hero-link" href="mailto:kdohyeon@gmail.com" title="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="hero-desc">
+          <p style="margin-bottom:12px;">
+            <span class="hero-desc-label">8yr Backend Expert</span>
+            <span>Built and operated high-availability services in Java/Kotlin MSA environments across fintech and e-commerce.</span>
+          </p>
+          <p style="margin-bottom:12px;">
+            <span class="hero-desc-label">Product-Oriented</span>
+            <span>Drive decisions with data and UX insights, prioritizing business outcomes beyond code.</span>
+          </p>
+          <p style="margin-bottom:12px;">
+            <span class="hero-desc-label">Cross-Functional Leader</span>
+            <span>Led complex, multi-team programs end-to-end — aligning DBA, data, marketing, compliance, and engineering stakeholders.</span>
+          </p>
+          <p style="margin-bottom:12px;">
+            <span class="hero-desc-label">Data-Driven Decision Maker</span>
+            <span>Translate structured & unstructured data into actionable business insights and engineering priorities.</span>
+          </p>
+          <p>
+            <span class="hero-desc-label">Global Communicator</span>
+            <span>6 years of overseas experience (Sweden). Proficient in English for business communication and cross-cultural collaboration.</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- ── Experience ── -->
+      <section id="experience" class="fade-up">
+        <div class="section-header">
+          <span class="section-num">01</span>
+          <h2 class="section-title">Professional Experience</h2>
+        </div>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-period">Apr 2023 — Present</div>
+            <div class="timeline-company"><a href="https://www.kakaobank.com" target="_blank" rel="noopener">KakaoBank</a></div>
+            <div class="timeline-role">Server Engineer <span
+                style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:500;color:var(--text-muted);">(3yrs+)</span>
+            </div>
+            <div class="timeline-quote">Customer authentication & notification delivery services</div>
+            <ul class="timeline-bullets">
+              <li>Designed and built a Kafka-based notification delivery pipeline serving millions of customers across push, SMS, and KakaoTalk channels</li>
+              <li>Led monitoring system decoupling — coordinated DBA, data, marketing, and dev teams to decouple Hadoop dependency, achieving 24/7 uptime and 80% response time improvement</li>
+              <li>Resolved Kafka partition imbalance and introduced reactive consumers, improving TPS from ~400 to ~10,000 (25× throughput gain)</li>
+              <li>Rebuilt 30M-record log pipeline with Project Reactor parallelization — processing time reduced from 10 hours to minutes</li>
+              <li>Resolved Redis CPU 100% incident by replacing List (O(N)) with Set (O(1)) data structure</li>
+              <li>Reduced pipeline creation effort by 80% — proposed and implemented a copy feature based on 1-year log analysis, aligning compliance and operations teams</li>
+              <li>Led "My Document Box" integration without PM — achieving 100× subscriber growth (100→10,000/day) through scope negotiation and tech stack decisions</li>
+              <li>Developed account-password-based certificate issuance — now ~60% of all certificate issuances</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-period">Mar 2022 — Apr 2023</div>
+            <div class="timeline-company"><a href="https://www.trenbe.com" target="_blank" rel="noopener">Trenbe</a></div>
+            <div class="timeline-role">Backend Engineer <span
+                style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:500;color:var(--text-muted);">(1yr)</span>
+            </div>
+            <div class="timeline-quote">Customer-facing services: orders, product catalog, reviews</div>
+            <ul class="timeline-bullets">
+              <li>Improved review service p90 API response from 250ms → 30ms and resolved DB connection pool exhaustion</li>
+              <li>Designed and built Style Tab service backend (Clean Architecture + Multi-module) — achieved 30–40% revisit rate (2× industry average)</li>
+              <li>Led exhibition system development as PM — designed strategy pattern architecture while managing stakeholders</li>
+              <li>Proposed data-driven UX improvements based on Amplitude analysis; adopted by product team</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-period">Aug 2018 — Mar 2022</div>
+            <div class="timeline-company"><a href="https://www.coupang.com" target="_blank" rel="noopener">Coupang</a></div>
+            <div class="timeline-role">Sr. Backend Engineer <span
+                style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:500;color:var(--text-muted);">(3.5yrs)</span>
+            </div>
+            <div class="timeline-quote">Retail product catalog & pricing services</div>
+            <ul class="timeline-bullets">
+              <li>Designed and developed statistical price anomaly detection system (patented)</li>
+              <li>Led retail (Rocket) product catalog service decomposition and system migration</li>
+              <li>Designed product modification history architecture and built catalog management back-office</li>
+              <li>Led legacy API replacement program end-to-end</li>
+              <li>Alternative Military Service as Technical Research Personnel (Oct 2018 — Oct 2021)</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Selected Projects ── -->
+      <section id="projects" class="fade-up">
+        <div class="section-header">
+          <span class="section-num">02</span>
+          <h2 class="section-title">Selected Projects <span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;font-weight:400;color:var(--text-muted);">2024 — 2026</span></h2>
+        </div>
+
+        <h3 class="list-heading">Program Management & Cross-Functional Leadership</h3>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-title">Monitoring System Decoupling — Stakeholder Alignment & Data Governance</span>
+            <div class="project-meta">
+              <span class="project-company kakao">KakaoBank</span>
+              <span class="project-year">2025</span>
+            </div>
+          </div>
+          <div class="project-category">TPM · Stakeholder Management</div>
+          <div class="project-desc">
+            Led a cross-functional initiative to decouple the marketing monitoring system from Hadoop. Coordinated 4 teams (DBA, Data, Marketing Ops, Engineering) to establish data retention policies and a dual-write pipeline architecture. Translated technical realities into business terms for non-engineering stakeholders, negotiated trade-offs on data retention scope, and established reusable governance policies.
+          </div>
+          <div class="project-impact">
+            <span class="impact-badge">Monitoring Uptime → 24/7</span>
+            <span class="impact-badge">Response Time −80%</span>
+            <span class="impact-badge">4-Team Consensus</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-title">Pipeline Creation Effort Reduced by 80% — Data-Driven Proposal to Implementation</span>
+            <div class="project-meta">
+              <span class="project-company kakao">KakaoBank</span>
+              <span class="project-year">2025</span>
+            </div>
+          </div>
+          <div class="project-category">TPM · Process Optimization</div>
+          <div class="project-desc">
+            Identified operational inefficiency through 1-year log analysis — 50% of marketing pipelines were repetitive copies. Proposed a pipeline duplication feature with field-level compliance classification (copy-safe vs. mandatory re-entry), aligned with Marketing Ops and Compliance teams. Designed within financial regulatory constraints (audit trail requirements) and implemented end-to-end.
+          </div>
+          <div class="project-impact">
+            <span class="impact-badge">Creation Time: 7.5min → 1.5min</span>
+            <span class="impact-badge">Effort −80%</span>
+            <span class="impact-badge">Compliance-Approved</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-title">My Document Box — 100× Subscriber Growth Without PM</span>
+            <div class="project-meta">
+              <span class="project-company kakao">KakaoBank</span>
+              <span class="project-year">2024</span>
+            </div>
+          </div>
+          <div class="project-category">TPM · Project Leadership</div>
+          <div class="project-desc">
+            Led a complex cross-team project without a PM — managing scope, schedule, risk, and stakeholder communication. Proposed scope reduction strategy ("1-product-first") to mitigate risk, and negotiated a Backbone WebView → Native implementation switch with client developers. Managed sequential rollout across 7 products.
+          </div>
+          <div class="project-impact">
+            <span class="impact-badge">Subscribers: 100 → 10,000/day</span>
+            <span class="impact-badge">Zero-Bug Deployment</span>
+          </div>
+        </div>
+
+        <h3 class="list-heading">System Re-engineering & Technical Execution</h3>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-title">Kafka + Reactive: 30M Log Pipeline Improvement (10hrs → Minutes)</span>
+            <div class="project-meta">
+              <span class="project-company kakao">KakaoBank</span>
+              <span class="project-year">2026</span>
+            </div>
+          </div>
+          <div class="project-category">System Re-engineering</div>
+          <div class="project-desc">
+            Restructured a synchronous 30M-record log pipeline using Project Reactor's Mono.zip for parallel storage writes. Solved secondary DB connection pool exhaustion via flatMap concurrency tuning and buffer strategy optimization. Achieved dramatic throughput gains with zero infrastructure cost increase.
+          </div>
+          <div class="project-impact">
+            <span class="impact-badge">Processing: 10hrs → Minutes</span>
+            <span class="impact-badge">No Infra Cost Increase</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-title">Kafka Partition Imbalance Resolution & Consumer TPS Optimization</span>
+            <div class="project-meta">
+              <span class="project-company kakao">KakaoBank</span>
+              <span class="project-year">2025</span>
+            </div>
+          </div>
+          <div class="project-category">Troubleshooting</div>
+          <div class="project-desc">
+            Diagnosed StickyPartitioner bug (KAFKA-10888) causing 6:1 partition skew. Applied linger.ms tuning to work around the bug within Spring Boot 2.7 constraints, and introduced receiveAutoAck for batch-level acknowledgment — eliminating per-record I/O overhead.
+          </div>
+          <div class="project-impact">
+            <span class="impact-badge">TPS: ~400 → ~10,000</span>
+            <span class="impact-badge">25× Throughput</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-title">Redis CPU 100% Incident — Data Structure Optimization (O(N) → O(1))</span>
+            <div class="project-meta">
+              <span class="project-company kakao">KakaoBank</span>
+              <span class="project-year">2025</span>
+            </div>
+          </div>
+          <div class="project-category">Incident Response</div>
+          <div class="project-desc">
+            Identified LREM O(N+M) as root cause of Redis CPU saturation after Kafka TPS optimization. Applied immediate mitigation (search direction reversal → 50% CPU reduction), then implemented permanent fix by replacing Redis List with Set for O(1) deletions.
+          </div>
+          <div class="project-impact">
+            <span class="impact-badge">CPU: 100% → ~5%</span>
+            <span class="impact-badge">O(N) → O(1)</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-title">Hadoop Dependency Elimination for Marketing Monitoring 100% Availability</span>
+            <div class="project-meta">
+              <span class="project-company kakao">KakaoBank</span>
+              <span class="project-year">2025</span>
+            </div>
+          </div>
+          <div class="project-category">Architecture Design</div>
+          <div class="project-desc">
+            Separated OLAP (Hadoop) and OLTP (MySQL) data sources. Designed dual-write pipeline with data retention policy (5-day detail + aggregated statistics), enabling marketing operations to monitor independently of the analytics platform's availability.
+          </div>
+          <div class="project-impact">
+            <span class="impact-badge">Monitoring: 24/7 Uptime</span>
+            <span class="impact-badge">Response −80%</span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ── Tech Stack ── -->
+      <section id="stack" class="fade-up">
+        <div class="section-header">
+          <span class="section-num">03</span>
+          <h2 class="section-title">Tech Stack</h2>
+        </div>
+
+        <div class="stack-group">
+          <div class="stack-group-label">Language</div>
+          <div class="stack-badges">
+            <span class="badge hi">Java</span>
+            <span class="badge hi">Kotlin</span>
+            <span class="badge">Python</span>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <div class="stack-group-label">Framework</div>
+          <div class="stack-badges">
+            <span class="badge hi">Spring Boot</span>
+            <span class="badge hi">Spring Batch</span>
+            <span class="badge hi">Spring Security</span>
+            <span class="badge hi">JPA / Hibernate</span>
+            <span class="badge">QueryDSL</span>
+            <span class="badge">JUnit</span>
+            <span class="badge">Testcontainers</span>
+            <span class="badge">Gradle</span>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <div class="stack-group-label">Database</div>
+          <div class="stack-badges">
+            <span class="badge hi">MySQL</span>
+            <span class="badge hi">Redis</span>
+            <span class="badge">PostgreSQL</span>
+            <span class="badge">Elasticsearch</span>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <div class="stack-group-label">Messaging</div>
+          <div class="stack-badges">
+            <span class="badge hi">Kafka</span>
+            <span class="badge">RabbitMQ</span>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <div class="stack-group-label">Infrastructure / DevOps</div>
+          <div class="stack-badges">
+            <span class="badge hi">AWS</span>
+            <span class="badge hi">Docker</span>
+            <span class="badge">Kubernetes</span>
+            <span class="badge">GitHub Actions</span>
+            <span class="badge">Jenkins</span>
+          </div>
+        </div>
+
+        <div class="stack-group">
+          <div class="stack-group-label">Collaboration</div>
+          <div class="stack-badges">
+            <span class="badge">Git</span>
+            <span class="badge">Jira</span>
+            <span class="badge">Confluence</span>
+            <span class="badge">Notion</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Education ── -->
+      <section id="education" class="fade-up">
+        <div class="section-header">
+          <span class="section-num">04</span>
+          <h2 class="section-title">Education</h2>
+        </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-period">Jul 2016 — Jul 2018</div>
+            <div class="timeline-company"><a href="https://aim.postech.ac.kr/" target="_blank" rel="noopener">POSTECH</a></div>
+            <div class="timeline-role">M.S. in Industrial & Management Engineering</div>
+            <ul class="timeline-bullets">
+              <li>Industry-academia projects with Hyundai Motors, Samsung Electronics, Samsung Heavy Industries</li>
+              <li>Research focus: Data Mining, Process Mining, Anomaly Detection</li>
+              <li>Thesis: Multi-perspective Anomaly Detection Using Process Mining</li>
+            </ul>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-period">Mar 2012 — Feb 2016</div>
+            <div class="timeline-company">UNIST</div>
+            <div class="timeline-role">B.S. in Computer Science & Technology Management (Double Major)</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-period">Sep 2008 — May 2011</div>
+            <div class="timeline-company">Hvitfeldtska Gymnasiet</div>
+            <div class="timeline-role">International Baccalaureate (IB) · Sweden</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Publications & Patent ── -->
+      <section id="publications" class="fade-up">
+        <div class="section-header">
+          <span class="section-num">05</span>
+          <h2 class="section-title">Publications & Patent</h2>
+        </div>
+
+        <div class="paper-item">
+          <div class="paper-title">Patent — Electronic Device and Method for Providing Product Sales Management Information</div>
+          <div class="paper-authors"><em>Kim, D.</em> et al. · Coupang</div>
+          <div class="paper-venue">KR Patent KR20220041800A · Apr 2021</div>
+        </div>
+
+        <div class="paper-item">
+          <div class="paper-title">Usability of the Size, Spacing, and Operation Method of Virtual Buttons with Virtual Hand on Head-Mounted Displays</div>
+          <div class="paper-authors">Park, K., <em>Kim, D.</em>, & Han, S.</div>
+          <div class="paper-venue">International Journal of Industrial Ergonomics · SCIE · Mar 2020</div>
+        </div>
+
+        <div class="paper-item">
+          <div class="paper-title">Modelling the Intrusive Feelings of Advanced Driver Assistance Systems Based on Vehicle Activity Log Data</div>
+          <div class="paper-authors">Park, K., Kwahk, J., Han, S., Song, M., Choi D., Jang, H., <em>Kim, D.</em>, Won, Y., & Jeong, I.</div>
+          <div class="paper-venue">International Journal of Automotive Technology · SCIE · May 2019</div>
+        </div>
+
+        <div class="paper-item">
+          <div class="paper-title">A Development on a Predictive Model for Buying Unemployment Insurance Program Based on Public Data</div>
+          <div class="paper-authors">Cho, M., <em>Kim, D.</em>, Song, M., Kim, G., Jung, C., & Kim, K.</div>
+          <div class="paper-venue">The Korean Journal of BigData · KCI · Dec 2017</div>
+        </div>
+      </section>
+
+      <!-- ── Activities ── -->
+      <section id="activities" class="fade-up">
+        <div class="section-header">
+          <span class="section-num">06</span>
+          <h2 class="section-title">Activities</h2>
+        </div>
+
+        <h3 class="list-heading">Tech Blog</h3>
+        <div class="card-list">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Implementing FSM with Spring State Machine</span>
+              <span class="card-date">2025</span>
+            </div>
+            <div class="card-sub">KakaoBank Tech Blog</div>
+            <a class="card-link" href="https://tech.kakaobank.com/posts/2511-fsm-using-spring-statemachine/" target="_blank" rel="noopener">Read →</a>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Trenbe Review Service Performance Optimization</span>
+              <span class="card-date">Sep 2022</span>
+            </div>
+            <div class="card-sub">Trenbe Tech Blog</div>
+            <a class="card-link" href="https://tech.trenbe.com/2022/09/14/%ed%8a%b8%eb%a0%8c%eb%b9%84-%eb%a6%ac%eb%b7%b0-%ec%84%9c%eb%b9%84%ec%8a%a4%ec%9d%98-%ec%84%b1%eb%8a%a5-%ea%b0%9c%ec%84%a0%ea%b8%b0.html" target="_blank" rel="noopener">Read →</a>
+          </div>
+        </div>
+
+        <h3 class="list-heading">Lectures & Mentoring</h3>
+        <div class="card-list">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Backend Development School — Java Instructor</span>
+              <span class="card-date">Mar 2025</span>
+            </div>
+            <div class="card-sub">ZeroBase</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Spring Security Online Course — Instructor</span>
+              <span class="card-date">Jul 2024</span>
+            </div>
+            <div class="card-sub">FastCampus</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Capstone Design Mentoring</span>
+              <span class="card-date">Mar 2024 — Present</span>
+            </div>
+            <div class="card-sub">Dongguk University</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Backend Online Course — Clean Architecture with Java & Spring</span>
+              <span class="card-date">Nov 2022 — Apr 2024</span>
+            </div>
+            <div class="card-sub">Comento · 10 cohorts mentored</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">Guest Lectures — Career Talks at Universities</span>
+              <span class="card-date">2021 — 2024</span>
+            </div>
+            <div class="card-sub">Kwangwoon University, Dongguk University, Incheon National University</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2025 Dohyeon Kim · <a href="mailto:kdohyeon@gmail.com" style="color:inherit">kdohyeon@gmail.com</a>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+
+</html>
