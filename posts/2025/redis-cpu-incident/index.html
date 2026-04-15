@@ -305,15 +305,16 @@
         <div class="info-grid">
           <div class="info-box">
             <div class="info-box-label">개발 기간</div>
-            <div class="info-box-value">—</div>
+            <div class="info-box-value">2개월<br><span
+                style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">2025.06 — 2025.07</span></div>
           </div>
           <div class="info-box">
             <div class="info-box-label">팀 구성</div>
-            <div class="info-box-value">—</div>
+            <div class="info-box-value">2명</div>
           </div>
           <div class="info-box">
             <div class="info-box-label">담당 역할</div>
-            <div class="info-box-value">—</div>
+            <div class="info-box-value">백엔드 개발</div>
           </div>
         </div>
 
@@ -375,7 +376,8 @@ LREM transaction_pool 1 {tx_id}</code></pre>
 
         <h3>1단계: 원인 파악 — LREM의 O(N+M) 복잡도</h3>
         <p>Redis 명령어 통계를 살펴보니 <code>LREM</code>이 압도적인 실행 시간을 차지하고 있었습니다. <code>LREM</code>의 시간 복잡도는
-          <strong>O(N+M)</strong>입니다. 리스트 전체를 처음부터 끝까지 순회하며 일치하는 값을 찾기 때문에, 리스트의 길이 N이 커질수록 탐색 비용이 선형으로 증가합니다.</p>
+          <strong>O(N+M)</strong>입니다. 리스트 전체를 처음부터 끝까지 순회하며 일치하는 값을 찾기 때문에, 리스트의 길이 N이 커질수록 탐색 비용이 선형으로 증가합니다.
+        </p>
 
         <blockquote>
           "처리량이 20배 늘면서 리스트에 쌓이는 데이터도 20배 늘었고, LREM의 탐색 비용도 20배가 되었다."
@@ -483,7 +485,8 @@ SREM transaction_pool {tx_id}</code></pre>
         <p>분산 시스템에서 성능 개선은 단일 컴포넌트의 승리로 끝나지 않습니다. 하나의 병목을 해결하면 반드시 그다음 병목이 드러납니다. 이 경험에서 배운 것은 두 가지입니다.</p>
         <ul>
           <li><strong>자료구조의 시간 복잡도는 트래픽이 낮을 때는 보이지 않습니다.</strong> O(N) 연산이 초당 수백 건에서는 무해해도, 수만 건이 되는 순간 시스템을 멈춥니다.</li>
-          <li><strong>요구사항을 다시 읽어야 올바른 자료구조가 보입니다.</strong> "순서가 필요한가?"라는 질문 하나가 List와 Set의 차이, 즉 O(N)과 O(1)의 차이를 만들었습니다.
+          <li><strong>요구사항을 다시 읽어야 올바른 자료구조가 보입니다.</strong> "순서가 필요한가?"라는 질문 하나가 List와 Set의 차이, 즉 O(N)과 O(1)의 차이를
+            만들었습니다.
           </li>
         </ul>
         <p>대규모 트래픽을 견디는 시스템은 복잡한 알고리즘보다 적절한 자료구조 선택에서 시작한다는 것을, 직접 장애를 맞고서야 체감했습니다.</p>
