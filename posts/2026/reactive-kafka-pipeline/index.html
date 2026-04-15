@@ -326,15 +326,15 @@
         <div class="info-grid">
           <div class="info-box">
             <div class="info-box-label">개발 기간</div>
-            <div class="info-box-value">—</div>
+            <div class="info-box-value">2026.01 — 2026.03 (3개월)</div>
           </div>
           <div class="info-box">
             <div class="info-box-label">팀 구성</div>
-            <div class="info-box-value">—</div>
+            <div class="info-box-value">1명</div>
           </div>
           <div class="info-box">
             <div class="info-box-label">담당 역할</div>
-            <div class="info-box-value">—</div>
+            <div class="info-box-value">백엔드 개발</div>
           </div>
         </div>
 
@@ -515,7 +515,8 @@ flux.flatMap(log -> processLog(log), concurrency);</code></pre>
         <ul>
           <li><strong>병렬화는 만능이 아닙니다.</strong> 무제한 병렬화는 빠르지만 다운스트림(DB, 외부 서비스)을 압박합니다. 제어 가능한 속도(Throttling)가 안정적인 속도입니다.
           </li>
-          <li><strong>스레드 분리는 반응성의 핵심입니다.</strong> <code>subscribeOn(boundedElastic())</code>으로 컨슈머와 워커를 분리하면, I/O 블로킹 없이
+          <li><strong>스레드 분리는 반응성의 핵심입니다.</strong> <code>subscribeOn(boundedElastic())</code>으로 컨슈머와 워커를 분리하면, I/O 블로킹
+            없이
             컨슈머가 지속적으로 메시지를 소비할 수 있습니다.</li>
           <li><strong>버퍼 전략은 트래픽 패턴에 맞춰야 합니다.</strong> 균일한 대량 유입에는 <code>bufferTimeout</code>보다 건수 기반
             <code>buffer</code>가 불필요한 대기를 줄입니다.
