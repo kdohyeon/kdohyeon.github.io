@@ -269,15 +269,11 @@
               <line x1="16" y1="2" x2="16" y2="6" />
               <line x1="8" y1="2" x2="8" y2="6" />
               <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>2024</span>
+            </svg>2025</span>
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" />
               <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" />
             </svg>카카오뱅크</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 6 12 12 16 14"/>
-            </svg>읽는 데 약 5분</span>
         </div>
       </div>
       <div class="post-body">
@@ -309,7 +305,8 @@
         <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
 
         <h2>들어가며</h2>
-        <p>카프카(Kafka)를 도입하고 파티션을 늘렸는데도 "왜 성능이 안 올라가지?"라는 의문에 직면하는 경우가 있습니다. 이 글은 알림 발송 서비스 운영 중 마주친 파티션 불균형(Skew) 이슈를 진단하고, 컨슈머 처리량(TPS)을 극대화하기까지의 과정을 SBI(Situation → Behavior → Impact) 구조로 정리한 기록입니다.</p>
+        <p>카프카(Kafka)를 도입하고 파티션을 늘렸는데도 "왜 성능이 안 올라가지?"라는 의문에 직면하는 경우가 있습니다. 이 글은 알림 발송 서비스 운영 중 마주친 파티션 불균형(Skew) 이슈를
+          진단하고, 컨슈머 처리량(TPS)을 극대화하기까지의 과정을 SBI(Situation → Behavior → Impact) 구조로 정리한 기록입니다.</p>
 
         <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
 
@@ -317,9 +314,11 @@
         <h2>Situation — 파티션 증설이 오히려 독이 된 상황</h2>
 
         <h3>파티션을 2개로 늘렸는데 Lag이 한쪽에만 쌓인다</h3>
-        <p>알림 발송 서비스의 처리량 확보를 위해 기존 1개이던 토픽 파티션을 2개로 늘리고, 컨슈머 인스턴스도 2대로 늘렸습니다. 이론상 처리량이 두 배로 늘어야 했지만, 실제 운영 환경에서는 예상과 정반대의 결과가 나타났습니다.</p>
+        <p>알림 발송 서비스의 처리량 확보를 위해 기존 1개이던 토픽 파티션을 2개로 늘리고, 컨슈머 인스턴스도 2대로 늘렸습니다. 이론상 처리량이 두 배로 늘어야 했지만, 실제 운영 환경에서는 예상과
+          정반대의 결과가 나타났습니다.</p>
 
-        <p>모니터링 대시보드를 살펴보니 <strong>Consumer Lag이 한쪽 파티션에만 집중적으로 쌓이는</strong> 현상이 확인되었습니다. 프로듀서 발행량 차트를 꺼내보니 충격적인 수치가 찍혀 있었습니다.</p>
+        <p>모니터링 대시보드를 살펴보니 <strong>Consumer Lag이 한쪽 파티션에만 집중적으로 쌓이는</strong> 현상이 확인되었습니다. 프로듀서 발행량 차트를 꺼내보니 충격적인 수치가 찍혀
+          있었습니다.</p>
 
         <div class="metric-row">
           <div class="metric-box">
@@ -340,7 +339,8 @@
           </div>
         </div>
 
-        <p>전체 메시지가 10만 건을 넘어가는 시점부터 격차는 더 벌어졌고, 사실상 파티션 하나에만 부하가 집중되어 있었습니다. 파티션을 늘린 것이 수평 확장이 아니라 단순한 비용 증가로 끝난 셈이었습니다.</p>
+        <p>전체 메시지가 10만 건을 넘어가는 시점부터 격차는 더 벌어졌고, 사실상 파티션 하나에만 부하가 집중되어 있었습니다. 파티션을 늘린 것이 수평 확장이 아니라 단순한 비용 증가로 끝난 셈이었습니다.
+        </p>
 
         <h3>기존 환경 제약</h3>
         <ul>
@@ -357,11 +357,15 @@
         <h2>Behavior — 원인 분석부터 단계적 해결까지</h2>
 
         <h3>1단계: StickyPartitioner 버그 진단 (KAFKA-10888)</h3>
-        <p>파티셔너의 동작 방식부터 다시 들여다봤습니다. <strong>StickyPartitioner</strong>는 배칭(Batching) 효율을 높이기 위해 한 배치가 꽉 찰 때까지 동일 파티션에 메시지를 집중시킨 뒤, 배치가 완성되면 다음 파티션으로 넘어가는 방식으로 동작합니다.</p>
+        <p>파티셔너의 동작 방식부터 다시 들여다봤습니다. <strong>StickyPartitioner</strong>는 배칭(Batching) 효율을 높이기 위해 한 배치가 꽉 찰 때까지 동일 파티션에
+          메시지를 집중시킨 뒤, 배치가 완성되면 다음 파티션으로 넘어가는 방식으로 동작합니다.</p>
 
-        <p>그러나 <code>kafka-clients 3.0.1</code>에는 알려진 버그(<a href="https://issues.apache.org/jira/browse/KAFKA-10888" target="_blank" rel="noopener"><strong>KAFKA-10888</strong></a>)가 존재했습니다. 배치가 꽉 찬 이후에도 파티션 전환이 이루어지지 않고 동일 파티션에 계속 메시지를 보내는 현상입니다.</p>
+        <p>그러나 <code>kafka-clients 3.0.1</code>에는 알려진 버그(<a href="https://issues.apache.org/jira/browse/KAFKA-10888"
+            target="_blank" rel="noopener"><strong>KAFKA-10888</strong></a>)가 존재했습니다. 배치가 꽉 찬 이후에도 파티션 전환이 이루어지지 않고 동일
+          파티션에 계속 메시지를 보내는 현상입니다.</p>
 
-        <p>설상가상으로 <code>linger.ms = 0</code> 설정이 문제를 증폭시키고 있었습니다. <code>linger.ms</code>가 0이면 메시지가 도착하는 즉시 전송되어 배치가 제대로 채워질 틈이 없습니다. 파티셔너 입장에서는 "배치가 아직 안 찼으니 이 파티션에 계속 보내야지"라고 판단하게 되고, 그 결과 특정 파티션으로의 쏠림이 가속화된 것입니다.</p>
+        <p>설상가상으로 <code>linger.ms = 0</code> 설정이 문제를 증폭시키고 있었습니다. <code>linger.ms</code>가 0이면 메시지가 도착하는 즉시 전송되어 배치가 제대로
+          채워질 틈이 없습니다. 파티셔너 입장에서는 "배치가 아직 안 찼으니 이 파티션에 계속 보내야지"라고 판단하게 되고, 그 결과 특정 파티션으로의 쏠림이 가속화된 것입니다.</p>
 
         <blockquote>
           "linger.ms = 0이면 배치가 채워지기 전에 전송이 먼저 일어나고, StickyPartitioner는 배치 미완성을 이유로 파티션 전환을 하지 않는다."
@@ -370,7 +374,8 @@
         <p>두 조건이 맞물리면서 Partition 0에만 메시지가 6배 이상 집중되는 결과로 이어진 것입니다.</p>
 
         <h3>2단계: linger.ms 튜닝으로 우회 (프로듀서 해결)</h3>
-        <p>근본적인 해결책은 버그가 수정된 버전으로 클라이언트를 업그레이드하는 것이었습니다. 그러나 Spring Boot 2.7 환경의 의존성 제약으로 인해 마음대로 <code>kafka-clients</code> 버전을 올리기 어려운 상황이었습니다.</p>
+        <p>근본적인 해결책은 버그가 수정된 버전으로 클라이언트를 업그레이드하는 것이었습니다. 그러나 Spring Boot 2.7 환경의 의존성 제약으로 인해 마음대로
+          <code>kafka-clients</code> 버전을 올리기 어려운 상황이었습니다.</p>
 
         <p>그래서 설정 튜닝을 통한 우회 전략을 선택했습니다.</p>
 
@@ -380,12 +385,16 @@ spring.kafka.producer.properties.linger.ms=0
 # 변경 후
 spring.kafka.producer.properties.linger.ms=20</code></pre>
 
-        <p><code>linger.ms</code>를 20ms로 상향하면 프로듀서는 메시지를 즉시 보내지 않고 20ms 동안 모아서 배치로 묶습니다. 배치가 충분히 채워지면 StickyPartitioner가 자연스럽게 다음 파티션으로 스위칭하게 되어, 버그를 설정 레벨에서 우회할 수 있었습니다. 20ms라는 값은 알림 발송 서비스의 지연 허용 범위 내에서 배치가 충분히 형성될 수 있는 최소 임계값으로 산정했습니다.</p>
+        <p><code>linger.ms</code>를 20ms로 상향하면 프로듀서는 메시지를 즉시 보내지 않고 20ms 동안 모아서 배치로 묶습니다. 배치가 충분히 채워지면 StickyPartitioner가
+          자연스럽게 다음 파티션으로 스위칭하게 되어, 버그를 설정 레벨에서 우회할 수 있었습니다. 20ms라는 값은 알림 발송 서비스의 지연 허용 범위 내에서 배치가 충분히 형성될 수 있는 최소 임계값으로
+          산정했습니다.</p>
 
         <h3>3단계: receiveAutoAck 도입으로 컨슈머 TPS 극대화</h3>
-        <p>프로듀서 쪽 파티션 불균형을 해소한 뒤, 이번에는 컨슈머 측으로 시선을 옮겼습니다. 기존 컨슈머는 레코드 하나를 처리할 때마다 Ack를 발행하는 구조였고, 이 오버헤드가 TPS(약 400)를 제한하는 병목이 되고 있었습니다.</p>
+        <p>프로듀서 쪽 파티션 불균형을 해소한 뒤, 이번에는 컨슈머 측으로 시선을 옮겼습니다. 기존 컨슈머는 레코드 하나를 처리할 때마다 Ack를 발행하는 구조였고, 이 오버헤드가 TPS(약 400)를
+          제한하는 병목이 되고 있었습니다.</p>
 
-        <p>이를 해결하기 위해 <code>ReactiveKafkaConsumerTemplate</code>이 제공하는 <strong><code>receiveAutoAck()</code></strong> 모드를 도입했습니다.</p>
+        <p>이를 해결하기 위해 <code>ReactiveKafkaConsumerTemplate</code>이 제공하는 <strong><code>receiveAutoAck()</code></strong>
+          모드를 도입했습니다.</p>
 
         <pre><code>// 기존: 레코드 단위 Ack
 reactiveKafkaConsumerTemplate
@@ -400,7 +409,9 @@ reactiveKafkaConsumerTemplate
         .flatMap(record -> process(record))
     )</code></pre>
 
-        <p><code>receiveAutoAck()</code>는 <code>Flux&lt;Flux&lt;ConsumerRecord&gt;&gt;</code> 형태의 중첩 스트림을 반환합니다. 외부 <code>Flux</code>는 배치 단위를 나타내고, 내부 <code>Flux</code>는 배치 안의 개별 레코드를 나타냅니다. Ack는 내부 <code>Flux</code>가 완료되는 시점, 즉 배치 전체가 처리된 후 한 번에 커밋됩니다.</p>
+        <p><code>receiveAutoAck()</code>는 <code>Flux&lt;Flux&lt;ConsumerRecord&gt;&gt;</code> 형태의 중첩 스트림을 반환합니다. 외부
+          <code>Flux</code>는 배치 단위를 나타내고, 내부 <code>Flux</code>는 배치 안의 개별 레코드를 나타냅니다. Ack는 내부 <code>Flux</code>가 완료되는 시점,
+          즉 배치 전체가 처리된 후 한 번에 커밋됩니다.</p>
 
         <p>레코드마다 네트워크 왕복이 발생하던 방식에서 배치 단위로 Ack를 일괄 처리하는 방식으로 전환함으로써 불필요한 I/O 오버헤드를 대폭 줄일 수 있었습니다.</p>
 
@@ -410,22 +421,29 @@ reactiveKafkaConsumerTemplate
         <h2>Impact — 균형 잡힌 파티션, 올라간 처리량</h2>
 
         <h3>파티션 발행량 정상화</h3>
-        <p><code>linger.ms = 20</code> 적용 이후, 20ms 간격으로 쌓인 메시지들이 제대로 된 배치를 형성하면서 StickyPartitioner의 파티션 스위칭이 정상 작동하기 시작했습니다. 6:1 수준이던 파티션 간 발행량 비율이 <strong>거의 균등한 분산</strong>으로 개선되었으며, 특정 파티션에 Consumer Lag이 집중되는 현상도 해소되었습니다.</p>
+        <p><code>linger.ms = 20</code> 적용 이후, 20ms 간격으로 쌓인 메시지들이 제대로 된 배치를 형성하면서 StickyPartitioner의 파티션 스위칭이 정상 작동하기
+          시작했습니다. 6:1 수준이던 파티션 간 발행량 비율이 <strong>거의 균등한 분산</strong>으로 개선되었으며, 특정 파티션에 Consumer Lag이 집중되는 현상도 해소되었습니다.
+        </p>
 
         <h3>컨슈머 TPS 개선</h3>
-        <p><code>receiveAutoAck()</code> 도입 이후 레코드 단위 Ack 오버헤드가 제거되어 컨슈머 TPS가 파티션당 <strong>4,000 — 5,000</strong> 수준까지 올라갔습니다. 2개 파티션 기준 총 처리량은 최대 <strong>약 10,000 TPS</strong>로, 기존 ~400 TPS 대비 <strong>약 20배 이상의 처리량 개선</strong>을 달성했습니다. 추가 인프라 비용 없이 동일한 하드웨어 자원에서 이뤄낸 결과입니다.</p>
+        <p><code>receiveAutoAck()</code> 도입 이후 레코드 단위 Ack 오버헤드가 제거되어 컨슈머 TPS가 파티션당 <strong>4,000 — 5,000</strong> 수준까지
+          올라갔습니다. 2개 파티션 기준 총 처리량은 최대 <strong>약 10,000 TPS</strong>로, 기존 ~400 TPS 대비 <strong>약 20배 이상의 처리량 개선</strong>을
+          달성했습니다. 추가 인프라 비용 없이 동일한 하드웨어 자원에서 이뤄낸 결과입니다.</p>
 
         <h3>핵심 교훈</h3>
         <ul>
           <li><strong>파티션 증설은 프로듀서 분산이 전제될 때만 효과적이다.</strong> 파티셔너의 동작 방식과 버전별 버그를 이해하지 않으면 증설이 오히려 비용 낭비로 끝날 수 있다.</li>
-          <li><strong>버전 업그레이드가 불가능한 환경에서도 설정 튜닝으로 버그를 우회할 수 있다.</strong> 단, 우회책의 트레이드오프(배치 지연)를 서비스 특성에 맞게 검증해야 한다.</li>
-          <li><strong>컨슈머 최적화는 Ack 단위에서 시작한다.</strong> 리액티브 스트림에서 레코드 단위 Ack는 숨겨진 병목이 될 수 있으며, 배치 단위 Ack로의 전환이 TPS 개선의 핵심 레버가 될 수 있다.</li>
+          <li><strong>버전 업그레이드가 불가능한 환경에서도 설정 튜닝으로 버그를 우회할 수 있다.</strong> 단, 우회책의 트레이드오프(배치 지연)를 서비스 특성에 맞게 검증해야 한다.
+          </li>
+          <li><strong>컨슈머 최적화는 Ack 단위에서 시작한다.</strong> 리액티브 스트림에서 레코드 단위 Ack는 숨겨진 병목이 될 수 있으며, 배치 단위 Ack로의 전환이 TPS 개선의
+            핵심 레버가 될 수 있다.</li>
         </ul>
 
         <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
 
         <h2>정리하며</h2>
-        <p>이 경험에서 얻은 가장 큰 교훈은 <strong>"Kafka 성능 문제는 겉으로 보이는 Lag 수치가 아니라, 그 아래에 숨어 있는 파티셔너 동작과 클라이언트 버그에서 비롯된다"</strong>는 점입니다. 모니터링 지표를 단서로 삼아 프로듀서 → 파티셔너 → 컨슈머 전 구간을 체계적으로 파고든 결과, 설정 한 줄과 API 전환이라는 외과적인 해결책으로 문제를 끝낼 수 있었습니다.</p>
+        <p>이 경험에서 얻은 가장 큰 교훈은 <strong>"Kafka 성능 문제는 겉으로 보이는 Lag 수치가 아니라, 그 아래에 숨어 있는 파티셔너 동작과 클라이언트 버그에서 비롯된다"</strong>는
+          점입니다. 모니터링 지표를 단서로 삼아 프로듀서 → 파티셔너 → 컨슈머 전 구간을 체계적으로 파고든 결과, 설정 한 줄과 API 전환이라는 외과적인 해결책으로 문제를 끝낼 수 있었습니다.</p>
       </div>
     </div>
   </main>
