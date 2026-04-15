@@ -390,8 +390,15 @@ nav {
 .list-item-left {
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.list-item-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .list-title {
