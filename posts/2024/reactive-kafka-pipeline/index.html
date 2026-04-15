@@ -349,7 +349,8 @@
         <h2>들어가며</h2>
         <p>분산 시스템에서 대량의 이벤트 로그를 안정적으로 처리하는 일은 생각보다 까다롭습니다. 이 글은 3,000만 건 규모의 비즈니스 로그 파이프라인에서 발생한 동기 처리 병목을
           <strong>Project Reactor</strong>를 활용해 구조적으로 해결하고, 운영 가시성까지 확보한 과정을 SBI(Situation → Behavior → Impact) 구조로 정리한
-          기록입니다.</p>
+          기록입니다.
+        </p>
 
         <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
 
@@ -434,7 +435,9 @@ Mono.zip(
         <p>병렬화를 적용하자 처리 속도가 급격히 올라갔습니다. 그런데 예상치 못한 이차 문제가 발생했습니다. 처리량이 폭증하면서 <strong>DB Connection Pool이 고갈</strong>되기
           시작한 것입니다. 파이프라인을 빠르게 만든 것이 오히려 DB에 과부하를 주는 상황이 된 것입니다.</p>
 
-        <p>이는 앞서 경험한 <a href="../redis-cpu-incident/index.html">Redis CPU 100% 장애</a>와 같은 맥락이었습니다. 한 컴포넌트의 최적화가 다음 병목을
+        <p>이는 앞서 경험한 <a href="../../2025/redis-cpu-incident/index.html">Redis CPU 100% 장애</a>와 같은 맥락이었습니다. 한 컴포넌트의 최적화가
+          다음
+          병목을
           드러냅니다.</p>
 
         <h3>3단계: 유량 제어 — flatMap concurrency 튜닝</h3>
@@ -510,13 +513,14 @@ flux.flatMap(log -> processLog(log), concurrency);</code></pre>
 
         <h3>핵심 교훈</h3>
         <ul>
-          <li><strong>병렬화는 만능이 아니다.</strong> 무제한 병렬화는 빠르지만 다운스트림(DB, 외부 서비스)을 터뜨린다. 제어 가능한 속도(Throttling)가 안정적인 속도다.
+          <li><strong>병렬화는 만능이 아닙니다.</strong> 무제한 병렬화는 빠르지만 다운스트림(DB, 외부 서비스)을 압박합니다. 제어 가능한 속도(Throttling)가 안정적인 속도입니다.
           </li>
-          <li><strong>스레드 분리는 반응성의 핵심이다.</strong> <code>subscribeOn(boundedElastic())</code>으로 컨슈머와 워커를 분리하면, I/O 블로킹 없이
-            컨슈머가 지속적으로 메시지를 소비할 수 있다.</li>
-          <li><strong>버퍼 전략은 트래픽 패턴에 맞춰야 한다.</strong> 균일한 대량 유입에는 <code>bufferTimeout</code>보다 건수 기반
-            <code>buffer</code>가 불필요한 대기를 줄인다.</li>
-          <li><strong>성능보다 중요한 것은 관찰 가능성이다.</strong> 아무리 빠른 시스템도 무슨 일이 일어나는지 볼 수 없다면 운영할 수 없다.</li>
+          <li><strong>스레드 분리는 반응성의 핵심입니다.</strong> <code>subscribeOn(boundedElastic())</code>으로 컨슈머와 워커를 분리하면, I/O 블로킹 없이
+            컨슈머가 지속적으로 메시지를 소비할 수 있습니다.</li>
+          <li><strong>버퍼 전략은 트래픽 패턴에 맞춰야 합니다.</strong> 균일한 대량 유입에는 <code>bufferTimeout</code>보다 건수 기반
+            <code>buffer</code>가 불필요한 대기를 줄입니다.
+          </li>
+          <li><strong>성능보다 중요한 것은 관찰 가능성입니다.</strong> 아무리 빠른 시스템도 무슨 일이 일어나는지 볼 수 없다면 운영할 수 없습니다.</li>
         </ul>
 
         <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
