@@ -165,6 +165,48 @@ nav {
   height: 14px;
 }
 
+/* ── Language switcher ───────────────────────────────── */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: border-color var(--t);
+}
+
+.lang-switch a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--t), background var(--t);
+  line-height: 1;
+}
+
+.lang-switch a:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+  text-decoration: none;
+}
+
+.lang-switch a.active {
+  color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.lang-switch a + a {
+  border-left: 1px solid var(--border);
+}
+
 /* ── Theme toggle ────────────────────────────────────── */
 .toggle-wrap {
   display: flex;
