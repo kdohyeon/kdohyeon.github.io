@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>리뷰 API 응답속도 200ms → 30ms, 5단계 개선기 — 김도현</title>
+  <title>MSA API 마이그레이션 — 영향도 분석부터 S3 점진적 교체까지 — 김도현</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/css/main.css" />
+  <link rel="stylesheet" href="../../../assets/css/main.css" />
   <style>
     .post-header {
       padding-bottom: 36px;
@@ -212,7 +212,7 @@
 <body>
   <nav>
     <div class="nav-inner">
-      <a class="nav-back" href="../../index.html">
+      <a class="nav-back" href="../../../index.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
           stroke-linejoin="round">
           <polyline points="15 18 9 12 15 6" />
@@ -229,18 +229,18 @@
     <div class="container">
       <div class="post-header">
         <p class="post-category">역량 · 시스템 리엔지니어링</p>
-        <h1 class="post-title">리뷰 API 응답속도 200ms → 30ms, 5단계 개선기</h1>
+        <h1 class="post-title">MSA API 마이그레이션 — 영향도 분석부터 S3 점진적 교체까지</h1>
         <div class="post-meta">
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="3" y="4" width="18" height="18" rx="2" />
               <line x1="16" y1="2" x2="16" y2="6" />
               <line x1="8" y1="2" x2="8" y2="6" />
               <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>2022</span>
+            </svg>2021</span>
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" />
               <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" />
-            </svg>트렌비</span>
+            </svg>쿠팡</span>
         </div>
       </div>
       <div class="post-body">
@@ -265,57 +265,69 @@
         <div class="tag-row">
           <span class="tag">Java</span>
           <span class="tag">Spring Boot</span>
-          <span class="tag">JPA</span>
-          <span class="tag">Redis</span>
-          <span class="tag">Pinpoint APM</span>
+          <span class="tag">Amazon S3</span>
         </div>
 
         <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
 
         <h2>Situation</h2>
-        <p>트렌비 리뷰 서비스(review-service) 런칭 이후 사용자와 트래픽이 증가하면서 두 가지 시스템 알럿이 지속적으로 발생했습니다.</p>
+        <p>MSA 환경에서 외부 서비스가 API를 v1에서 v2로 버전업하면서 내부 서비스를 교체해야 했습니다. 단순히 호출 주소를 바꾸는 일이 아니었습니다.</p>
         <ul>
-          <li><strong>DB 커넥션 풀 고갈:</strong> 대량 트래픽 구간에서 "Could not open JPA EntityManager" 에러 반복 발생</li>
-          <li><strong>API 타임아웃:</strong> 외부 서비스 의존으로 인한 연쇄 지연</li>
+          <li><strong>광범위한 의존:</strong> API v1의 DTO가 내부 서비스 전체에 걸쳐 사용되고 있어, 교체하려면 대규모 코드 수정이 필요했습니다.</li>
+          <li><strong>높은 장애 임팩트:</strong> 내부 서비스 대부분의 기능이 API v1에 의존하고 있어 장애 발생 시 영향 범위가 매우 컸습니다.</li>
+          <li><strong>복잡한 DTO 구조:</strong> API v1 DTO는 100개가 넘는 필드를 가지고 있었으며, v1과 v2의 필드가 1:1로 매핑되지 않아 데이터 정합성 검증이 필수였습니다.</li>
         </ul>
-        <p>p90 API 응답 속도는 약 <strong>200ms ~ 250ms</strong> 수준으로, 사용자가 '즉각적인 응답'으로 느끼는 기준인 100ms 이내를 크게 초과하고 있었습니다.</p>
 
         <h2>Behavior</h2>
-        <p>원인을 분석하고 5단계에 걸쳐 순차적으로 개선했습니다.</p>
 
-        <h3>1. n번 API 호출 → Bulk API 1번 호출</h3>
-        <p>주문 서비스(order-service)를 루프로 n번 호출하던 로직을 <strong>Bulk 형태의 API</strong>로 교체했습니다. 이를 통해 p90 응답속도를 200ms → 100ms 수준으로 단축했습니다.</p>
+        <h3>내부 전용 DTO 분리</h3>
+        <p>API v1 DTO를 내부 서비스 전체에서 직접 사용하는 구조를 개선하기 위해, <strong>내부 서비스 전용 DTO</strong>를 별도로 만들었습니다. 이렇게 하면 향후 v3, v4로 버전업될 때 외부 DTO → 내부 DTO 변환 레이어만 수정하면 되어 유지보수 비용을 크게 줄일 수 있습니다.</p>
 
-        <h3>2. 외부 서비스 의존 제거</h3>
-        <p>주문 서비스에서 가져오던 '구매 옵션' 데이터를 리뷰 저장 시 자체적으로 함께 저장하도록 변경하여 외부 의존을 완전히 끊었습니다. 응답속도가 100ms → 30~40ms로 급감했습니다.</p>
+        <img src="./images/image02.jpeg" alt="내부 전용 DTO 구조" />
 
-        <h3>3. 트랜잭션 분리로 DB 커넥션 풀 고갈 해소</h3>
-        <p><code>@Transactional</code> 메소드 내부에서 외부 API 호출 후 DB I/O를 수행하는 구조가 커넥션 점유를 장기화시키고 있었습니다. 외부 I/O와 DB I/O 구간을 분리하고, DB 로직에만 <code>TransactionTemplate</code>을 명시적으로 적용해 커넥션 풀 고갈을 해결했습니다.</p>
+        <h3>데이터 정합성 모니터링</h3>
+        <p>교체 전, v1과 v2의 응답 데이터를 실시간으로 비교하는 코드를 작성하고 불일치 발생 시 슬랙으로 알럿을 전송했습니다. v2를 제공하는 팀과 미팅을 통해 데이터 차이를 정리하고 일치시키는 과정을 진행했습니다.</p>
 
-        <h3>4. Redis 캐시 레이어 도입</h3>
-        <p>상품 시스템의 외부 API가 간헐적으로 타임아웃을 일으켜 장애가 전파됐습니다. 리뷰 도메인이 필요로 하는 상품 정보는 변동성이 낮다는 점을 파악하고 <strong>Redis 캐시 레이어</strong>를 앞단에 적용했습니다. 스파이크성 에러가 눈에 띄게 줄었습니다.</p>
+        <pre><code class="language-java">public boolean isDifferent(ApiV1Dto v1Dto, ApiV2Dto v2Dto) {
+    if (v1Dto.getA() != v2Dto.getA()) {
+        return true;
+    }
+    if (v1Dto.getB() != v2Dto.getB()) {
+        return true;
+    }
+    ...
+    return false;
+}</code></pre>
 
-        <h3>5. 인덱스 누락 발견 및 추가 (Pinpoint APM 활용)</h3>
-        <p>APM 도구 Pinpoint로 특정 조회 API가 약 600ms를 소요하는 것을 발견했습니다. 중복 리뷰 방지용 단순 조회 쿼리(<code>SELECT * FROM review WHERE order_item_id = ?</code>)에서 <code>order_item_id</code> 인덱스가 누락되어 풀 스캔이 발생하고 있었습니다. 인덱스 추가로 단기간에 큰 폭의 성능 향상을 달성했습니다.</p>
+        <img src="./images/image03.jpeg" alt="데이터 정합성 실패 슬랙 알람" />
+
+        <h3>S3 Feature Flag로 점진적 트래픽 전환 (1% → 100%)</h3>
+        <p>한 번에 전환하면 위험하기 때문에, <strong>S3에 퍼센티지 값을 저장</strong>하고 코드에서 동적으로 읽어 v1/v2 호출 비율을 재배포 없이 조절하는 방식을 구현했습니다.</p>
+
+        <pre><code class="language-java">public void abTest() {
+    var random = (int)(Math.random() * 100);
+    var n = getNfromS3();
+    if (random < n) {
+        // call API v2
+    } else {
+        // call API v1
+    }
+}</code></pre>
 
         <h2>Impact</h2>
         <ul>
-          <li><strong>p90 응답속도:</strong> 200~250ms → 30~40ms (<strong>약 80% 단축</strong>)</li>
-          <li><strong>시스템 알럿 해소:</strong> DB 커넥션 풀 고갈 및 API 타임아웃 알럿 더 이상 발생하지 않음</li>
-          <li>5단계 개선을 통해 단일 수정이 아닌 구조적 원인을 제거하여 재발 방지 효과 달성</li>
+          <li><strong>마이그레이션 완료:</strong> API v1 → v2로 내부 서비스 전체 교체 성공.</li>
+          <li><strong>장애 경험과 회복:</strong> List 데이터의 값 비교를 누락한 정합성 로직 결함으로 장애가 발생했으나, 롤백·데이터 보정·로직 전면 수정 후 재교체를 완료했습니다.</li>
+          <li><strong>향후 마이그레이션 비용 절감:</strong> 내부 전용 DTO 도입으로 v3/v4 업그레이드 시 수정 범위를 변환 레이어로 한정할 수 있는 구조 확보.</li>
+          <li><strong>교훈:</strong> 데이터 정합성 검증 시 List 요소의 개수뿐 아니라 값까지 비교해야 한다는 것을 실전으로 학습.</li>
         </ul>
-
-        <p><br><em>(원문 출처: <a
-              href="https://tech.trenbe.com/2022/09/14/%ed%8a%b8%eb%a0%8c%eb%b9%84-%eb%a6%ac%eb%b7%b0-%ec%84%9c%eb%b9%84%ec%8a%a4%ec%9d%98-%ec%84%b1%eb%8a%a5-%ea%b0%9c%ec%84%a0%ea%b8%b0.html"
-              target="_blank" rel="noopener">https://tech.trenbe.com/2022/09/14/트렌비-리뷰-서비스의-성능-개선기.html [트렌비
-              기술블로그]</a>)</em></p>
       </div>
     </div>
   </main>
   <footer>
-    <div class="container">© 2025 김도현 · <a href="../../index.html" style="color:inherit">홈으로</a></div>
+    <div class="container">© 2025 김도현 · <a href="../../../index.html" style="color:inherit">홈으로</a></div>
   </footer>
-  <script src="../../assets/js/main.js"></script>
+  <script src="../../../assets/js/main.js"></script>
 </body>
 
 </html>

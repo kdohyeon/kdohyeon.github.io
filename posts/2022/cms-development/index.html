@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MSA API 마이그레이션 — 영향도 분석부터 S3 점진적 교체까지 — 김도현</title>
+  <title>홈 화면 CMS 도입으로 콘텐츠 유형 2개 → 6개 확장 — 김도현</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/css/main.css" />
+  <link rel="stylesheet" href="../../../assets/css/main.css" />
   <style>
     .post-header {
       padding-bottom: 36px;
@@ -212,7 +212,7 @@
 <body>
   <nav>
     <div class="nav-inner">
-      <a class="nav-back" href="../../index.html">
+      <a class="nav-back" href="../../../index.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
           stroke-linejoin="round">
           <polyline points="15 18 9 12 15 6" />
@@ -228,19 +228,19 @@
   <main>
     <div class="container">
       <div class="post-header">
-        <p class="post-category">역량 · 시스템 리엔지니어링</p>
-        <h1 class="post-title">MSA API 마이그레이션 — 영향도 분석부터 S3 점진적 교체까지</h1>
+        <p class="post-category">역량 · 시스템 설계</p>
+        <h1 class="post-title">홈 화면 CMS 도입으로 콘텐츠 유형 2개 → 6개 확장</h1>
         <div class="post-meta">
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="3" y="4" width="18" height="18" rx="2" />
               <line x1="16" y1="2" x2="16" y2="6" />
               <line x1="8" y1="2" x2="8" y2="6" />
               <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>2021</span>
+            </svg>2022</span>
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9" />
               <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6" />
-            </svg>쿠팡</span>
+            </svg>트렌비</span>
         </div>
       </div>
       <div class="post-body">
@@ -250,84 +250,66 @@
         <div class="info-grid">
           <div class="info-box">
             <div class="info-box-label">개발 기간</div>
-            <div class="info-box-value">—</div>
+            <div class="info-box-value">2개월<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">2022.06 — 2022.07</span></div>
           </div>
           <div class="info-box">
             <div class="info-box-label">팀 구성</div>
-            <div class="info-box-value">—</div>
+            <div class="info-box-value">6명<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">BE 2 / FE 2 / UI·UX 1 / QA 1</span></div>
           </div>
           <div class="info-box">
             <div class="info-box-label">담당 역할</div>
-            <div class="info-box-value">—</div>
+            <div class="info-box-value">백엔드 개발 리드<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">시스템 설계 (100%)</span></div>
           </div>
         </div>
 
         <div class="tag-row">
-          <span class="tag">Java</span>
-          <span class="tag">Spring Boot</span>
-          <span class="tag">Amazon S3</span>
+          <span class="tag">Java 17</span>
+          <span class="tag">Spring Boot 2.7</span>
+          <span class="tag">MySQL 8 (JSON)</span>
+          <span class="tag">Redis</span>
+          <span class="tag">JPA</span>
+          <span class="tag">QueryDSL</span>
+          <span class="tag">Spring Batch</span>
         </div>
 
         <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
 
         <h2>Situation</h2>
-        <p>MSA 환경에서 외부 서비스가 API를 v1에서 v2로 버전업하면서 내부 서비스를 교체해야 했습니다. 단순히 호출 주소를 바꾸는 일이 아니었습니다.</p>
-        <ul>
-          <li><strong>광범위한 의존:</strong> API v1의 DTO가 내부 서비스 전체에 걸쳐 사용되고 있어, 교체하려면 대규모 코드 수정이 필요했습니다.</li>
-          <li><strong>높은 장애 임팩트:</strong> 내부 서비스 대부분의 기능이 API v1에 의존하고 있어 장애 발생 시 영향 범위가 매우 컸습니다.</li>
-          <li><strong>복잡한 DTO 구조:</strong> API v1 DTO는 100개가 넘는 필드를 가지고 있었으며, v1과 v2의 필드가 1:1로 매핑되지 않아 데이터 정합성 검증이 필수였습니다.</li>
-        </ul>
+        <p>트렌비 홈 화면은 프론트엔드 <strong>하드코딩</strong> 방식으로 관리되고 있었습니다. 새로운 콘텐츠 유형(타임딜, 이미지 배너 등)을 추가하거나 노출 순서를 변경하려면 매번 개발자가 직접 코드를 수정해야 했고, 확장성과 유지보수성이 모두 낮은 상태였습니다.</p>
 
         <h2>Behavior</h2>
 
-        <h3>내부 전용 DTO 분리</h3>
-        <p>API v1 DTO를 내부 서비스 전체에서 직접 사용하는 구조를 개선하기 위해, <strong>내부 서비스 전용 DTO</strong>를 별도로 만들었습니다. 이렇게 하면 향후 v3, v4로 버전업될 때 외부 DTO → 내부 DTO 변환 레이어만 수정하면 되어 유지보수 비용을 크게 줄일 수 있습니다.</p>
+        <h3>JSON 타입 기반 유연한 콘텐츠 설계</h3>
+        <p>상품·이미지·타임딜 등 다양한 콘텐츠 유형을 하나의 구조로 처리하기 위해, 콘텐츠 데이터를 <strong>MySQL JSON 타입</strong>으로 저장하고 <code>@JsonType</code>으로 역직렬화하는 방식을 설계했습니다. 이 접근 덕분에 새로운 콘텐츠 유형 추가 시 테이블 스키마를 변경하지 않아도 됩니다.</p>
 
-        <img src="./images/image02.jpeg" alt="내부 전용 DTO 구조" />
+        <h3>인력 공백 대응: '오전 소통, 오후 집중 개발' 루틴</h3>
+        <p>협업 백엔드 개발자가 신혼여행으로 개발 공백이 발생했습니다. 제한된 시간 내 혼자서 소통과 메인 개발을 모두 소화하기 위해 <strong>오전 소통·협의, 오후 집중 개발</strong>이라는 전략적 루틴을 세워 일정을 지킬 수 있었습니다.</p>
 
-        <h3>데이터 정합성 모니터링</h3>
-        <p>교체 전, v1과 v2의 응답 데이터를 실시간으로 비교하는 코드를 작성하고 불일치 발생 시 슬랙으로 알럿을 전송했습니다. v2를 제공하는 팀과 미팅을 통해 데이터 차이를 정리하고 일치시키는 과정을 진행했습니다.</p>
-
-        <pre><code class="language-java">public boolean isDifferent(ApiV1Dto v1Dto, ApiV2Dto v2Dto) {
-    if (v1Dto.getA() != v2Dto.getA()) {
-        return true;
-    }
-    if (v1Dto.getB() != v2Dto.getB()) {
-        return true;
-    }
-    ...
-    return false;
-}</code></pre>
-
-        <img src="./images/image03.jpeg" alt="데이터 정합성 실패 슬랙 알람" />
-
-        <h3>S3 Feature Flag로 점진적 트래픽 전환 (1% → 100%)</h3>
-        <p>한 번에 전환하면 위험하기 때문에, <strong>S3에 퍼센티지 값을 저장</strong>하고 코드에서 동적으로 읽어 v1/v2 호출 비율을 재배포 없이 조절하는 방식을 구현했습니다.</p>
-
-        <pre><code class="language-java">public void abTest() {
-    var random = (int)(Math.random() * 100);
-    var n = getNfromS3();
-    if (random < n) {
-        // call API v2
-    } else {
-        // call API v1
-    }
-}</code></pre>
+        <h3>팀 커뮤니케이션 개선</h3>
+        <p>백엔드-프론트엔드 전용 슬랙 채널을 별도로 운영하여 대기 시간을 최소화하고 협업 효율을 높였습니다.</p>
 
         <h2>Impact</h2>
         <ul>
-          <li><strong>마이그레이션 완료:</strong> API v1 → v2로 내부 서비스 전체 교체 성공.</li>
-          <li><strong>장애 경험과 회복:</strong> List 데이터의 값 비교를 누락한 정합성 로직 결함으로 장애가 발생했으나, 롤백·데이터 보정·로직 전면 수정 후 재교체를 완료했습니다.</li>
-          <li><strong>향후 마이그레이션 비용 절감:</strong> 내부 전용 DTO 도입으로 v3/v4 업그레이드 시 수정 범위를 변환 레이어로 한정할 수 있는 구조 확보.</li>
-          <li><strong>교훈:</strong> 데이터 정합성 검증 시 List 요소의 개수뿐 아니라 값까지 비교해야 한다는 것을 실전으로 학습.</li>
+          <li><strong>콘텐츠 유형 확장:</strong> CMS 도입 후 처리 가능한 홈 화면 콘텐츠 유형이 <strong>2개 → 6개</strong>로 확장.</li>
+          <li><strong>렌더링 성능 향상:</strong>
+            <ul>
+              <li><strong>Speed Index:</strong> 5.0s → 3.5s (<strong>30% 개선</strong>)</li>
+              <li><strong>Total Blocking Time:</strong> 0.8s → 0.6s (25% 개선)</li>
+              <li><strong>LCP:</strong> 6.8s → 6.3s (7% 개선)</li>
+            </ul>
+          </li>
+          <li><strong>교훈 전파:</strong> 단일 키 캐싱으로 인한 타임아웃 문제를 이후 스타일 서비스 프로젝트에서 개별 단위 캐싱으로 개선하는 데 활용.</li>
         </ul>
+
+        <p><br><em>(원문 출처: <a href="https://kdohyeon.tistory.com/75" target="_blank"
+              rel="noopener">https://kdohyeon.tistory.com/75 [대니기록:티스토리]</a>)</em></p>
       </div>
     </div>
   </main>
   <footer>
-    <div class="container">© 2025 김도현 · <a href="../../index.html" style="color:inherit">홈으로</a></div>
+    <div class="container">© 2025 김도현 · <a href="../../../index.html" style="color:inherit">홈으로</a></div>
   </footer>
-  <script src="../../assets/js/main.js"></script>
+  <script src="../../../assets/js/main.js"></script>
 </body>
 
 </html>
