@@ -90,9 +90,26 @@
     .hero-desc {
       font-size: 0.9rem;
       color: var(--text-sub);
-      line-height: 1.85;
+      line-height: 1.8;
       margin-top: 24px;
       margin-bottom: 28px;
+    }
+
+    .hero-desc p {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    .hero-desc-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding-top: 2px;
     }
 
     .hero-desc strong {
@@ -113,6 +130,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      justify-content: flex-end;
     }
 
     .hero-link {
@@ -437,24 +455,24 @@
         </div>
         <div class="hero-desc">
           <p style="margin-bottom:12px;">
-            <strong>8년간</strong> Java/Kotlin 기반 MSA 환경에서 이커머스와 금융 등
-            고가용성 백엔드 서비스를 안정적으로 구축해 왔습니다.
+            <span class="hero-desc-label">8년 차 백엔드 전문가</span>
+            <span>Java/Kotlin 기반 MSA 환경에서 고가용성 서비스를 안정적으로 구축합니다.</span>
           </p>
           <p style="margin-bottom:12px;">
-            기술을 넘어 데이터와 UX를 깊이 고민하며,
-            비즈니스 목표를 달성하는 <strong>제품 지향적 엔지니어링</strong>을 지향합니다.
+            <span class="hero-desc-label">제품 지향적 사고</span>
+            <span>기술을 넘어 데이터와 UX를 고민하며 비즈니스 목표 달성을 우선합니다.</span>
           </p>
           <p style="margin-bottom:12px;">
-            기록의 힘을 믿습니다. 지속 가능한 협업을 위해
-            파편화된 정보를 체계적인 문서로 자산화하는 데 익숙합니다.
+            <span class="hero-desc-label">지속 가능한 협업</span>
+            <span>파편화된 정보를 체계적인 문서로 자산화하여 협업 효율을 극대화합니다.</span>
           </p>
           <p style="margin-bottom:12px;">
-            동료의 성장이 곧 조직의 성숙도라는 믿음으로,
-            대내외 멘토링과 강연을 통해 <strong>지식 공유 생태계</strong>를 만듭니다.
+            <span class="hero-desc-label">성장을 돕는 시니어</span>
+            <span>멘토링과 지식 공유를 통해 팀과 조직의 동반 성장을 이끕니다.</span>
           </p>
           <p>
-            6년의 해외 거주 경험을 바탕으로, 다양한 문화적 배경을 가진 동료들과
-            <strong>영어로 막힘없이 협업</strong>할 수 있습니다.
+            <span class="hero-desc-label">글로벌 커뮤니케이터</span>
+            <span>6년의 해외 경험으로 다양한 문화적 배경의 동료와 영어로 협업합니다.</span>
           </p>
         </div>
       </section>
