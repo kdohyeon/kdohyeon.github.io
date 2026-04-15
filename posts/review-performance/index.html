@@ -156,6 +156,53 @@
       line-height: 1.7;
     }
 
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin: 20px 0 32px;
+    }
+
+    .info-box {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      background: var(--badge-bg);
+    }
+
+    .info-box-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .info-box-value {
+      font-size: 0.88rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 24px;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      background: var(--badge-bg);
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
     footer {
       margin-top: 60px;
     }
@@ -197,6 +244,33 @@
         </div>
       </div>
       <div class="post-body">
+
+        <h2>프로젝트 개요</h2>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <div class="info-box-label">개발 기간</div>
+            <div class="info-box-value">—</div>
+          </div>
+          <div class="info-box">
+            <div class="info-box-label">팀 구성</div>
+            <div class="info-box-value">—</div>
+          </div>
+          <div class="info-box">
+            <div class="info-box-label">담당 역할</div>
+            <div class="info-box-value">—</div>
+          </div>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Java</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">JPA</span>
+          <span class="tag">Redis</span>
+          <span class="tag">Pinpoint APM</span>
+        </div>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
 
         <h2>Situation</h2>
         <p>트렌비 리뷰 서비스(review-service) 런칭 이후 사용자와 트래픽이 증가하면서 두 가지 시스템 알럿이 지속적으로 발생했습니다.</p>

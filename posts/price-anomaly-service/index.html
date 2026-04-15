@@ -156,6 +156,53 @@
       line-height: 1.7;
     }
 
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin: 20px 0 32px;
+    }
+
+    .info-box {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      background: var(--badge-bg);
+    }
+
+    .info-box-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .info-box-value {
+      font-size: 0.88rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 24px;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      background: var(--badge-bg);
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
     footer {
       margin-top: 60px;
     }
@@ -198,17 +245,38 @@
       </div>
       <div class="post-body">
 
+        <h2>프로젝트 개요</h2>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <div class="info-box-label">개발 기간</div>
+            <div class="info-box-value">3개월<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">2020.01 — 2020.03</span></div>
+          </div>
+          <div class="info-box">
+            <div class="info-box-label">팀 구성</div>
+            <div class="info-box-value">3명<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">백엔드 3</span></div>
+          </div>
+          <div class="info-box">
+            <div class="info-box-label">담당 역할</div>
+            <div class="info-box-value">알고리즘 제안·구현<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">서비스 개발 참여</span></div>
+          </div>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Java</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">Redis</span>
+          <span class="tag">Couchbase</span>
+          <span class="tag">Kafka</span>
+        </div>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
         <h2>Situation</h2>
         <p>쿠팡은 타 플랫폼과 가격을 자동으로 맞추는 <strong>다이나믹 프라이싱(Dynamic Pricing)</strong> 정책을 운영합니다. 이 과정에서 판매자의 실수나 시스템 오류로 <strong>'가짜 낮은 가격'</strong>이 등록되는 문제가 발생했습니다.</p>
         <ul>
           <li>예시: 3개 묶음 상품을 1개 가격으로 잘못 등록 → 다이나믹 프라이싱이 해당 가격을 기준으로 따라내려 회사 경제적 손실 발생</li>
           <li>기존에는 이런 이상 가격을 담당자가 수동으로 모니터링해야 했으며, 조기 발견 및 즉각 대응이 어려운 구조였습니다.</li>
-        </ul>
-        <ul>
-          <li><strong>개발 기간:</strong> 2020. 01 ~ 2020. 03 (3개월)</li>
-          <li><strong>개발 인원:</strong> 백엔드 3명</li>
-          <li><strong>담당 역할:</strong> 이상 탐지 알고리즘 방향 제안 (기여도 100%), 알고리즘 구현 (기여도 30%), 서비스 개발 참여</li>
-          <li><strong>기술 스택:</strong> Java, Spring Boot, Redis, Couchbase, Kafka</li>
         </ul>
 
         <h2>Behavior</h2>

@@ -156,6 +156,53 @@
       line-height: 1.7;
     }
 
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin: 20px 0 32px;
+    }
+
+    .info-box {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      background: var(--badge-bg);
+    }
+
+    .info-box-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .info-box-value {
+      font-size: 0.88rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 24px;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      background: var(--badge-bg);
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
     footer {
       margin-top: 60px;
     }
@@ -206,14 +253,35 @@
 
       <div class="post-body">
 
+        <h2>프로젝트 개요</h2>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <div class="info-box-label">개발 기간</div>
+            <div class="info-box-value">3개월<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">2023.01 — 2023.03</span></div>
+          </div>
+          <div class="info-box">
+            <div class="info-box-label">팀 구성</div>
+            <div class="info-box-value">2명<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">BE 1 / FE 1</span></div>
+          </div>
+          <div class="info-box">
+            <div class="info-box-label">담당 역할</div>
+            <div class="info-box-value">백엔드 설계·개발<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">프로젝트 매니징 병행</span></div>
+          </div>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Java 17</span>
+          <span class="tag">Spring Boot 2.7</span>
+          <span class="tag">Redis</span>
+          <span class="tag">MySQL 8.0</span>
+          <span class="tag">Kafka</span>
+        </div>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
         <h2>Situation</h2>
         <p>기존 트렌비의 기획전 페이지는 <strong>하드코딩</strong> 방식으로 관리되고 있었습니다. 새로운 기획전이 열릴 때마다 개발자가 직접 코드를 수정하고 배포해야 했으며, 이로 인해 기획팀의 운영 속도가 개발 일정에 종속되는 비효율이 반복됐습니다.</p>
-        <ul>
-          <li><strong>개발 기간:</strong> 2023. 01 ~ 2023. 03 (3개월)</li>
-          <li><strong>개발 인원:</strong> 백엔드 1명, 프론트엔드 1명</li>
-          <li><strong>담당 역할:</strong> 백엔드 설계·개발 및 프로젝트 매니징</li>
-          <li><strong>기술 스택:</strong> Java 17, Spring Boot 2.7, Redis, MySQL 8.0, Kafka</li>
-        </ul>
 
         <h2>Behavior</h2>
 

@@ -156,6 +156,53 @@
             line-height: 1.7;
         }
 
+        .info-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+          gap: 14px;
+          margin: 20px 0 32px;
+        }
+
+        .info-box {
+          border: 1px solid var(--border);
+          border-radius: 10px;
+          padding: 16px;
+          background: var(--badge-bg);
+        }
+
+        .info-box-label {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.65rem;
+          font-weight: 600;
+          color: var(--accent);
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          margin-bottom: 6px;
+        }
+
+        .info-box-value {
+          font-size: 0.88rem;
+          color: var(--text);
+          font-weight: 600;
+        }
+
+        .tag-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin: 12px 0 24px;
+        }
+
+        .tag {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.72rem;
+          background: var(--badge-bg);
+          border: 1px solid var(--border);
+          color: var(--text-sub);
+          padding: 4px 10px;
+          border-radius: 20px;
+        }
+
         footer {
             margin-top: 60px;
         }
@@ -199,6 +246,32 @@
                 </div>
             </div>
             <div class="post-body">
+
+                <h2>프로젝트 개요</h2>
+
+                <div class="info-grid">
+                  <div class="info-box">
+                    <div class="info-box-label">개발 기간</div>
+                    <div class="info-box-value">—</div>
+                  </div>
+                  <div class="info-box">
+                    <div class="info-box-label">팀 구성</div>
+                    <div class="info-box-value">—</div>
+                  </div>
+                  <div class="info-box">
+                    <div class="info-box-label">담당 역할</div>
+                    <div class="info-box-value">—</div>
+                  </div>
+                </div>
+
+                <div class="tag-row">
+                  <span class="tag">Apache Kafka</span>
+                  <span class="tag">MySQL</span>
+                  <span class="tag">Spring Batch</span>
+                  <span class="tag">Hadoop</span>
+                </div>
+
+                <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
 
                 <h2>Situation</h2>
                 <p>기존 마케팅 발송 모니터링 시스템은 전사 분석용 데이터 플랫폼인 <strong>Hadoop(Hue)</strong>에 직접 의존하는 구조였습니다. 이로 인해 다음과 같은 운영상 리스크가 반복됐습니다.</p>

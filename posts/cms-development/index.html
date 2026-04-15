@@ -156,6 +156,53 @@
       line-height: 1.7;
     }
 
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin: 20px 0 32px;
+    }
+
+    .info-box {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      background: var(--badge-bg);
+    }
+
+    .info-box-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .info-box-value {
+      font-size: 0.88rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 24px;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      background: var(--badge-bg);
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
     footer {
       margin-top: 60px;
     }
@@ -198,14 +245,37 @@
       </div>
       <div class="post-body">
 
+        <h2>프로젝트 개요</h2>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <div class="info-box-label">개발 기간</div>
+            <div class="info-box-value">2개월<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">2022.06 — 2022.07</span></div>
+          </div>
+          <div class="info-box">
+            <div class="info-box-label">팀 구성</div>
+            <div class="info-box-value">6명<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">BE 2 / FE 2 / UI·UX 1 / QA 1</span></div>
+          </div>
+          <div class="info-box">
+            <div class="info-box-label">담당 역할</div>
+            <div class="info-box-value">백엔드 개발 리드<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">시스템 설계 (100%)</span></div>
+          </div>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Java 17</span>
+          <span class="tag">Spring Boot 2.7</span>
+          <span class="tag">MySQL 8 (JSON)</span>
+          <span class="tag">Redis</span>
+          <span class="tag">JPA</span>
+          <span class="tag">QueryDSL</span>
+          <span class="tag">Spring Batch</span>
+        </div>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
         <h2>Situation</h2>
         <p>트렌비 홈 화면은 프론트엔드 <strong>하드코딩</strong> 방식으로 관리되고 있었습니다. 새로운 콘텐츠 유형(타임딜, 이미지 배너 등)을 추가하거나 노출 순서를 변경하려면 매번 개발자가 직접 코드를 수정해야 했고, 확장성과 유지보수성이 모두 낮은 상태였습니다.</p>
-        <ul>
-          <li><strong>개발 기간:</strong> 2022. 06 ~ 2022. 07 (2개월)</li>
-          <li><strong>개발 인원:</strong> 총 6명 (백엔드 2명, 프론트 2명, UI/UX 1명, QA 1명)</li>
-          <li><strong>담당 역할:</strong> 백엔드 개발 리드·시스템 설계, 멀티 모듈 및 클린 아키텍처 환경 구성 (100%)</li>
-          <li><strong>기술 스택:</strong> Java 17, Spring Boot 2.7, MySQL 8 (JSON 타입), Redis, JPA, QueryDSL, Spring Batch</li>
-        </ul>
 
         <h2>Behavior</h2>
 
