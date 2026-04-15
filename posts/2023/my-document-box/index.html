@@ -157,50 +157,50 @@
         }
 
         .info-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-          gap: 14px;
-          margin: 20px 0 32px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 14px;
+            margin: 20px 0 32px;
         }
 
         .info-box {
-          border: 1px solid var(--border);
-          border-radius: 10px;
-          padding: 16px;
-          background: var(--badge-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            background: var(--badge-bg);
         }
 
         .info-box-label {
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 0.65rem;
-          font-weight: 600;
-          color: var(--accent);
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-          margin-bottom: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
         }
 
         .info-box-value {
-          font-size: 0.88rem;
-          color: var(--text);
-          font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--text);
+            font-weight: 600;
         }
 
         .tag-row {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          margin: 12px 0 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0 24px;
         }
 
         .tag {
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 0.72rem;
-          background: var(--badge-bg);
-          border: 1px solid var(--border);
-          color: var(--text-sub);
-          padding: 4px 10px;
-          border-radius: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            background: var(--badge-bg);
+            border: 1px solid var(--border);
+            color: var(--text-sub);
+            padding: 4px 10px;
+            border-radius: 20px;
         }
 
         footer {
@@ -250,50 +250,86 @@
                 <h2>프로젝트 개요</h2>
 
                 <div class="info-grid">
-                  <div class="info-box">
-                    <div class="info-box-label">개발 기간</div>
-                    <div class="info-box-value">—</div>
-                  </div>
-                  <div class="info-box">
-                    <div class="info-box-label">팀 구성</div>
-                    <div class="info-box-value">—</div>
-                  </div>
-                  <div class="info-box">
-                    <div class="info-box-label">담당 역할</div>
-                    <div class="info-box-value">—</div>
-                  </div>
+                    <div class="info-box">
+                        <div class="info-box-label">개발 기간</div>
+                        <div class="info-box-value">—</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-label">팀 구성</div>
+                        <div class="info-box-value">—</div>
+                    </div>
+                    <div class="info-box">
+                        <div class="info-box-label">담당 역할</div>
+                        <div class="info-box-value">—</div>
+                    </div>
                 </div>
 
                 <div class="tag-row">
-                  <span class="tag">추가 예정</span>
+                    <span class="tag">추가 예정</span>
                 </div>
 
                 <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
 
-                <h2>Situation</h2>
-                <p>수신 상품 가입 시 내 문서함 서비스에 자동 가입하는 기능을 개발해야 했습니다. 이 프로젝트는 세 가지 어려움이 겹쳐 있었습니다.</p>
+                <h2>들어가며</h2>
+                <p>PM이 없는 상황에서 개발자가 프로젝트를 리딩한다는 것은 코드를 짜는 것 이상의 역할을 요구합니다. 이 글은 카카오뱅크 '내 문서함' 서비스에 수신 상품 자동 가입 기능을
+                    개발하면서, PM 부재·넓은 범위·기술적 복잡도라는 세 가지 도전을 헤쳐 나간 과정을 SBI(Situation → Behavior → Impact) 구조로 기록합니다.</p>
+
+                <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
+                <!-- ── SITUATION ─────────────────────── -->
+                <h2>Situation — PM 없이 맡아야 했던 복합 과제</h2>
+
+                <p>수신 상품 가입 시 내 문서함 서비스에 자동 가입하는 기능을 개발해야 했습니다. 이 프로젝트에는 세 가지 어려움이 겹쳐 있었습니다.</p>
+
+                <p>첫 번째는 PM 부재였습니다. 담당 PM이 없는 상황에서 일정·범위 관리까지 개발자가 직접 맡아야 했습니다. 두 번째는 넓은 범위였습니다. 초기 기획은 총 7개 수신 상품 전체에
+                    기능을 적용하는 것이었으며, 도메인 히스토리에 대한 이해가 부족한 상태에서 동시에 진행하면 치명적인 버그 위험이 있었습니다. 세 번째는 기술적 복잡도였습니다. 내 문서함 연관
+                    서비스 외에 Backbone으로 구현된 WebView 프론트엔드도 수정해야 한다는 사실을 뒤늦게 파악했습니다.</p>
+
+                <blockquote>
+                    "일정 내에 7개를 한꺼번에 배포하는 것은 알려지지 않은 버그 하나가 치명적인 결과를 낳을 수 있는 구조였습니다."
+                </blockquote>
+
+                <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
+                <!-- ── BEHAVIOR ─────────────────────── -->
+                <h2>Behavior — 범위 조정, 기술 전환 협의, 주도적 프로젝트 리딩</h2>
+
+                <h3>1단계: '1개 우선' 전략 제안 및 채택</h3>
+                <p>7개를 한 번에 배포하는 것은 리스크가 크다고 판단했습니다. 가장 구현이 까다로운 상품 1개를 먼저 선택해 검증하는 방식을 팀에 제안하고, 논의를 통해 이 전략을 채택하는 데 주도적
+                    역할을 했습니다. 작게 시작해서 학습하고, 검증이 끝난 뒤 나머지에 적용하는 점진적 접근 방식이었습니다.</p>
+
+                <h3>2단계: Backbone WebView → Native 전환 협의</h3>
+                <p>Backbone WebView로 요구사항을 구현하는 것이 기술적으로 어렵다는 판단 하에, 클라이언트 개발자들과 적극적으로 커뮤니케이션하여 <strong>Native 구현
+                        방식</strong>으로 합의를 이끌어냈습니다. 이 결정은 단순히 구현 방식의 차이가 아니라, 사용자 경험 품질과 개발 리스크 모두를 개선하는 방향이었습니다.</p>
+
+                <h3>3단계: PM 역할 겸임으로 프로젝트 완수</h3>
+                <p>PM 없이 일정·리스크·이해관계자 소통을 직접 관리했습니다. 범위가 조정된 이후에는 남은 상품들에 대한 순차 적용 계획을 세우고, 각 단계에서 발생하는 이슈를 빠르게 해소하며
+                    프로젝트를 이끌었습니다.</p>
+
+                <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
+                <!-- ── IMPACT ─────────────────────── -->
+                <h2>Impact — 가입자 100배 성장과 안정적 배포</h2>
+
+                <p>기존 마케팅·홍보 이벤트 없이 하루 평균 100~200명이었던 내 문서함 신규 가입자가 <strong>하루 평균 10,000명</strong>으로 증가했습니다. 수신 상품 가입과
+                    문서함 가입을 자동으로 연결하는 흐름이 만들어 낸 구조적 성장이었습니다. 1개 우선 전략 덕분에 예상 버그 없이 안전하게 배포가 완료되었으며, Backbone 대신 Native로
+                    구현하여 사용자 경험도 훨씬 자연스러워졌습니다.</p>
+
+                <h3>핵심 교훈</h3>
                 <ul>
-                    <li><strong>PM 부재:</strong> 담당 PM이 없는 상황에서 일정·범위 관리까지 개발자가 직접 맡아야 했습니다.</li>
-                    <li><strong>넓은 범위:</strong> 초기 기획은 총 7개 수신 상품 전체에 기능을 적용하는 것이었으며, 도메인 히스토리에 대한 이해가 부족한 상태에서 동시에 진행할 경우 치명적인 버그 위험이 있었습니다.</li>
-                    <li><strong>기술적 복잡도:</strong> 내 문서함 연관 서비스 외에 Backbone으로 구현된 WebView 프론트엔드 서비스도 수정해야 한다는 사실을 뒤늦게 파악했습니다.</li>
+                    <li><strong>범위를 조정하는 것도 개발자의 역할입니다.</strong> 모든 요구사항을 한 번에 처리하려는 압박에 맞서, 리스크 관점에서 범위를 조정하고 팀을 설득하는
+                        것이 더 나은 결과를 낳았습니다.</li>
+                    <li><strong>기술 선택은 구현 가능성만의 문제가 아닙니다.</strong> Backbone → Native 전환은 단기적으로 더 많은 공수를 요구했지만, UX 품질과 장기
+                        유지보수 측면에서 올바른 선택이었습니다.</li>
+                    <li><strong>PM 없는 환경은 개발자가 리더십을 경험할 기회입니다.</strong> 불확실한 상황에서 결정을 내리고 팀을 이끄는 경험이 이후 유사한 상황에 대한 자신감을
+                        만들었습니다.</li>
                 </ul>
 
-                <h2>Behavior</h2>
-                <ul>
-                    <li><strong>1개 우선 전략 제안:</strong> 7개를 한 번에 배포하는 것은 리스크가 크다고 판단하여, 가장 구현이 까다로운 1개를 먼저 선택해 검증하는 방식을 제안하고 팀 협의를 통해 채택했습니다.</li>
-                    <li><strong>Native 전환 협의:</strong> Backbone WebView로 요구사항을 구현하는 것이 현실적으로 어렵다는 판단 하에, 클라이언트 개발자들과 적극적으로 커뮤니케이션하여 <strong>Native 구현 방식</strong>으로 합의를 이끌어냈습니다.</li>
-                    <li><strong>주도적 프로젝트 리딩:</strong> PM 역할을 병행하며 일정·리스크·이해관계자 소통을 직접 관리하여 프로젝트를 성공적으로 완료했습니다.</li>
-                </ul>
+                <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
 
-                <h2>Impact</h2>
-                <ul>
-                    <li><strong>가입자 100배 성장:</strong> 기존 마케팅·홍보 이벤트 없이 하루 평균 100~200명이었던 내 문서함 신규 가입자가 <strong>10,000명 평균</strong>으로 증가.</li>
-                    <li><strong>안정적 배포:</strong> 1개 우선 전략 덕분에 예상 버그 없이 안전하게 배포 완료.</li>
-                    <li><strong>UX 개선:</strong> Backbone 대신 Native로 구현하여 사용자 경험도 훨씬 자연스러워짐.</li>
-                </ul>
-
-                <p><br><em>(원문 출처: <a href="https://kdohyeon.tistory.com/132" target="_blank"
-                            rel="noopener">https://kdohyeon.tistory.com/132 [대니기록:티스토리]</a>)</em></p>
+                <h2>정리하며</h2>
+                <p>이 프로젝트에서 가장 어려웠던 부분은 코드가 아니라 결정이었습니다. '이렇게 하면 안 된다'는 것을 파악하고 대안을 설득하는 과정, 그리고 명확한 PM 없이 프로젝트를 끝까지 이끄는
+                    것이 기술적 구현보다 훨씬 복잡한 도전이었습니다. 그 경험이 개발자로서 비즈니스 맥락을 함께 이해하는 역량을 키우는 계기가 되었습니다.</p>
             </div>
         </div>
     </main>

@@ -270,25 +270,41 @@
 
         <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
 
-        <h2>Situation</h2>
-        <p>MSA 환경에서 외부 서비스가 API를 v1에서 v2로 버전업하면서 내부 서비스를 교체해야 했습니다. 단순히 호출 주소를 바꾸는 일이 아니었습니다.</p>
-        <ul>
-          <li><strong>광범위한 의존:</strong> API v1의 DTO가 내부 서비스 전체에 걸쳐 사용되고 있어, 교체하려면 대규모 코드 수정이 필요했습니다.</li>
-          <li><strong>높은 장애 임팩트:</strong> 내부 서비스 대부분의 기능이 API v1에 의존하고 있어 장애 발생 시 영향 범위가 매우 컸습니다.</li>
-          <li><strong>복잡한 DTO 구조:</strong> API v1 DTO는 100개가 넘는 필드를 가지고 있었으며, v1과 v2의 필드가 1:1로 매핑되지 않아 데이터 정합성 검증이 필수였습니다.</li>
-        </ul>
+        <h2>들어가며</h2>
+        <p>마이크로서비스 아키텍처에서 외부 API의 버전 전환은 단순한 URL 변경이 아닙니다. 내부 서비스 전반에 걸친 의존성을 정리하고, 데이터 정합성을 검증하며, 리스크를 최소화하면서 점진적으로
+          전환해야 하는 복잡한 작업입니다. 이 글은 MSA 환경에서 API v1에서 v2로 마이그레이션을 수행하는 과정을 SBI(Situation → Behavior → Impact) 구조로 정리한
+          기록입니다.</p>
 
-        <h2>Behavior</h2>
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
 
-        <h3>내부 전용 DTO 분리</h3>
-        <p>API v1 DTO를 내부 서비스 전체에서 직접 사용하는 구조를 개선하기 위해, <strong>내부 서비스 전용 DTO</strong>를 별도로 만들었습니다. 이렇게 하면 향후 v3, v4로 버전업될 때 외부 DTO → 내부 DTO 변환 레이어만 수정하면 되어 유지보수 비용을 크게 줄일 수 있습니다.</p>
+        <!-- ── SITUATION ─────────────────────── -->
+        <h2>Situation — 내부 서비스 전체에 뿌리내린 API v1 의존성</h2>
+
+        <h3>단순한 URL 교체가 아니었다</h3>
+        <p>MSA 환경에서 외부 서비스가 API를 v1에서 v2로 버전업하면서 내부 서비스를 교체해야 했습니다. 문제는 API v1의 DTO가 내부 서비스 전체에 걸쳐 광범위하게 사용되고 있었다는 점입니다.
+          내부 서비스 대부분의 기능이 API v1에 의존하고 있어 장애 발생 시 영향 범위가 매우 넓었습니다. 게다가 v1 DTO는 100개가 넘는 필드를 가지고 있었으며, v1과 v2의 필드가 1:1로
+          매핑되지 않아 데이터 정합성 검증이 필수였습니다.</p>
+
+        <blockquote>
+          "단순히 호출 주소를 바꾸는 일이 아니었습니다. 의존성이 얼마나 깊게 박혀 있는지를 먼저 파악해야 했습니다."
+        </blockquote>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
+        <!-- ── BEHAVIOR ─────────────────────── -->
+        <h2>Behavior — 내부 DTO 분리, 정합성 모니터링, 점진적 전환</h2>
+
+        <h3>1단계: 내부 전용 DTO 분리</h3>
+        <p>API v1 DTO를 내부 서비스 전체에서 직접 사용하는 구조를 개선하기 위해 <strong>내부 서비스 전용 DTO</strong>를 별도로 만들었습니다. 이 접근 덕분에 향후 v3, v4로
+          버전업될 때 외부 DTO → 내부 DTO 변환 레이어만 수정하면 되어 유지보수 비용을 크게 줄일 수 있었습니다.</p>
 
         <img src="./images/image02.jpeg" alt="내부 전용 DTO 구조" />
 
-        <h3>데이터 정합성 모니터링</h3>
-        <p>교체 전, v1과 v2의 응답 데이터를 실시간으로 비교하는 코드를 작성하고 불일치 발생 시 슬랙으로 알럿을 전송했습니다. v2를 제공하는 팀과 미팅을 통해 데이터 차이를 정리하고 일치시키는 과정을 진행했습니다.</p>
+        <h3>2단계: 데이터 정합성 모니터링</h3>
+        <p>교체 전에 v1과 v2의 응답 데이터를 실시간으로 비교하는 코드를 작성하고, 불일치 발생 시 슬랙으로 알림을 전송했습니다. v2를 제공하는 팀과 미팅을 통해 데이터 차이를 정리하고 일치시키는
+          과정을 반복했습니다.</p>
 
-        <pre><code class="language-java">public boolean isDifferent(ApiV1Dto v1Dto, ApiV2Dto v2Dto) {
+        <pre><code>public boolean isDifferent(ApiV1Dto v1Dto, ApiV2Dto v2Dto) {
     if (v1Dto.getA() != v2Dto.getA()) {
         return true;
     }
@@ -301,26 +317,42 @@
 
         <img src="./images/image03.jpeg" alt="데이터 정합성 실패 슬랙 알람" />
 
-        <h3>S3 Feature Flag로 점진적 트래픽 전환 (1% → 100%)</h3>
-        <p>한 번에 전환하면 위험하기 때문에, <strong>S3에 퍼센티지 값을 저장</strong>하고 코드에서 동적으로 읽어 v1/v2 호출 비율을 재배포 없이 조절하는 방식을 구현했습니다.</p>
+        <h3>3단계: S3 Feature Flag로 트래픽 점진적 전환 (1% → 100%)</h3>
+        <p>한 번에 전환하면 위험하기 때문에, <strong>S3에 퍼센티지 값을 저장</strong>하고 코드에서 동적으로 읽어 v1/v2 호출 비율을 재배포 없이 조절하는 방식을 구현했습니다. 트래픽
+          비율을 1%에서 시작해 문제가 없을 때마다 단계적으로 높여가며 최종 100%까지 전환했습니다.</p>
 
-        <pre><code class="language-java">public void abTest() {
+        <pre><code>public void abTest() {
     var random = (int)(Math.random() * 100);
     var n = getNfromS3();
-    if (random < n) {
+    if (random &lt; n) {
         // call API v2
     } else {
         // call API v1
     }
 }</code></pre>
 
-        <h2>Impact</h2>
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
+        <!-- ── IMPACT ─────────────────────── -->
+        <h2>Impact — 성공적인 마이그레이션과 장애 경험을 통한 학습</h2>
+
+        <p>API v1에서 v2로 내부 서비스 전체 교체를 성공적으로 완료했습니다. 다만 이 과정에서 한 차례 장애를 경험했습니다. List 데이터의 값 비교를 누락한 정합성 로직 결함으로 장애가 발생했고,
+          즉시 롤백한 뒤 데이터를 보정하고 로직을 전면 수정한 후 재교체를 완료했습니다. 그리고 내부 전용 DTO 도입으로 향후 v3/v4 업그레이드 시 수정 범위를 변환 레이어로 한정할 수 있는 구조를
+          확보했습니다.</p>
+
+        <h3>핵심 교훈</h3>
         <ul>
-          <li><strong>마이그레이션 완료:</strong> API v1 → v2로 내부 서비스 전체 교체 성공.</li>
-          <li><strong>장애 경험과 회복:</strong> List 데이터의 값 비교를 누락한 정합성 로직 결함으로 장애가 발생했으나, 롤백·데이터 보정·로직 전면 수정 후 재교체를 완료했습니다.</li>
-          <li><strong>향후 마이그레이션 비용 절감:</strong> 내부 전용 DTO 도입으로 v3/v4 업그레이드 시 수정 범위를 변환 레이어로 한정할 수 있는 구조 확보.</li>
-          <li><strong>교훈:</strong> 데이터 정합성 검증 시 List 요소의 개수뿐 아니라 값까지 비교해야 한다는 것을 실전으로 학습.</li>
+          <li><strong>정합성 검증은 '있는지'가 아니라 '맞는지'를 확인해야 합니다.</strong> List 요소의 개수만 확인하고 실제 값 비교를 누락했던 것이 장애의 원인이었습니다.</li>
+          <li><strong>점진적 전환은 선택이 아닌 필수입니다.</strong> Feature Flag를 통한 1% → 100% 트래픽 전환은 장애 발생 시 즉각 롤백이 가능하게 해주는
+            안전망이었습니다.</li>
+          <li><strong>내부 DTO 분리는 장기 투자입니다.</strong> 당장은 코드가 늘어나지만, 다음 버전 마이그레이션 때 그 가치를 실감하게 됩니다.</li>
         </ul>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
+        <h2>정리하며</h2>
+        <p>마이그레이션이 어려운 이유는 기술적 복잡도보다 안전하게 실행해야 한다는 제약 때문입니다. 정합성 검증, 점진적 전환, 롤백 계획을 미리 설계해두고 실행하는 것이 성공적인 마이그레이션의 핵심이라는
+          것을 장애를 통해 직접 체감했습니다.</p>
       </div>
     </div>
   </main>

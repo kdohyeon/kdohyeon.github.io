@@ -138,6 +138,46 @@
       margin: 8px 0 24px;
     }
 
+    .metric-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin: 20px 0 28px;
+    }
+
+    .metric-box {
+      flex: 1;
+      min-width: 140px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      background: var(--badge-bg);
+    }
+
+    .metric-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .metric-value {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .metric-value.highlight {
+      color: var(--accent);
+    }
+
+    .metric-value.danger {
+      color: #e05c5c;
+    }
+
     .placeholder {
       padding: 64px 32px;
       text-align: center;
@@ -272,43 +312,87 @@
 
         <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
 
-        <h2>Situation</h2>
-        <p>트렌비 리뷰 서비스(review-service) 런칭 이후 사용자와 트래픽이 증가하면서 두 가지 시스템 알럿이 지속적으로 발생했습니다.</p>
+        <h2>들어가며</h2>
+        <p>단 하나의 API 응답 속도가 시스템 전체의 경험을 좌우할 수 있습니다. 이 글은 트렌비 리뷰 서비스 운영 중 발생한 DB 커넥션 풀 고갈과 API 타임아웃 문제를 5단계에 걸쳐 구조적으로 개선한
+          과정을 SBI(Situation → Behavior → Impact) 구조로 정리한 기록입니다.</p>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
+        <!-- ── SITUATION ─────────────────────── -->
+        <h2>Situation — 두 가지 알림이 반복되었다</h2>
+
+        <p>트렌비 리뷰 서비스(review-service) 런칭 이후 사용자와 트래픽이 증가하면서 두 가지 시스템 알림이 지속적으로 발생했습니다. 첫째, 대량 트래픽 구간에서 "Could not open
+          JPA EntityManager" 에러가 반복되는 <strong>DB 커넥션 풀 고갈</strong>이었습니다. 둘째, 외부 서비스 의존으로 인한 연쇄 지연, 즉 <strong>API
+            타임아웃</strong>이었습니다.</p>
+
+        <p>p90 API 응답 속도는 약 <strong>200ms~250ms</strong> 수준으로, 사용자가 '즉각적인 응답'으로 느끼는 기준인 100ms 이내를 크게 초과하고 있었습니다.</p>
+
+        <blockquote>
+          "엔지니어는 로그를 보고 있었고, 사용자는 버벅이는 리뷰 목록을 보고 있었다."
+        </blockquote>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
+        <!-- ── BEHAVIOR ─────────────────────── -->
+        <h2>Behavior — 원인 분석 후 5단계 순차 개선</h2>
+
+        <h3>1단계: n번 API 호출 → Bulk API 1번 호출</h3>
+        <p>주문 서비스(order-service)를 루프로 n번 호출하던 로직을 <strong>Bulk 형태의 API</strong>로 교체했습니다. 네트워크 왕복 횟수를 n에서 1로 줄이는 것만으로 p90
+          응답 속도를 200ms에서 100ms 수준으로 단축했습니다.</p>
+
+        <h3>2단계: 외부 서비스 의존 제거</h3>
+        <p>주문 서비스에서 가져오던 '구매 옵션' 데이터를 리뷰 저장 시 자체적으로 함께 저장하도록 변경하여 외부 의존을 완전히 끊었습니다. 이 한 가지 변경으로 응답 속도가 100ms에서 30~40ms로
+          급격히 개선되었습니다.</p>
+
+        <h3>3단계: 트랜잭션 분리로 DB 커넥션 풀 고갈 해소</h3>
+        <p><code>@Transactional</code> 메소드 내부에서 외부 API 호출 후 DB I/O를 수행하는 구조가 커넥션 점유를 장기화시키고 있었습니다. 외부 I/O와 DB I/O 구간을
+          분리하고, DB 로직에만 <code>TransactionTemplate</code>을 명시적으로 적용하여 트랜잭션이 보유하는 커넥션 시간을 최소화했습니다.</p>
+
+        <h3>4단계: Redis 캐시 레이어 도입</h3>
+        <p>상품 시스템의 외부 API가 간헐적으로 타임아웃을 일으켜 장애가 전파됐습니다. 리뷰 도메인이 필요로 하는 상품 정보는 변동성이 낮다는 점에 착안하여 <strong>Redis 캐시
+            레이어</strong>를 앞단에 적용했습니다. 외부 API 타임아웃이 유발하던 스파이크성 에러가 눈에 띄게 줄었습니다.</p>
+
+        <h3>5단계: 인덱스 누락 발견 및 추가 (Pinpoint APM 활용)</h3>
+        <p>APM 도구 Pinpoint로 특정 조회 API가 약 600ms를 소요하는 것을 발견했습니다. 원인을 추적하니 중복 리뷰 방지용 단순 조회
+          쿼리(<code>SELECT * FROM review WHERE order_item_id = ?</code>)에서 <code>order_item_id</code> 인덱스가 누락되어 풀 스캔이
+          발생하고 있었습니다. 인덱스 추가 하나로 해당 API의 응답 속도를 즉각 개선했습니다.</p>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
+        <!-- ── IMPACT ─────────────────────── -->
+        <h2>Impact — p90 응답 속도 80% 단축, 알림 소멸</h2>
+
+        <div class="metric-row">
+          <div class="metric-box">
+            <div class="metric-label">p90 응답 속도 (개선 전)</div>
+            <div class="metric-value danger">200 — 250ms</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">p90 응답 속도 (개선 후)</div>
+            <div class="metric-value highlight">30 — 40ms</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">DB 커넥션 풀 / 타임아웃 알림</div>
+            <div class="metric-value highlight">해소</div>
+          </div>
+        </div>
+
+        <p>5단계 개선을 통해 p90 응답 속도를 <strong>약 80% 단축</strong>했습니다. DB 커넥션 풀 고갈 알림과 API 타임아웃 알림이 더 이상 발생하지 않게 되었으며, 각 단계가 단일
+          수정이 아닌 구조적 원인을 제거하는 방식으로 이루어졌기 때문에 재발 방지 효과도 확보했습니다.</p>
+
+        <h3>핵심 교훈</h3>
         <ul>
-          <li><strong>DB 커넥션 풀 고갈:</strong> 대량 트래픽 구간에서 "Could not open JPA EntityManager" 에러 반복 발생</li>
-          <li><strong>API 타임아웃:</strong> 외부 서비스 의존으로 인한 연쇄 지연</li>
-        </ul>
-        <p>p90 API 응답 속도는 약 <strong>200ms ~ 250ms</strong> 수준으로, 사용자가 '즉각적인 응답'으로 느끼는 기준인 100ms 이내를 크게 초과하고 있었습니다.</p>
-
-        <h2>Behavior</h2>
-        <p>원인을 분석하고 5단계에 걸쳐 순차적으로 개선했습니다.</p>
-
-        <h3>1. n번 API 호출 → Bulk API 1번 호출</h3>
-        <p>주문 서비스(order-service)를 루프로 n번 호출하던 로직을 <strong>Bulk 형태의 API</strong>로 교체했습니다. 이를 통해 p90 응답속도를 200ms → 100ms 수준으로 단축했습니다.</p>
-
-        <h3>2. 외부 서비스 의존 제거</h3>
-        <p>주문 서비스에서 가져오던 '구매 옵션' 데이터를 리뷰 저장 시 자체적으로 함께 저장하도록 변경하여 외부 의존을 완전히 끊었습니다. 응답속도가 100ms → 30~40ms로 급감했습니다.</p>
-
-        <h3>3. 트랜잭션 분리로 DB 커넥션 풀 고갈 해소</h3>
-        <p><code>@Transactional</code> 메소드 내부에서 외부 API 호출 후 DB I/O를 수행하는 구조가 커넥션 점유를 장기화시키고 있었습니다. 외부 I/O와 DB I/O 구간을 분리하고, DB 로직에만 <code>TransactionTemplate</code>을 명시적으로 적용해 커넥션 풀 고갈을 해결했습니다.</p>
-
-        <h3>4. Redis 캐시 레이어 도입</h3>
-        <p>상품 시스템의 외부 API가 간헐적으로 타임아웃을 일으켜 장애가 전파됐습니다. 리뷰 도메인이 필요로 하는 상품 정보는 변동성이 낮다는 점을 파악하고 <strong>Redis 캐시 레이어</strong>를 앞단에 적용했습니다. 스파이크성 에러가 눈에 띄게 줄었습니다.</p>
-
-        <h3>5. 인덱스 누락 발견 및 추가 (Pinpoint APM 활용)</h3>
-        <p>APM 도구 Pinpoint로 특정 조회 API가 약 600ms를 소요하는 것을 발견했습니다. 중복 리뷰 방지용 단순 조회 쿼리(<code>SELECT * FROM review WHERE order_item_id = ?</code>)에서 <code>order_item_id</code> 인덱스가 누락되어 풀 스캔이 발생하고 있었습니다. 인덱스 추가로 단기간에 큰 폭의 성능 향상을 달성했습니다.</p>
-
-        <h2>Impact</h2>
-        <ul>
-          <li><strong>p90 응답속도:</strong> 200~250ms → 30~40ms (<strong>약 80% 단축</strong>)</li>
-          <li><strong>시스템 알럿 해소:</strong> DB 커넥션 풀 고갈 및 API 타임아웃 알럿 더 이상 발생하지 않음</li>
-          <li>5단계 개선을 통해 단일 수정이 아닌 구조적 원인을 제거하여 재발 방지 효과 달성</li>
+          <li><strong>N+1 쿼리는 트래픽이 높아질 때 비로소 드러납니다.</strong> n번 API 호출의 문제는 초기에는 눈에 띄지 않다가 사용자가 늘어나는 시점에 급격히 나타났습니다.
+          </li>
+          <li><strong>트랜잭션 범위와 외부 I/O는 분리해야 합니다.</strong> 트랜잭션 안에서 외부 호출을 하면 커넥션이 그 시간 동안 점유되어 풀 고갈로 이어질 수 있습니다.</li>
+          <li><strong>APM 없이는 병목을 찾기 어렵습니다.</strong> 인덱스 누락 문제는 Pinpoint 없이는 발견하기 어려웠을 패턴이었습니다.</li>
         </ul>
 
-        <p><br><em>(원문 출처: <a
-              href="https://tech.trenbe.com/2022/09/14/%ed%8a%b8%eb%a0%8c%eb%b9%84-%eb%a6%ac%eb%b7%b0-%ec%84%9c%eb%b9%84%ec%8a%a4%ec%9d%98-%ec%84%b1%eb%8a%a5-%ea%b0%9c%ec%84%a0%ea%b8%b0.html"
-              target="_blank" rel="noopener">https://tech.trenbe.com/2022/09/14/트렌비-리뷰-서비스의-성능-개선기.html [트렌비
-              기술블로그]</a>)</em></p>
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
+        <h2>정리하며</h2>
+        <p>이 경험은 성능 문제가 단일 원인이 아닌 여러 구조적 결함의 복합적 결과임을 보여줬습니다. 하나를 고치면 다음 병목이 드러나는 과정을 반복하면서, 시스템을 관찰하고 원인을 정확히 파악하는 것이
+          빠른 수정보다 중요하다는 것을 다시 한번 확인했습니다.</p>
       </div>
     </div>
   </main>

@@ -250,15 +250,18 @@
         <div class="info-grid">
           <div class="info-box">
             <div class="info-box-label">개발 기간</div>
-            <div class="info-box-value">2개월<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">2022.06 — 2022.07</span></div>
+            <div class="info-box-value">2개월<br><span
+                style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">2022.06 — 2022.07</span></div>
           </div>
           <div class="info-box">
             <div class="info-box-label">팀 구성</div>
-            <div class="info-box-value">6명<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">BE 2 / FE 2 / UI·UX 1 / QA 1</span></div>
+            <div class="info-box-value">6명<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">BE
+                2 / FE 2 / UI·UX 1 / QA 1</span></div>
           </div>
           <div class="info-box">
             <div class="info-box-label">담당 역할</div>
-            <div class="info-box-value">백엔드 개발 리드<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">시스템 설계 (100%)</span></div>
+            <div class="info-box-value">백엔드 개발 리드<br><span
+                style="font-weight:400;font-size:0.8rem;color:var(--text-muted)">시스템 설계 (100%)</span></div>
           </div>
         </div>
 
@@ -274,35 +277,60 @@
 
         <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
 
-        <h2>Situation</h2>
-        <p>트렌비 홈 화면은 프론트엔드 <strong>하드코딩</strong> 방식으로 관리되고 있었습니다. 새로운 콘텐츠 유형(타임딜, 이미지 배너 등)을 추가하거나 노출 순서를 변경하려면 매번 개발자가 직접 코드를 수정해야 했고, 확장성과 유지보수성이 모두 낮은 상태였습니다.</p>
+        <h2>들어가며</h2>
+        <p>콘텐츠 관리 방식이 하드코딩에 묶여 있다면, 서비스 확장에는 항상 개발자가 필요합니다. 이 글은 트렌비 홈 화면을 하드코딩 방식에서 CMS(Content Management System) 기반으로
+          전환하여 콘텐츠 유형을 2개에서 6개로 확장하고 렌더링 성능을 개선한 과정을 SBI(Situation → Behavior → Impact) 구조로 정리한 기록입니다.</p>
 
-        <h2>Behavior</h2>
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
 
-        <h3>JSON 타입 기반 유연한 콘텐츠 설계</h3>
-        <p>상품·이미지·타임딜 등 다양한 콘텐츠 유형을 하나의 구조로 처리하기 위해, 콘텐츠 데이터를 <strong>MySQL JSON 타입</strong>으로 저장하고 <code>@JsonType</code>으로 역직렬화하는 방식을 설계했습니다. 이 접근 덕분에 새로운 콘텐츠 유형 추가 시 테이블 스키마를 변경하지 않아도 됩니다.</p>
+        <!-- ── SITUATION ─────────────────────── -->
+        <h2>Situation — 확장할 때마다 개발자가 코드를 고쳐야 했다</h2>
 
-        <h3>인력 공백 대응: '오전 소통, 오후 집중 개발' 루틴</h3>
-        <p>협업 백엔드 개발자가 신혼여행으로 개발 공백이 발생했습니다. 제한된 시간 내 혼자서 소통과 메인 개발을 모두 소화하기 위해 <strong>오전 소통·협의, 오후 집중 개발</strong>이라는 전략적 루틴을 세워 일정을 지킬 수 있었습니다.</p>
+        <p>트렌비 홈 화면은 프론트엔드 <strong>하드코딩</strong> 방식으로 관리되고 있었습니다. 새로운 콘텐츠 유형(타임딜, 이미지 배너 등)을 추가하거나 노출 순서를 변경하려면 매번 개발자가
+          직접 코드를 수정하고 배포해야 했습니다. 기획팀이 새 캠페인을 기획하거나 프로모션 기간에 홈 구성을 바꾸고 싶어도 개발 일정에 종속될 수밖에 없었으며, 확장성과 유지보수성이 모두 낮은 상태였습니다.
+        </p>
 
-        <h3>팀 커뮤니케이션 개선</h3>
-        <p>백엔드-프론트엔드 전용 슬랙 채널을 별도로 운영하여 대기 시간을 최소화하고 협업 효율을 높였습니다.</p>
+        <blockquote>
+          "새로운 배너를 넣으려면 개발팀에 요청해서 코드를 수정하고 배포해야 합니다. 그 사이에 시즌이 지나가는 일도 있었습니다."
+        </blockquote>
 
-        <h2>Impact</h2>
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
+        <!-- ── BEHAVIOR ─────────────────────── -->
+        <h2>Behavior — JSON 타입 기반 CMS 설계와 일정 내 실행</h2>
+
+        <h3>1단계: JSON 타입 기반 유연한 콘텐츠 설계</h3>
+        <p>상품·이미지·타임딜 등 다양한 콘텐츠 유형을 단일 구조로 처리하기 위해, 콘텐츠 데이터를 <strong>MySQL JSON 타입</strong>으로 저장하고
+          <code>@JsonType</code>으로 역직렬화하는 방식을 설계했습니다. 이 접근 덕분에 새로운 콘텐츠 유형 추가 시 테이블 스키마를 변경하지 않아도 됩니다. 기획팀이 원하는 콘텐츠 유형을
+          어드민에서 직접 조합하고 순서를 조정할 수 있는 기반이 마련되었습니다.</p>
+
+        <h3>2단계: 인력 공백 속 일정 수호</h3>
+        <p>협업 백엔드 개발자가 신혼여행으로 자리를 비워 개발 공백이 생겼습니다. 제한된 시간 안에 소통과 개발을 모두 소화하기 위해 <strong>오전 소통·협의, 오후 집중 개발</strong>이라는
+          루틴을 세웠습니다. 프론트엔드 팀과는 백엔드-프론트엔드 전용 슬랙 채널을 별도로 운영하여 대기 시간을 최소화하고 협업 효율을 높였습니다.</p>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
+        <!-- ── IMPACT ─────────────────────── -->
+        <h2>Impact — 콘텐츠 유형 3배 확장과 렌더링 성능 개선</h2>
+
+        <p>CMS 도입 이후 처리 가능한 홈 화면 콘텐츠 유형이 <strong>2개에서 6개</strong>로 확장되었습니다. 기획팀은 이제 개발자의 개입 없이 직접 콘텐츠를 구성할 수 있게 되었습니다.
+          렌더링 성능도 함께 개선되어 Speed Index는 5.0s에서 3.5s로 <strong>30%</strong> 단축되었으며, Total Blocking Time은 0.8s에서 0.6s로
+          줄었습니다.</p>
+
+        <h3>핵심 교훈</h3>
         <ul>
-          <li><strong>콘텐츠 유형 확장:</strong> CMS 도입 후 처리 가능한 홈 화면 콘텐츠 유형이 <strong>2개 → 6개</strong>로 확장.</li>
-          <li><strong>렌더링 성능 향상:</strong>
-            <ul>
-              <li><strong>Speed Index:</strong> 5.0s → 3.5s (<strong>30% 개선</strong>)</li>
-              <li><strong>Total Blocking Time:</strong> 0.8s → 0.6s (25% 개선)</li>
-              <li><strong>LCP:</strong> 6.8s → 6.3s (7% 개선)</li>
-            </ul>
-          </li>
-          <li><strong>교훈 전파:</strong> 단일 키 캐싱으로 인한 타임아웃 문제를 이후 스타일 서비스 프로젝트에서 개별 단위 캐싱으로 개선하는 데 활용.</li>
+          <li><strong>스키마 유연성은 초기 설계에서 결정됩니다.</strong> JSON 타입 선택 덕분에 새 콘텐츠 유형이 스키마 변경 없이 추가될 수 있었습니다. 이 결정이 이후 확장의 속도를
+            결정했습니다.</li>
+          <li><strong>인력 공백은 루틴으로 극복할 수 있습니다.</strong> 소통 시간과 개발 집중 시간을 명확히 분리하는 것만으로도 다운타임 없이 일정을 지킬 수 있었습니다.</li>
+          <li><strong>단일 키 캐싱의 함정을 이후 프로젝트에서 피할 수 있었습니다.</strong> 이 프로젝트에서 겪은 단일 키 캐싱의 타임아웃 문제를, 이후 스타일 서비스에서는 개별 단위
+            캐싱으로 처음부터 설계하는 데 활용했습니다.</li>
         </ul>
 
-        <p><br><em>(원문 출처: <a href="https://kdohyeon.tistory.com/75" target="_blank"
-              rel="noopener">https://kdohyeon.tistory.com/75 [대니기록:티스토리]</a>)</em></p>
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
+        <h2>정리하며</h2>
+        <p>이 프로젝트는 기술적 설계와 일정 관리를 동시에 요구하는 경험이었습니다. 유연한 데이터 모델을 선택하는 것이 서비스 확장의 속도를 결정하고, 실제로 그 가치가 이후 프로젝트에서 이어졌다는 점에서
+          설계 결정의 중요성을 다시 한번 확인했습니다.</p>
       </div>
     </div>
   </main>
