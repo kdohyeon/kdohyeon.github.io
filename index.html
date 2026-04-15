@@ -104,19 +104,21 @@
 
     .hero-desc p {
       display: flex;
-      gap: 10px;
-      align-items: baseline;
+      gap: 12px;
+      align-items: flex-start;
     }
 
     .hero-desc-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      font-weight: 600;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
       color: var(--accent);
-      letter-spacing: 0.04em;
+      background: var(--accent-soft);
+      padding: 2px 10px;
+      border-radius: 5px;
       white-space: nowrap;
       flex-shrink: 0;
-      padding-top: 2px;
+      margin-top: 2px;
     }
 
     .hero-desc strong {
@@ -516,7 +518,8 @@
               <li>Redis List → Set 자료구조 교체로 CPU 100% 장애 해소 (O(N) → O(1))</li>
               <li>마케팅 모니터링 시스템 Hadoop 의존 제거 — MySQL 이중 적재 구조로 어드민 응답 속도 80% 개선 및 24/7 가용성 확보</li>
               <li>내 문서함 서비스 연동 개발 <strong style="color:var(--text)">(가입자 80배 상승)</strong> / 계좌 비밀번호 기반 인증서 발급 방식 개발
-                <strong style="color:var(--text)">(전체 인증서 발급의 약 60% 점유)</strong></li>
+                <strong style="color:var(--text)">(전체 인증서 발급의 약 60% 점유)</strong>
+              </li>
             </ul>
           </div>
 
