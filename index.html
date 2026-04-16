@@ -517,7 +517,7 @@
             <div class="timeline-quote">고객인증 및 알림 발송 관련 서비스 담당</div>
             <ul class="timeline-bullets">
               <li>알림 발송 서비스 설계 및 개발 — Kafka 기반 대고객 채널 발송 파이프라인 구축</li>
-              <li>Kafka 파티션 불균형 해결 및 Reactive 컨슈머 도입으로 TPS ~400 → ~10,000 개선</li>
+              <li>Kafka 파티션 불균형 해결 및 Reactive 컨슈머 도입으로 TPS ~800 (파티션당 ~400) → ~10,000 (파티션당 4–5K) 개선</li>
               <li>Kafka + Project Reactor 병렬화로 3,000만 건 로그 처리 시간 10시간 → 수십 분 단축</li>
               <li>Redis List → Set 자료구조 교체로 CPU 100% 장애 해소 (O(N) → O(1))</li>
               <li>마케팅 모니터링 시스템 Hadoop 의존 제거 — MySQL 이중 적재 구조로 어드민 응답 속도 80% 개선 및 24/7 가용성 확보</li>
