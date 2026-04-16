@@ -499,7 +499,11 @@ flux.flatMap(log -> processLog(log), concurrency);</code></pre>
           </div>
           <div class="metric-box">
             <div class="metric-label">처리 소요 시간 (개선 후)</div>
-            <div class="metric-value highlight">수십 분</div>
+            <div class="metric-value highlight">약 2시간</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-label">파티션별 TPS</div>
+            <div class="metric-value highlight">2–3K</div>
           </div>
           <div class="metric-box">
             <div class="metric-label">인프라 증설</div>
@@ -507,8 +511,9 @@ flux.flatMap(log -> processLog(log), concurrency);</code></pre>
           </div>
         </div>
 
-        <p>추가적인 인프라 증설 없이, 동일한 하드웨어 위에서 처리 시간을 <strong>10시간 이상에서 수십 분 이내로 단축</strong>했습니다. 운영팀은 작업 실행 직후 로그를 통해 정상 동작
-          여부를 즉시 확인할 수 있게 되었고, 지연으로 인한 운영 리스크가 사라졌습니다.</p>
+        <p>추가적인 인프라 증설 없이, 동일한 하드웨어 위에서 처리 성능을 대폭 끌어올렸습니다. 파티션 2개, 컨슈머 2대 구성에서 파티션별 처리량이 <strong>2–3K TPS</strong> 수준으로 올라왔고, 보수적으로 2K TPS 기준으로 계산하면 총 처리 용량은 약 <strong>4K TPS</strong>입니다. 3,000만 건 ÷ 4,000 TPS ≈ 7,500초, 즉 <strong>약 2시간</strong> 이내에 처리가 완료됩니다.</p>
+
+        <p>실시간 유입량을 고려하면 구조는 더욱 안정적입니다. 비즈니스 이벤트가 초당 1,000건 발생하면 로그는 약 3,000건/초 생성됩니다. 처리 용량(4K/초)이 유입량(3K/초)을 초당 1,000건 앞서기 때문에, 메시지가 지속적으로 유입되더라도 적체가 쌓이지 않는 구조입니다. 운영팀은 작업 실행 직후 로그를 통해 정상 동작 여부를 즉시 확인할 수 있게 되었고, 지연으로 인한 운영 리스크가 사라졌습니다.</p>
 
         <p>또한 <code>flatMap</code> concurrency 제어를 통해 DB 커넥션 풀이 안정적으로 유지되었습니다. 빠른 처리와 시스템 안정성을 동시에 확보한 결과였습니다.</p>
 
