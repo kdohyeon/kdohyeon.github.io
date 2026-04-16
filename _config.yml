@@ -1,0 +1,31 @@
+title: kdohyeon's blog
+description: 개발 이야기와 생각들을 기록하는 블로그
+url: "https://kdohyeon.github.io"
+baseurl: ""
+
+author:
+  name: kdohyeon
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /posts/:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Utterances comment settings
+comments:
+  utterances:
+    repo: kdohyeon/kdohyeon.github.io
+    issue_term: pathname
+    theme: github-light
+    label: comment
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .gitignore

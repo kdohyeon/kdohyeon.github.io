@@ -1,0 +1,30 @@
+---
+layout: default
+title: 홈
+---
+
+<h1 class="page-heading">최근 포스팅</h1>
+
+<ul class="post-list">
+  {% for post in site.posts %}
+    <li class="post-list-item">
+      <h2 class="post-list-title">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h2>
+      <div class="post-list-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: "%Y년 %m월 %d일" }}
+        </time>
+        {% if post.categories.size > 0 %}
+          &nbsp;·&nbsp;
+          {% for category in post.categories %}
+            <span class="post-category">{{ category }}</span>
+          {% endfor %}
+        {% endif %}
+      </div>
+      {% if post.excerpt %}
+        <p class="post-list-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
