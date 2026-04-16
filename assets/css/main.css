@@ -509,6 +509,27 @@ footer {
   border-top: 1px solid var(--border);
 }
 
+/* ── Comments section ────────────────────────────────── */
+.comments-section {
+  border-top: 1px solid var(--border);
+  padding: 48px 0 64px;
+  transition: border-color var(--t);
+}
+
+.comments-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+}
+
+.utterances {
+  max-width: 100% !important;
+}
+
 /* ── Responsive ──────────────────────────────────────── */
 @media (max-width: 620px) {
   .nav-links {
